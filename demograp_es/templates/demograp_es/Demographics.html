@@ -1,0 +1,64 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+{% load otree  i18n %}
+
+{% block title %}
+    {% blocktrans trimmed %}Anonymous Survey{% endblocktrans %}
+{% endblock %}
+
+{% block scripts %}
+    {# this records the timestamp #}
+    <script type="text/javascript">
+            window.onload = function () {
+                document.getElementById("arrive_time").value = (new Date()).toISOString();
+            }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" name="time_Demographics" id="arrive_time">
+
+    <p>
+        {% blocktrans %}Please answer the following questions.{% endblocktrans %}
+    </p>
+   
+
+    {% formfield player.q_number %}
+    <br/>
+    {% formfield player.q_age %}
+    <br/>
+    {% formfield player.q_major %}
+    <br/>
+    {% formfield player.q_gender %}
+    <br/>
+    {% formfield player.q_school_year %}
+    <br/>
+    {% formfield player.q_income %}
+    <br/>
+    {% formfield player.q_zipcode %}
+    <br/>
+    {% formfield player.q_country %}
+    <br/>
+    {% formfield player.q_opinion %}
+    <br/>
+    {% formfield player.q_station %}
+    <br/>
+    {% formfield player.q_how %}
+    <br/>
+    {% formfield player.q_rule %}
+    <br/>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block content_at_bottom_of_body %}
+
+    <script type="text/javascript">
+        function sort(a, b) {
+            return (a.innerHTML > b.innerHTML) ? 1 : -1;
+        }
+        $('#id_q_country option').sort(sort).appendTo('#id_q_country');
+    </script>
+
+{% endblock %}

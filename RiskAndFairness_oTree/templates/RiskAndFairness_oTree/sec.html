@@ -1,0 +1,122 @@
+{% load otree staticfiles %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+<div class="instructions well well-lg">
+
+
+    {% if mode == 'sec_1bl_1ch' or mode == 'sec_1bl_2ch' or mode == 'sec_2bl_1ch' or mode == 'sec_2bl_2ch' or mode == 'sec_ownrisk' or mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' %}
+
+        <h2 class="panel-sub-heading">
+            {% if mode == 'sec_1bl_1ch'%}
+                Instructions - Task 2
+            {% elif mode == 'sec_1bl_2ch'%}
+                Instructions - Task 4
+            {% elif mode == 'sec_2bl_1ch'%}
+                Instructions - Task 3
+            {% elif mode == 'sec_2bl_2ch'%}
+                Instructions - Task 9
+            {% elif mode == 'sec_ownrisk' %}
+                Instructions - Task 5
+            {% elif mode == 'sec_ownrisk_fixedother' %}
+                Instructions - Task 6
+            {% elif mode == 'sec_otherrisk_ownfixed' %}
+                Instructions - Task 7
+            {% endif %}
+        </h2>
+
+        <p>
+           In each decision round, there will be two probable states: State A and State B. Think of these states as the weather: it could be either sunny or cloudy. However, when you make your decision, it is uncertain which state will occur.
+        </p>
+        <p>
+            Your decision will be represented by a point on a graph like the one in the figure below. In this graph, the horizontal axis indicates Tokens paid if State A occurs, and the vertical axis indicates Tokens paid if State B occurs. The chance that each state will occur is displayed in parentheses on the corresponding axis label. In the example screen-shot, for instance, the probability of State A is 50%, and the probability of State B is 50%, as well. Be aware that these probabilities might be different in different decision rounds.
+        </p>
+        <p>
+            The position of a point on this graph represents a lottery. For example, the point on location (40, 20) indicates that if State A is realized, the lottery pays 40 tokens; and if State B is realized, the lottery pays 20 tokens. <i style="color: blue">Your lottery</i>   will be depicted by a <i style="color: blue"> blue square</i>, and your <i style="color: orange">partner’s lottery</i> by an  <i style="color: orange">  orange circle </i>.
+
+        </p>
+
+        <h4> Your Task: </h4>
+
+        {% if mode == 'sec_1bl_1ch' %}
+
+            <p>
+            In each decision of this task, both you and your Partner share the same fortune. That is, in each state, the amount of tokens both receive is the same. See figure below for an example. Since in this task both face the same fate, your blue square and Partner’s orange circle are always located on the same position. In the example, they both are on location (50, 16.7). This means, if State A happens, you and your Partner will each get 50 tokens and, if State B occurs, each of you get 16.7 tokens. At the beginning of each decision round, the square and the circle will appear at a random position. To make a choice drag the square or the circle to your chosen location. The other shape will follow.
+            </p>
+
+        {% elif mode == 'sec_2bl_1ch' %}
+
+            <p>
+            In each decision of this task, both you and your Partner have opposite fortunes. That is, what you would get in State A equals what your partner would receive in State B. Similarly, what you would get in State B is what your partner would get in State A. Since you and your partner face reverse fates, your blue square and your partner’s orange circle are always in mirror positions on the graph. In the example screen shot, for example, your square is at (State A = 50, B = 16.7) and Partner’s circle at (State A = 16.7, B = 50). This means, if State A happens, You receive 50 and Partner gets 16.7; and, if State B happens, you get 16.7 and your Partner gets 50. At the beginning of each decision screen, the square and the circle will appear at a random position. To make a choice drag the square and the circle to your chosen locations. The other shape will self adjust to the mirror position.
+            </p>
+
+        {% elif mode == 'sec_ownrisk' %}
+
+            <p>
+            For this task, you decide over lotteries that only affect you. See figure below for an example. Here states A and B each occur with a 50% chance. Your chosen lottery is represented by a blue square. In the sample figure, the square location is (40, 6.7). This means, if State A happens, you will get 40 tokens and if State B occurs instead, you get 6.7 tokens. At the beginning of each decision screen, the square will appear at random position. To make a choice, drag the square to your chosen location. The other shape will follow.
+            </p>
+
+        {% elif mode == 'sec_ownrisk_fixedother' %}
+            <p>
+            For this task, your partner's fortune is fixed, and you need to choose a lottery for you. Since you and your partner face different fortunes, your blue square and you partner’s orange circle will be in different positions. In the example screen shot, for example, your square is at (State A = 35, B = 9) and your partner’s circle at (State A = 10, B = 20). This means, if State A happens, You receive 35 and Partner gets 10; and if State B happens you get 9 and your Partner gets 20. You can move your square but you cannot move your partner's circle. Also, beware that the probabilities of each State might vary across different decision rounds. At the beginning of each decision screen, the square will appear at a random position. To make a choice drag the square to your chosen location.
+            </p>
+        {% elif mode == 'sec_otherrisk_ownfixed' %}
+
+        {% endif %}
+
+            <p>
+                Only combinations on the lines are feasible choices. The same information displayed in the graph is shown in the table next to it. Each row represents one possible state and the tokens paid if such state occurs. You can try as many combinations as you want before you decide. Once you make your choice, press the Submit Decision button and continue to the next round.
+
+        </p>
+
+        <!-- Budget lines -->
+         {% if sec1 == '1bl' %}
+            <!--
+            <p>
+                1BL 1BL 1BL :::: Instructions for 1 budget line only. Will be followed by either: instructions for 1 choice, or instructions for 2 choices.
+            </p>
+            -->
+        {% elif sec1 == '2bl' %}
+            <!--
+            <p>
+                2BL 2BL 2BL :::: Instructions for 1 budget line only. Will be followed by either: instructions for 1 choice, or instructions for 2 choices.
+            </p>
+            -->
+        {% endif %}
+
+        <!-- Choices -->
+        {% if sec2 == '1ch' %}
+            <!--
+            <p>
+                1CH 1CH 1CH :::: Instructions for 1 choice only. Will follow either: instructions for 1 budget line, or instructions for 2 budget lines.
+            </p>
+        -->
+        {% elif sec2 == '2ch' %}
+        <!--
+            <p>
+                2CH 2CH 2CH :::: Instructions for 2 choices only. Will follow either: instructions for 1 budget line, or instructions for 2 budget lines.
+            </p>
+        -->
+        {% endif %}
+        
+    {% endif %}
+
+{% comment %}
+{# IMAGES #}
+            {% if mode == 'sec_1bl_1ch' %}
+                <img src="{% static "sec_1bl_1ch_1.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_1bl_2ch' %}
+                <img src="{% static "sec_1bl_2ch.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_2bl_1ch' %}
+                <img src="{% static "sec_2bl_1ch.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_ownrisk' %}
+                <img src="{% static "sec_ownrisk.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_ownrisk_fixedother' %}
+                <img src="{% static "sec_ownrisk_fixedother.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_otherrisk_ownfixed' %}
+                <img src="{% static "sec_otherrisk_ownfixed.png" %}" width="500" align="center"/>
+            {% endif %}
+{% endcomment %}
+
+</div>

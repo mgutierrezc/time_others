@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-20 17:24-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\demograp_es\models.py:39
+msgid "What country are you from?"
+msgstr "¿De qué país eres?"
+
+#: .\demograp_es\models.py:41
+msgid "What is your major?"
+msgstr "¿De qué carrera eres?"
+
+#: .\demograp_es\models.py:43
+msgid "What is your age?"
+msgstr "¿Qué edad tienes?"
+
+#: .\demograp_es\models.py:48
+msgid "What is your school year?"
+msgstr "¿En qué año estás?"
+
+#: .\demograp_es\models.py:49
+msgid "Freshman"
+msgstr "Estudiante de primer año"
+
+#: .\demograp_es\models.py:49
+msgid "Sophomore"
+msgstr "Estudiante de segundo año"
+
+#: .\demograp_es\models.py:49
+msgid "Junior"
+msgstr "Estudiante de penúltimo año"
+
+#: .\demograp_es\models.py:49
+msgid "Senior"
+msgstr "Estudiante de último año"
+
+#: .\demograp_es\models.py:49
+msgid "Postgraduate"
+msgstr "Estudiante de Post-grado"
+
+#: .\demograp_es\models.py:49
+msgid "Other"
+msgstr "Otro"
+
+#: .\demograp_es\models.py:52
+msgid ""
+"What is your computer station number? (see white sticker on computer or ask "
+"experimenter)"
+msgstr "¿Cúal es el número de estación de tu computadora? (mira el sticker blanco en tu computadora o consulta a tu experimentador)"
+
+#: .\demograp_es\models.py:56
+msgid "What do you identify as?"
+msgstr "¿Cómo te identificas?"
+
+#: .\demograp_es\models.py:58
+msgid "What is the approximate annual income of your family?"
+msgstr "¿Cúal es el ingreso anual aproximado de tu familia?"
+
+#: .\demograp_es\models.py:60
+msgid "less than $15,000"
+msgstr "menos de $15,000"
+
+#: .\demograp_es\models.py:66
+msgid "I rather not answer this question"
+msgstr "Preferiría no responder esta pregunta"
+
+#: .\demograp_es\models.py:70
+msgid "What is the zip code where you grew up?"
+msgstr "¿Cúal es el código postal del lugar donde creciste?"
+
+#: .\demograp_es\models.py:73
+msgid "Were the instructions provided in this experiment clear and useful?"
+msgstr "¿Las instrucciones brindadas en este experimento fueron claras y útiles?"
+
+#: .\demograp_es\models.py:74
+msgid "Yes"
+msgstr "Sí"
+
+#: .\demograp_es\models.py:78
+msgid ""
+"Linda is 31 years old, single, outspoken, and very bright. She majored in "
+"philosophy. As a student, she was deeply concerned with issues of "
+"discrimination and social justice, and also participated in anti-nuclear "
+"demonstrations.\n"
+"\n"
+" Which of the following two alternatives is more probable?"
+msgstr "Linda tiene 31 años, soltera, abierta, y muy inteligente. Ella estudió Filosofía. Como estudiante, ella estuvo preocupada por los temas de discriminación y justicia social, y también participaba en demostraciones anti nucleares"
+
+#: .\demograp_es\models.py:79
+msgid "Linda is a bank teller."
+msgstr "Linda es una cajera"
+
+#: .\demograp_es\models.py:79
+msgid "Linda is a bank teller and active in the feminist movement."
+msgstr "Linda es una cajera y activa en el movimiento feminista"
+
+#: .\demograp_es\models.py:83
+msgid ""
+"Assume that a room is equipped with three doors. Behind two are goats, and "
+"behind the third is a shiny new car. You are asked to pick a door, and will "
+"win whatever is behind it. Someone who knows what is behind the doors opens "
+"one of the other two, revealing a goat and asks you if you wish to change "
+"your selection, you:"
+msgstr "Asume que un cuarto está equipado con tres puertas. Detrás de dos de ella hay cabras, y detrás de la tercera hay un carro lujoso. Se te pide elegir una puerta, y ganarás lo que sea que esté detrás. Alguien que sabe que está detrás de las puertas abre una de las otras dos, revelando una cabra y te pregunta si deseas cambiar tu selección, tu: "
+
+#: .\demograp_es\models.py:84
+msgid "change the door."
+msgstr "cambiar de puerta"
+
+#: .\demograp_es\models.py:84
+msgid "do not change the door."
+msgstr "no cambiar de puerta"
+
+#: .\demograp_es\models.py:87
+msgid "How did you make your choices?"
+msgstr "¿Cómo tomaste tus decisiones?"
+
+#: .\demograp_es\models.py:89
+msgid "Did you have any rule you applied to your choices?"
+msgstr "¿Aplicaste alguna regla para realizar tus decisiones?"
+
+#: .\demograp_es\models.py:91
+msgid "How many studies have you participated in?"
+msgstr "¿En cuántos estudios has participado?"
+
+#: .\demograp_es\templates\demograp\CognitiveReflectionTest.html:5
+#: .\demograp_es\templates\demograp\Demographics.html:6
+msgid "Anonymous Survey"
+msgstr "Encuesta Anónima"
+
+#: .\demograp_es\templates\demograp\CognitiveReflectionTest.html:19
+#: .\demograp_es\templates\demograp\Demographics.html:22
+msgid "Please answer the following questions."
+msgstr "Por favor responder las siguientes preguntas."
+
+#: .\demograp_es\templates\demograp\CognitiveReflectionTest.html:23
+msgid ""
+"A bat and a ball cost 22 dollars in total. The bat costs 20 dollars more "
+"than the ball. How many dollars does the ball cost?"
+msgstr "Un bate y una pelota cuestan 22 dólares en total. El bate cuesta 20 dólares más que la pelota. ¿Cuántos dólares cuesta la pelota?"
+
+#: .\demograp_es\templates\demograp\CognitiveReflectionTest.html:24
+msgid ""
+"If it takes 5 machines 5 minutes to make 5 widgets, how many minutes would "
+"it take 100 machines to make 100 widgets?"
+msgstr "Si toma 5 máquinas t minutos para hacer 5 invenciones, ¿Cuántos minutos emplearías si toma 100 máquinas para hacer 100 invenciones?"
+
+#: .\demograp_es\templates\demograp\CognitiveReflectionTest.html:25
+msgid ""
+"In a lake, there is a patch of lily pads. Every day, the patch doubles in "
+"size.If it takes 48 days for the patch to cover the entire lake, how many "
+"days would it take for the patch to cover half of the lake?"
+msgstr "En un lago, hay una superficie de nenúfares. Cada día, el tamaño de la superficie se duplica. Toma 48 días para que la superficie cubra todo el lago, ¿Cuántos días tomaría para la superficie en cubrir la mitad del lago?"

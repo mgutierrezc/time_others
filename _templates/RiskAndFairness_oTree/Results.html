@@ -1,0 +1,95 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+{% block title %}
+    Result has been recorded
+{% endblock %}
+
+{% block content %}
+
+    <input type="hidden" name="time_Results" id="arrive_time"/>
+
+    <h5>Your role for the experiment was {{ role | json }}.</h5>
+    <h5>The paying round was Task {{ mode_num }} - Decision {{ counter }}.
+    <hr>
+    {% if mode == 'PR' %}
+	<table style="width:60%">
+		<tr>
+            {% if role == 'Decider' %}
+			<th>Your decision</th>
+            {% else %}
+            <th>Decider's decision</th>
+            {% endif %}
+			<td>{{ dec_a | json}}% for A, {{ dec_b | json}}% for B</td>
+		</tr>
+		<tr>
+			<th>Realized outcome</th>
+			<td>{{ outcome | json }}</td>
+		</tr>
+		<tr>
+			<th>Your earnings</th>
+			<td>{{ payoff | json }} </td>
+		</tr>
+        <tr>
+            <th>Partner's earnings</th>
+            <td>{{ partner_payoff | json }}
+        </tr>
+    </table>
+    
+    {% elif mode == 'DG' %}
+    <table style="width:60%">
+        <tr>
+            {% if role == 'Decider' %}
+            <th>Your decision</th>
+            {% else %}
+            <th>Decider's decision</th>
+            {% endif %}
+            <td>{{ dec_a | json }} tokens</td>
+        </tr>
+        <tr>
+            <th>Your earnings</th>
+            <td>{{ payoff | json }} </td>
+        </tr>
+        <tr>
+            <th>Partner's earnings</th>
+            <td>{{ partner_payoff | json }}
+        </tr>
+    </table>
+    
+    {% else %}
+    <table style="width:60%">
+        <tr>
+            {% if role == 'Decider' or mode == 'S-OwnRisk' %}
+            <th>Your decision</th>
+            {% else %}
+            <th>Decider's decision</th>
+            {% endif %}
+            <td>{{ dec_a | json }} tokens if A, {{ dec_b | json }} tokens if B</td>
+        </tr>
+        <tr>
+            <th>Realized outcome</th>
+            <td>{{ outcome | json }}</td>
+        </tr>
+        <tr>
+            <th>Your earnings</th>
+            <td>{{ payoff | json }} </td>
+        </tr>
+        <tr>
+            <th>Partner's earnings</th>
+            <td>{{ partner_payoff | json }}
+        </tr>
+    </table>
+    {% endif %}
+    
+    <hr>
+    {% next_button %}
+{% endblock %}

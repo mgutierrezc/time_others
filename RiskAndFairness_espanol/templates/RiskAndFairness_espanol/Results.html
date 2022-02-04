@@ -1,0 +1,100 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+{% block title %}
+    El resultado ha sido registrado
+{% endblock %}
+
+{% block content %}
+
+    <input type="hidden" name="time_Results" id="arrive_time"/>
+
+    {% if role == 'Decider' %}
+        <h5>Su rol para el experimento fue "Decisor".</h5>
+    {% else %}
+        <h5>Su rol para el experimento fue "No decisor".</h5>
+    {% endif %}
+    
+    <h5>La ronda que se pagará fue la Tarea {{ mode_num }} - Decisión {{ counter }}.
+    <hr>
+    {% if mode == 'PR' %}
+	<table style="width:60%">
+		<tr>
+            {% if role == 'Decider' %}
+			<th>Su elección</th>
+            {% else %}
+            <th>La elección del decisor</th>
+            {% endif %}
+			<td>{{ dec_a | json}}% para A, {{ dec_b | json}}% para B</td>
+		</tr>
+		<tr>
+			<th>Resultados</th>
+			<td>{{ outcome | json }}</td>
+		</tr>
+		<tr>
+			<th>Sus ganancias</th>
+			<td>{{ payoff | json }} </td>
+		</tr>
+        <tr>
+            <th>Las ganancias de su compañero</th>
+            <td>{{ partner_payoff | json }}
+        </tr>
+    </table>
+    
+    {% elif mode == 'DG' %}
+    <table style="width:60%">
+        <tr>
+            {% if role == 'Decider' %}
+            <th>Su elección</th>
+            {% else %}
+            <th>La elección del decisor</th>
+            {% endif %}
+            <td>{{ dec_a | json }} fichas</td>
+        </tr>
+        <tr>
+            <th>Sus ganancias</th>
+            <td>{{ payoff | json }} </td>
+        </tr>
+        <tr>
+            <th>Ganancias de su compañero</th>
+            <td>{{ partner_payoff | json }}
+        </tr>
+    </table>
+    
+    {% else %}
+    <table style="width:60%">
+        <tr>
+            {% if role == 'Decider' or mode == 'S-OwnRisk' %}
+            <th>Su elección</th>
+            {% else %}
+            <th>La elección del decisor</th>
+            {% endif %}
+            <td>{{ dec_a | json }} fichas si salió el Estado A, {{ dec_b | json }} fichas si salió el Estado B</td>
+        </tr>
+        <tr>
+            <th>Resultados</th>
+            <td>{{ outcome | json }}</td>
+        </tr>
+        <tr>
+            <th>Sus ganancias</th>
+            <td>{{ payoff | json }} </td>
+        </tr>
+        <tr>
+            <th>Ganancias de su compañero</th>
+            <td>{{ partner_payoff | json }}
+        </tr>
+    </table>
+    {% endif %}
+    
+    <hr>
+    {% next_button %}
+{% endblock %}

@@ -1,0 +1,60 @@
+{% load otree staticfiles %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+<div class="instructions well well-lg">
+
+    <h2 class="panel-sub-heading">
+        Instrucciones - Tarea 1
+    </h2>
+
+    <p>
+        En esta tarea, se le dan dos resultados fijos mutuamente excluyentes. Luego se le pide que decida las probabilidades de estos dos resultados. Vea el gráfico a continuación.
+    </p>
+
+    <p>
+        En el gráfico del lado izquierdo, sus fichas están representadas en el eje horizontal y los 
+        fichas de su pareja en el eje vertical. Cada uno de los dos posibles resultados está representado 
+        por un punto o una burbuja en este gráfico. Debe decidir cuál es la probabilidad de cada 
+        resultado en términos porcentuales (%).
+        La siguiente figura muestra una captura de pantalla donde los dos 
+        resultados fijos son A = (Usted: 70, su compañero: 10) y B = (Usted: 10, su compañero: 80).
+    </p> </br>
+    <!--
+    <p>
+        <img alt="Sample Screenshot - Task PR"
+             src="{% static "probability.png" %}"
+             width="500"
+             align="center"/>
+    </p> </br>
+    -->
+
+    <p>
+        En el lado derecho de la pantalla, tiene una herramienta deslizante donde puede elegir la 
+        probabilidad del Resultado A, del 0 % al 100 %. Arrastre el control deslizante hasta el 
+        porcentaje elegido. Por ejemplo: si elige 40, el Estado A ocurrirá con un 40 % de 
+        probabilidad y el Estado B con un 60 % de probabilidad. Si elige 100, el Estado A 
+        ocurrirá con seguridad (100% de probabilidades). Si elige 0, el Estado B ocurrirá con seguridad.    
+    </p>
+
+    <p>
+        En el gráfico, el tamaño de cada burbuja de resultado aumentará con las posibilidades que se le 
+        den. Puede probar tantas combinaciones como desee antes de enviar su decisión. La misma 
+        información del gráfico se muestra en la tabla debajo de la barra deslizante. A lo largo de la sesión, 
+        <b style="color: blue"> sus fichas serán representadas en azul </b> y los de 
+        <b style="color: orange"> su compañero en anaranjado </b>.
+    </p>
+
+    <p>
+        Una vez que haga su elección, presione el botón Enviar decisión y continúe con la siguiente ronda. 
+        Si no elige una opción (es decir, no movió el control deslizante a su posición preferida), la 
+        computadora devolverá un error. Piense detenidamente en sus elecciones. Si, al final de la sesión, 
+        se selecciona esta ronda de elección como pago, la computadora elegirá aleatoriamente 
+        el Estado A o B de acuerdo con las probabilidades que decidió y se le pagará a usted y a su 
+        pareja sus respectivas ganancias.
+    </p>
+
+</div>
+
+
