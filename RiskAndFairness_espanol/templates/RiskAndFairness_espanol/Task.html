@@ -324,21 +324,22 @@
                         <table class="table table-bordered table-sm mdall">
                             <thead>
                                 <tr>
-                                    <td width="34%" style = "text-align: center;">Estado: Probabilidad</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Sus fichas</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Fichas de su compañero</b></td>
+                                    <td width="34%" style = "text-align: center;">Time</td>
+                                    <td width="33%" style = "text-align: center; color: blue"><b>Tasks</b></td>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style = "text-align: center;" v-html="'Estado A: ' + prob.a.toFixed(0) + '%'"></td>
+                                    <td style = "text-align: center;" >Today</td>
                                     <td style = "text-align: center; color: blue" v-html="selected[0].x"></td>
-                                    <td style = "text-align: center; color: orange" v-html="selected[1].x" v-if="mode !== 'single'"></td>
+                                   
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;" v-html="'Estado B: ' + prob.b.toFixed(0) + '%'"></td>
+                                    <td style = "text-align: center;">Tomorrow</td>
                                     <td style = "text-align: center; color: blue" v-html="selected[0].y"></td>
-                                    <td style = "text-align: center; color: orange" v-html="selected[1].y" v-if="mode !== 'single'"></td>
+                           
+                                    
                                 </tr>
                             </tbody>
                         </table>
