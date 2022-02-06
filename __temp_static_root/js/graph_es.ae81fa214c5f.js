@@ -423,8 +423,8 @@ var vm = new Vue({
                         }
                     }else if (self.mode === 'single_given') {
                         text = 'Tú: ' + self.selected[index].x + ', Pareja: ' + self.selected[index].y
-                    }else if (self.mode === 'positive') {
-                        text = 'Tú = Pareja (A: ' + self.selected[index].x + ', B: ' + self.selected[index].y + ')'
+                    }else if (self.mode === 'positive'  ) {
+                        text = ' (Hoy: ' + parseInt(self.selected[index].x) + ', Mañana: ' + parseInt(self.selected[index].y) + ')'
                     }
 
                     self.tip[index] = this.graph.svg
@@ -467,7 +467,7 @@ var vm = new Vue({
                     }else if (self.mode === 'single_given') {
                         text = 'Tu: ' + xValue.toFixed(self.precision) + ', Pareja: ' + yValue.toFixed(self.precision)
                     }else if (self.mode === 'positive') {
-                        text = 'Tu = Pareja (A: ' + xValue.toFixed(self.precision) + ', B: ' + yValue.toFixed(self.precision) + ')'
+                        text = ' (Hoy: ' + parseInt(xValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(yValue.toFixed(self.precision)) + ')'
                     }
 
                     if (self.tip && self.tip[index]) {
@@ -543,7 +543,7 @@ var vm = new Vue({
                             var otherText = ''
 
                             if (otherIndex == 0) {
-                                otherText = 'Tú = Pareja (A: ' + xValue.toFixed(self.precision) + ', B: ' + yValue.toFixed(self.precision) + ')'
+                                otherText = '(Hoy: ' + parseInt(xValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(yValue.toFixed(self.precision)) + ')'
                             }
 
                             if (self.tip && self.tip[otherIndex]) {

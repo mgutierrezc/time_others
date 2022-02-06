@@ -106,7 +106,7 @@ class Task(Page):
                 'mode': mode,
                 'counter': counter,
                 'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2]
+                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 }
 
     def before_next_page(self):
