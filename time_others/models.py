@@ -14,7 +14,7 @@ Contributors:
 
 
 class Constants(BaseConstants):
-    name_in_url = 'RiskAndFairness_espanol'
+    name_in_url = 'time_others'
     players_per_group = 2
     num_rounds = config.numberOfPeriod()
     participation_fee = c(5)
@@ -71,10 +71,10 @@ class Constants(BaseConstants):
 
     # INSTRUCTIONS PATHS
     # list instruction templates
-    instructions_probability = 'RiskAndFairness_espanol/Probability.html'
-    instructions_sec = 'RiskAndFairness_espanol/sec.html'
-    instructions_det_giv = 'RiskAndFairness_espanol/det_giv.html'
-    trial_period = 'RiskAndFairness_espanol/trial_period.html'
+    instructions_probability = 'time_others/Probability.html'
+    instructions_sec = 'time_others/sec.html'
+    instructions_det_giv = 'time_others/det_giv.html'
+    trial_period = 'time_others/trial_period.html'
 
 
 class Player(BasePlayer):

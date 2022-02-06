@@ -176,12 +176,12 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'demograp_es',
-        'name': 'RiskAndFairness_espanol',
-        'display_name': 'Risk Preferences espanol',
+        'name': 'time_others',
+        'display_name': 'Time others',
         'num_demo_participants': 2,
         'real_world_currency_per_point': 0.33,
         'participation_fee': 5.00,
-        'app_sequence': ['RiskAndFairness_espanol','demograp_es']
+        'app_sequence': ['time_others','demograp_es']
     },
     {
         'name': 'demograp',

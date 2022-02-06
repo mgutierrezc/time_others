@@ -14,7 +14,7 @@ style.use('./elip12.mplstyle')
 # and reformats it to have rounds as rows and each round's data in the cols
 def format_df(player_id, data):
     
-    df1 = data.loc[player_id, 'RiskAndFairness_espanol.1.player.id_in_group':]
+    df1 = data.loc[player_id, 'time_others.1.player.id_in_group':]
 
     # there are 29 variables that get recorded per round
     cols = [str(index).split('.')[-1] for index in df1[:][:29].index]
