@@ -2,6 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
+<!--
     {% if mode == 'probability' %}
         <h1 style="color:#BFBFBF">Tarea 1 - Decisión {{ counter }}</h1>
     {% elif mode == 'sec_1bl_1ch' %}
@@ -19,6 +20,10 @@
     {% elif mode == 'det_giv' %}
          <h1 style="color:#BFBFBF">Tarea 8 - Decisión {{ counter }}</h1>
     {% endif %}
+-->
+{% if mode == 'sec_1bl_1ch' %}
+        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque {{ counter }}</h1>
+{% endif %}
 {% endblock %}
 
 
@@ -328,19 +333,19 @@
                         <table class="table table-bordered table-sm mdall">
                             <thead>
                                 <tr>
-                                    <td width="34%" style = "text-align: center;">Time</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Tasks</b></td>
+                                    <td width="34%" style = "text-align: center;">Tiempo</td>
+                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
                                     
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style = "text-align: center;" >Today</td>
+                                    <td style = "text-align: center;" >Hoy</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
                                    
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;">Tomorrow</td>
+                                    <td style = "text-align: center;">Mañana</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                            
                                     

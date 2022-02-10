@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    {% if mode == 'probability' %}
+<!--    {% if mode == 'probability' %}
         <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 1</h1>
     {% elif mode == 'sec_1bl_1ch' %}
         <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 2</h1>
@@ -19,6 +19,8 @@
     {% elif mode == 'det_giv' %}
          <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 8</h1>
     {% endif %}
+-->
+<h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) </h1>
 {% endblock %}
 
 
@@ -416,26 +418,26 @@
                     </div>
                 </div>
                 <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'">
-                    <h5>Esta es su decisión:</h5>
+                    <h5><h5>Elija la cantidad de tareas que se asignaría para usted mismo entre hoy y mañana</h5></h5>
                     <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style = "text-align: center;">Estado: Probabilidad</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Sus fichas</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Fichas de su compañero</b></td>
+                                    <td width="34%" style = "text-align: center;">Tiempo</td>
+                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td  style = "text-align: center;" v-html="'Estado A: ' + prob.a.toFixed(0) + '%'"></td>
-                                    <td  style = "text-align: center; color: blue" v-html="selected[0].x"></td>
-                                    <td  style = "text-align: center; color: orange" v-html="selected[1].x" v-if="mode !== 'single'"></td>
+                                    <td  style = "text-align: center;" >Hoy</td>
+                                    <td  style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                   
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;" v-html="'Estado B: ' + prob.b.toFixed(0) + '%'"></td>
-                                    <td style = "text-align: center; color: blue" v-html="selected[0].y"></td>
-                                    <td style = "text-align: center; color: orange" v-html="selected[1].y" v-if="mode !== 'single'"></td>
+                                    <td style = "text-align: center;">Mañana</td>
+                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                  
                                 </tr>
                             </tbody>
                         </table>
@@ -463,11 +465,11 @@
             </div>
         </div>
     </div>
-
+<!--
     <div>
         <button id="go" type="button" class="btn-large" onclick="test_outcome()">Resultado de la prueba:</button>
     </div>
-
+-->
 
     {% comment %}
     {% next_button %}

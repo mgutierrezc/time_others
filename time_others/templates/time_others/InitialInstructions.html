@@ -12,7 +12,7 @@
 
 
 {% block title %}
-    ¡Bienvenidos!
+    Welcome to our experiment!
 {% endblock %}
 
 {% block content %}
@@ -21,65 +21,70 @@
     Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
 -->
     <input type="hidden" name="time_InitialInstructions" id="arrive_time"/>
-
-    <h3>Instrucciones Generales:</h3>
+    <br>
+    <h3>Experimental Instructions:</h3>
+    <br>
+    <h4>Prerequisites for participation</h4>
 
     <p>
-        Por favor, préstele atención a las instrucciones. Se le pedirá que realice elecciones en 
-        {{ Constants.number_types_of_tasks | json }}
-        diferentes tareas. Las reglas más precisas se les proveerán antes de que empiece cada tarea.
-        
+        In order to participate in this study, you must be able to attend two laboratory sessions in two consecutive weeks. These 
+        sessions always take place at the same day of the week and the same time of the day. In the following, we refer to these 
+        three sessions as week 1 (today) and week 2 (next week). The average duration of the sessions is about one hour but may 
+        vary between 15 and 90 minutes (TO BE TESTED). You also have to be willing to receive your total payment as a one-time 
+        payment at the end of the second experimental session. If you are not able to meet one or more of these requirements, please 
+        raise your hand now (or let the experimenter know). In that case, you unfortunately cannot participate in our study.
+    </p>
+    <h4>Anonymity</h4>
+    <p>
+        Your anonymity in this study is guaranteed, i.e., no participant will learn about the identity of those who made a certain 
+        decision. Also, the experimenters will never connect your name with your decisions.
+    </p>
+    <h4>Rules of conduct</h4>
+    <p>
+        The results of this experiment will be used for a research project. It is therefore important that all participants follow 
+        certain rules of conduct. During the experiment, you are not allowed to communicate with other participants of the experiment 
+        or other people outside the laboratory. All mobile devices need to be switched off. In case you have any questions about the 
+        instructions or the study, please raise your hand at any time–we will answer your question individually at your desk. 
+        Non-compliance with these rules will lead to exclusion from the experiment and all payments.
+    </p>
+    <h4>Payment</h4>
+    <p>
+        If you show up at both experimental sessions, you will receive a completion payment of S/30. The payments will be made in cash 
+        at the end of the second session. If you dropout earlier or fail to show up to one session, you will receive a compensation 
+        payment of S/5. You have to collect this payment in cash at the end of the second session.
+    </p>
+    <h4>General description</h4>
+    <p>
+        Your task in this study is to solve a series of transcription tasks. You have to work on these transcription tasks in each of the 
+        two sessions. How many tasks you have to solve in each session depends on your decisions and chance. Yet, in each of the two 
+        laboratory sessions you have to solve a minimum requirement of tasks. It is therefore necessary that you show up for the two 
+        laboratory sessions.
+    </p>
+    <h4>Transcription task</h4>
+    <p>
+        The transcription task consists of a combination of around 60 characters, which need to be written down in the text box below. 
+        For this, you need to try to be exact and make sure to put down all the letters and spaces in their corresponding positions. 
+        This becomes immediately clear by looking at the following screenshot:
+        <!--
+            Here an image
+        -->
     </p>
     <p>
-        Su pago final hoy dependerá en parte de sus elecciones, las elecciones de otros, y del azar. 
-        Al final del experimento, se le pagará por su medio de pago de preferencia.
-        Todos los pagos se realizarán por medio digital. Asimismo, recibirá un pago de 
-        {{ participation_fee }} soles solo por su participación. 
+        As soon as you enter all the characters correctly, a new text appears, again consisting of approximately 60 characters. 
+        Each new test is composed of different randomly selected characters, so they are very likely to be very different among each other.
     </p>
     <p>
-        Durante la sesión, se usarán <strong>Fichas del Experimento</strong> en vez de soles.
-        Al final del estudio, su ganancia en fichas será transferido en soles. Usted recibirá 1 sol por cada
-        3 fichas que tenga al final de la sesión.
-        Es importante de que no se distraiga con su celular o su entorno durante la sesión. Si tiene alguna pregunta,
-        escríbanos por el WhatsApp o correo del E2LabUP. El experimento debería terminar en aproximadamente una hora.
-        
+        Incorrect Entries: In case you make three mistakes in the text transcription and press the “submit” button, a note will be shown 
+        on your screen. In this case, you have to transcript the whole world again. However, the text to be transcripted stays the same 
+        in this case.
+    </p>
+    <h4>What you have to do in the two laboratory sessions</h4>
+    <p>
+        After you have become familiar with the transcription task, in the following we explain the details of the study.
+        Important: At the beginning of each of the two laboratory sessions, every participant has to correctly solve a minimum number 
+        of 10 transcription tasks.
     </p>
 
-    <h3>Parejas</h3>
-
-    <p>
-        Al inicio del estudio, usted será emparejado aleatoria y anónimamente con otro participante para formar
-        una pareja. Los participantes no conocerán la identidad de su contraparte en ningún momento de la sesión.
-    </p>
-    <p>
-        
-        Dentro de cada pareja habrá una persona con el rol de <i style="color: #1b6d85">Decisor</i> y otra con el rol de
-         <i style="color: #1b6d85">No decisor</i>. Estos roles van a ser asignados aleatoriamente entre las
-         parejas y se mantendrán para toda la sesión. Solo las elecciones realizadas por el Decisor determinarán las 
-         ganancias finales. Las elecciones realizadas por el No decisor no determinarán los beneficios de nadie.
-         Los roles no serán revelados hasta que la última decisión se haya realizado.
-         
-    </p>
-
-    <h3>Tareas, rondas de decisión, ganancias</h3>
-
-    <p>
-        El estudio consiste de {{ Constants.number_types_of_tasks | json }} tareas diferentes. Cada tarea tiene
-        múltiples rondas de decisión. El experimento tiene un total de {{ Constants.num_rounds | json }} rondas de decisión.
-        Antes de que cada tarea empiece, recibirá instrucciones especificas de la tarea correspondiente.
-
-    </p>
-    <p>
-        Su rol (Decisor o No Decisor) se divulgará una vez que usted y su contraparte hayan terminado de tomar decisiones.
-        Luego, la computadora seleccionará aleatoriamente una ronda de elección como la elección que cuenta para realizarse
-        el pago final. Como todas las 
-        decisiones tienen la misma probabilidad de ser elegidas y usted podría ser quien decide, le conviene tratar cada 
-        decisión como si fuera la elección elegida. La elección elegida tomada por el Decisor generará ganancias para su pareja 
-        (Decisor y No decisor) en función de la elección del Decisor.
-        Finalmente, las ganancias serán reveladas a ambos participantes.
-
-
-    </br>
 
     {% next_button %}
 {% endblock %}

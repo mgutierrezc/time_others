@@ -42,7 +42,7 @@
 
         var modemap = {
             'probability': {you: 70.0, partner: 10.0},
-            'sec_1bl_1ch': {you: 20.0, partner: 20.0},
+            'sec_1bl_1ch': {you: 30.0, partner: 19.0},
             'sec_1bl_2ch': {you: 20.0, partner: 10.0},
             'sec_2bl_1ch': {you: 10.0, partner: 44.0},
             'sec_ownrisk': {you_a: 30.0, you_b: 32.0},
@@ -73,9 +73,9 @@
             }
             else
             {
-                qc.innerHTML = "Suponga que ha elegido lo que se muestra en la imagen de arriba, y el Estado A sucede."
-                q1.innerHTML = "¿Cuál es su pago?"
-                q2.innerHTML = "¿Cuál es el pago de su compañero?"
+                qc.innerHTML = "Suponga que ha elegido lo que se muestra en la imagen de arriba"
+                q1.innerHTML = "¿Cuántas tareas se asignó para hoy?"
+                q2.innerHTML = "¿Cuántas tareas se asignó para mañana?"
             }
         }
 
@@ -187,10 +187,11 @@
 
     <div>
         <h4>
-            Debe responder correctamente antes de proceder a la tarea de pago. Aproxime su respuesta a 0 decimales.
+            Debe responder correctamente antes de proceder a la tarea de pago. 
         </h4>
     </div>
     <div>
+    <!--
         {% if mode == 'probability' %}
             <img src="{% static 'time_others/probability.png' %}" width="700">   
         {% elif mode == 'sec_1bl_1ch' %}
@@ -208,6 +209,10 @@
         {% elif mode == 'det_giv' %}
             <img src="{% static 'time_others/det_giv.PNG' %}" width="700">
         {% endif %}
+    -->
+    {% if mode == 'sec_1bl_1ch' %}
+            <img src="{% static 'time_others/bloque1.PNG' %}" width="700">
+    {% endif %}
     </div>
     <hr>
     <div>
