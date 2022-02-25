@@ -1,0 +1,190 @@
+{% load otree staticfiles %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+<div class="instructions well well-lg">
+
+
+    {% if mode == 'sec_1bl_1ch' or mode == 'sec_1bl_2ch' or mode == 'sec_2bl_1ch' or mode == 'sec_2bl_2ch' or mode == 'sec_ownrisk' or mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' %}
+<!--
+        <h2 class="panel-sub-heading">
+            {% if mode == 'sec_1bl_1ch'%}
+                Instrucciones - Tarea 2
+            {% elif mode == 'sec_1bl_2ch'%}
+            Instrucciones - Tarea 4
+            {% elif mode == 'sec_2bl_1ch'%}
+            Instrucciones - Tarea 3
+            {% elif mode == 'sec_2bl_2ch'%}
+            Instrucciones - Tarea 9
+            {% elif mode == 'sec_ownrisk' %}
+            Instrucciones - Tarea 5
+            {% elif mode == 'sec_ownrisk_fixedother' %}
+            Instrucciones - Tarea 6
+            {% elif mode == 'sec_otherrisk_ownfixed' %}
+            Instrucciones - Tarea 7
+            {% endif %}
+        </h2>
+-->
+        <h2>Week 1 (today)</h2>
+        <p>
+            After all participants have correctly solved the minimum requirement of transcription tasks, the task of today's laboratory 
+            session is to make a series of allocation decisions for different situations. In each decision, you have to decide about the 
+            allocation of a certain number of transcription tasks. There are nine different situations in total. They differ in terms of who 
+            is affected by the allocation of the tasks and the information available to you. Some decisions affect only you and other 
+            decisions affect only another person.
+        </p>
+        <p>
+            Once the decisions are over, one of these situations will be randomly selected (for more on this see below). This choice 
+            determines how many tasks you and the other person have to solve today and next week. Only one decision will be chosen, but it is 
+            in your best interest to decide in each decision as if it were the one that counts. The different situations are classified into 
+            nine blocks. The blocks are as follows:
+
+        </p>
+        <p>
+        <ul>
+            <li><b>Block1</b>: In block 1, you have to decide how many tasks you want to complete today 
+                and how many tasks you want to complete next week.</li>
+            <li><b>Block 2</b>: In block 2, you have to decide how many tasks you want your randomly.</li> 
+                matched partner to complete today and how many tasks you want her to complete next week.</li>
+            <li><b>Block 3</b>: In block 3, you will repeat the decisions from block 1, but with one 
+                twist. You will also receive information about how many tasks your matched partner
+                 has been randomly assigned to complete between today and next week (if the decision is 
+                 selected to be the allocation that counts), and then you will decide your allocation as 
+                 in block 1. Note: The allocation of tasks that your partner would need to complete will 
+                 only be valid if that decision is selected to be the allocation that counts. There is no 
+                 accumulation of tasks across decisions.</li>
+            <li><b>Block 4</b>: Block 4 is analogous to block 3, but the roles are reversed. In block 4, 
+                you will receive information about how many tasks you have been randomly assigned to 
+                complete between today and next week (if the decision is selected to be the allocation 
+                that counts), and then you will decide the allocation for your matched partner as in 
+                block 2.</li>
+            <li><b>Blocks 5 and 6</b>: Blocks 5 and 6 are similar to blocks 3 and 4, respectively, but 
+                the difference is that the total number of tasks to be allocated is different and the 
+                random assignment may change as well.</li>
+            <li><b>Block 7</b>: In block 7, you have to decide simultaneously how many tasks you want to 
+                complete today and next week, and how many tasks you want your partner to complete today 
+                and next week. You have a separate budget of tasks for each allocation decision. In other
+                words, each decision in this block actually involves two, which resemble the ones from 
+                blocks 1 and 2. However, both are linked to each other, in the sense that if a 
+                simultaneous decision is selected to be the one that counts, both you and your partner 
+                have to complete their respective allocations, as you decided.</li>
+            <li><b>Block 8</b>: In block 8, you have to make decisions similar to the ones in block 1 or 
+                2. Whether the decisions are similar to block 1 or 2 is randomly assigned.</li>
+            <li><b>Block 9</b>: In block 9, you have to allocate tasks between you and your partner. 
+                You have to decide how many tasks you want to complete today and how many tasks you want 
+                your partner to complete today as well, subject to one joint budget.</li>
+        </ul>
+            </p>
+
+
+        {% if mode == 'sec_1bl_1ch' %}
+        <!--
+            <p>
+                En cada decisión de esta tarea, tanto usted como su compañero comparten la misma fortuna. 
+                Es decir, en cada estado, la cantidad de fichas que ambos reciben es la misma. Mire la 
+                figura a continuación con un ejemplo. Dado que en esta tarea ambos enfrentan el mismo destino, 
+                su cuadrado azul y el círculo naranja de su compañero siempre se ubican en la misma posición. 
+                En el ejemplo, ambos están en el lugar (50, 16.7). Esto significa que, si ocurre el Estado A, 
+                usted y su compañero obtendrán 50 fichas cada uno y, si ocurre el Estado B, cada uno obtendrá 16,7 fichas. 
+                Al comienzo de cada ronda de decisión, el cuadrado y el círculo aparecerán en una posición aleatoria. 
+                Para elegir, arrastre el cuadrado o el círculo a la ubicación elegida. La otra forma lo seguirá.
+                </p>
+        -->
+
+        {% elif mode == 'sec_2bl_1ch' %}
+
+            <p>
+                En cada decisión de esta tarea, tanto usted como su compañero tienen fortunas opuestas. 
+                Es decir, lo que obtendría en el Estado A es igual a lo que recibiría su pareja en el 
+                Estado B. De manera similar, lo que obtendría en el Estado B es lo que obtendría su 
+                pareja en el Estado A. Dado que usted y su pareja enfrentan destinos opuestos, su cuadrado
+                azul y el círculo naranja de su compañero siempre están en posiciones especulares en el 
+                gráfico. En la captura de pantalla, por ejemplo, su cuadrado está en (Estado A = 50, B = 16,7)
+                 y el círculo de su compañero en (Estado A = 16,7, B = 50). Esto significa que, si ocurre el 
+                 Estado A, usted recibe 50 y su compañero obtiene 16,7; y, si ocurre el Estado B, usted obtiene 
+                 16,7 y su compañero obtiene 50. Al comienzo de cada ronda de decisión, el cuadrado y el círculo 
+                 aparecerán en una posición aleatoria. Para elegir, arrastre el cuadrado o el círculo a las 
+                 ubicaciones elegidas. La otra forma se ajustará automáticamente a la posición del espejo.
+            </p>
+
+        {% elif mode == 'sec_ownrisk' %}
+
+            <p>
+                Para esta tarea, decide sobre su propio sorteo. Consulte la figura a continuación para ver 
+                un ejemplo. Aquí los estados A y B ocurren cada uno con un 50% de probabilidad. 
+                Su elección está representada por un cuadrado azul. En la figura de muestra, la ubicación del 
+                cuadrado es (40, 6.7). Esto significa que, si ocurre el estado A, obtendrá 40 fichas y si 
+                ocurre el estado B, obtendrá 6,7 fichas. Al comienzo de cada pantalla de decisión, el 
+                cuadrado aparecerá en una posición aleatoria. Para hacer una elección, arrastre el cuadrado a 
+                la ubicación de su preferencia.
+            </p>
+
+        {% elif mode == 'sec_ownrisk_fixedother' %}
+            <p>
+                Para esta tarea, la fortuna de su pareja es fija y debe elegir su propio sorteo. Dado que 
+                usted y su pareja enfrentan diferentes fortunas, su cuadrado azul y el círculo naranja de su 
+                pareja estarán en diferentes posiciones. En la captura de pantalla, por ejemplo, su cuadrado 
+                está en (Estado A = 35, B = 9) y el círculo de su compañero en (Estado A = 10, B = 20). 
+                Esto significa que, si sucede el Estado A, usted recibe 35 y su compañero obtiene 10; y si 
+                ocurre el estado B, obtienes 9 y su compañero obtiene 20. Puedes mover tu cuadrado pero no 
+                puedes mover el círculo de tu compañero. Además, tenga en cuenta que las probabilidades de cada 
+                estado pueden variar en diferentes rondas de decisión. Al comienzo de cada ronda de decisión, 
+                el cuadrado aparecerá en una posición aleatoria. Para hacer una elección, arrastre el cuadrado a 
+                su ubicación de preferencia.
+            </p>
+        {% elif mode == 'sec_otherrisk_ownfixed' %}
+
+        {% endif %}
+
+
+        <!-- Budget lines -->
+         {% if sec1 == '1bl' %}
+            <!--
+            <p>
+                1BL 1BL 1BL :::: Instructions for 1 budget line only. Will be followed by either: instructions for 1 choice, or instructions for 2 choices.
+            </p>
+            -->
+        {% elif sec1 == '2bl' %}
+            <!--
+            <p>
+                2BL 2BL 2BL :::: Instructions for 1 budget line only. Will be followed by either: instructions for 1 choice, or instructions for 2 choices.
+            </p>
+            -->
+        {% endif %}
+
+        <!-- Choices -->
+        {% if sec2 == '1ch' %}
+            <!--
+            <p>
+                1CH 1CH 1CH :::: Instructions for 1 choice only. Will follow either: instructions for 1 budget line, or instructions for 2 budget lines.
+            </p>
+        -->
+        {% elif sec2 == '2ch' %}
+        <!--
+            <p>
+                2CH 2CH 2CH :::: Instructions for 2 choices only. Will follow either: instructions for 1 budget line, or instructions for 2 budget lines.
+            </p>
+        -->
+        {% endif %}
+        
+    {% endif %}
+
+{% comment %}
+{# IMAGES #}
+            {% if mode == 'sec_1bl_1ch' %}
+                <img src="{% static "sec_1bl_1ch_1.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_1bl_2ch' %}
+                <img src="{% static "sec_1bl_2ch.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_2bl_1ch' %}
+                <img src="{% static "sec_2bl_1ch.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_ownrisk' %}
+                <img src="{% static "sec_ownrisk.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_ownrisk_fixedother' %}
+                <img src="{% static "sec_ownrisk_fixedother.png" %}" width="500" align="center"/>
+            {% elif mode == 'sec_otherrisk_ownfixed' %}
+                <img src="{% static "sec_otherrisk_ownfixed.png" %}" width="500" align="center"/>
+            {% endif %}
+{% endcomment %}
+
+</div>

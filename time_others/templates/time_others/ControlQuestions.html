@@ -1,0 +1,258 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <h1>
+        Preguntas de Control
+    </h1>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        h1
+        {
+            color: #BFBFBF;
+        }
+
+        h4
+        {
+            color: #494949;
+        }
+
+        #incorrect1
+        {
+            color: red;
+        }
+
+        #incorrect2
+        {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+
+        var toggle = true
+
+        var list1 = ''
+        var list2 = ''
+        var attempts = 0
+
+        var modemap = {
+            'probability': {you: 70.0, partner: 10.0},
+            'sec_1bl_1ch': {you: 30.0, partner: 19.0},
+            'sec_1bl_2ch': {you: 20.0, partner: 10.0},
+            'sec_2bl_1ch': {you: 10.0, partner: 44.0},
+            'sec_ownrisk': {you_a: 30.0, you_b: 32.0},
+            'sec_ownrisk_fixedother': {you: 20.0, partner: 30.0},
+            'sec_otherrisk_ownfixed': {you: 30.0, partner: 26.0},
+            'det_giv': {you: 50.0, partner: 25.0}
+        }
+    
+        assign_questions = function()
+        {
+            var q1 = document.getElementById('q1')
+            var q2 = document.getElementById('q2')
+            var qc = document.getElementById('q_context')
+
+            var mode = {{mode | json}}
+
+            if (mode === 'sec_ownrisk')
+            {
+                qc.innerHTML = "Suponga que ha elegido lo que se muestra en la imagen de arriba."
+                q1.innerHTML = "¿Cuál es su pago si el Estado A sucede?"
+                q2.innerHTML = "¿Cuál es su pago si el Estado B sucede?"
+            }
+            else if (mode === 'det_giv')
+            {
+                qc.innerHTML = "Suponga que ha elegido lo que se muestra en la imagen de arriba."
+                q1.innerHTML = "¿Cuál es su pago?"
+                q2.innerHTML = "¿Cuál es el pago de su compañero?"       
+            }
+            else
+            {
+                qc.innerHTML = "Suponga que ha elegido lo que se muestra en la imagen de arriba"
+                q1.innerHTML = "¿Cuántas tareas se asignó para hoy?"
+                q2.innerHTML = "¿Cuántas tareas se asignó para mañana?"
+            }
+        }
+
+        check_answers = function()
+        {
+            var mode = {{mode | json}}
+
+            var a1 = parseFloat(document.getElementById('input1').value)
+            var a2 = parseFloat(document.getElementById('input2').value)
+
+            list1 += "'" + a1 + "' "
+            list2 += "'" + a2 + "' "
+
+            toggle = true
+
+            if (mode === 'sec_ownrisk')
+            {
+                if (a1 !== modemap.sec_ownrisk.you_a) 
+                {
+                    var i1 = document.getElementById('incorrect1')
+                    i1.innerHTML = "La respuesta correcta es " + modemap.sec_ownrisk.you_a
+                    attempts++
+                    toggle = false
+                }
+                else
+                    document.getElementById('incorrect1').innerHTML = ""
+                
+                if (a2 !== modemap.sec_ownrisk.you_b)
+                {
+                    var i2 = document.getElementById('incorrect2')
+                    i2.innerHTML = "La respuesta correcta es " + modemap.sec_ownrisk.you_b
+                    if (toggle === true)
+                    {   
+                        attempts++
+                        toggle = false
+                    }
+                }
+                else
+                    document.getElementById('incorrect2').innerHTML = ""
+            }
+            else if (mode === 'det_giv')
+            {
+                if (a1 !== modemap.det_giv.you)
+                {
+                    var i1 = document.getElementById('incorrect1')
+                    i1.innerHTML = "La respuesta correcta es " + modemap.det_giv.you
+                    attempts++
+                    toggle = false
+                }
+                else
+                    document.getElementById('incorrect1').innerHTML = ""
+                
+                if (a2 !== modemap.det_giv.partner)
+                {
+                    var i2 = document.getElementById('incorrect2')
+                    i2.innerHTML = "La respuesta correcta es " + modemap.det_giv.partner
+                    if (toggle === true)
+                    {
+                        attempts++
+                        toggle = false
+                    }
+                }
+                else
+                    document.getElementById('incorrect2').innerHTML = ""
+            }
+            else
+            {
+                if (a1 !== modemap[mode].you)
+                {
+                    var i1 = document.getElementById('incorrect1')
+                    i1.innerHTML = "La respuesta correcta es " + modemap[mode].you
+                    attempts++
+                    toggle = false
+                }
+                else
+                    document.getElementById('incorrect1').innerHTML = ""
+                
+                if (a2 !== modemap[mode].partner)
+                {
+                    var i2 = document.getElementById('incorrect2')
+                    i2.innerHTML = "La respuesta correcta es " + modemap[mode].partner
+                    if (toggle === true)
+                    {
+                        attempts++
+                        toggle = false
+                    }
+                }
+                else
+                    document.getElementById('incorrect2').innerHTML = ""
+            }
+        }
+
+        window.onload = function() 
+        {
+            document.getElementById("arrive_time").value = (new Date()).toISOString()
+            assign_questions()
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!--
+        Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    -->
+    <input type="hidden" name="time_ControlQuestions" id="arrive_time"/>
+    <input type="hidden" name="cq_failed_attempts" id="attempts"/>
+    <input type="hidden" name="cq_a1" id="a1"/>
+    <input type="hidden" name="cq_a2" id="a2"/>
+
+    <div>
+        <h4>
+            Debe responder correctamente antes de proceder a la tarea de pago. 
+        </h4>
+    </div>
+    <div>
+    <!--
+        {% if mode == 'probability' %}
+            <img src="{% static 'time_others/probability.png' %}" width="700">   
+        {% elif mode == 'sec_1bl_1ch' %}
+            <img src="{% static 'time_others/sec_1bl_1ch.png' %}" width="700">
+        {% elif mode == 'sec_2bl_1ch' %}
+            <img src="{% static 'time_others/sec_2bl_1ch.png' %}" width="700">
+        {% elif mode == 'sec_1bl_2ch' %}
+            <img src="{% static 'time_others/sec_1bl_2ch.png' %}" width="700">
+        {% elif mode == 'sec_ownrisk' %}
+            <img src="{% static 'time_others/sec_ownrisk.png' %}" width="700">
+        {% elif mode == 'sec_ownrisk_fixedother' %}
+            <img src="{% static 'time_others/sec_ownrisk_fixedother.png' %}" width="700">
+        {% elif mode == 'sec_otherrisk_ownfixed' %}
+            <img src="{% static 'time_others/sec_otherrisk_ownfixed.png' %}" width="700">
+        {% elif mode == 'det_giv' %}
+            <img src="{% static 'time_others/det_giv.PNG' %}" width="700">
+        {% endif %}
+    -->
+    {% if mode == 'sec_1bl_1ch' %}
+            <img src="{% static 'time_others/bloque1.PNG' %}" width="700">
+    {% endif %}
+    </div>
+    <hr>
+    <div>
+        <p id="q_context"></p>
+        <p id="q1"></p>
+        <p id="incorrect1"></p>
+        <input id="input1">
+        <p id="q2"></p>
+        <p id="incorrect2"></p>
+        <input id="input2">
+    </div>
+    <hr>
+
+    <div>
+        <button id="submit" class="btn btn-primary btn-large next-button" style="float: left;">Enviar</button>
+    </div>
+
+    <!--div>
+        <button id="submit" class="btn btn-primary btn-large" onclick="check_answers()" type="button" style="float: left;">Submit</button>
+    </div-->
+
+
+    <script type="text/javascript">
+    $(document).ready(function() 
+    {
+        $('.next-button').click(function()
+        {
+            check_answers()
+            if (toggle === false)
+            {
+                return false
+            }
+            else
+            {
+                document.getElementById('attempts').value = attempts
+                document.getElementById('a1').value = list1
+                document.getElementById('a2').value = list2
+                return true
+            }
+        })
+    })
+    </script>
+{% endblock %}
