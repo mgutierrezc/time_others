@@ -23,7 +23,14 @@
 -->
 {% if mode == 'sec_1bl_1ch' %}
         <h1 style="color:#BFBFBF">Asignación de tareas - Bloque {{ counter }}</h1>
+{% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 3 %}
+        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
+{% elif mode == 'sec_otherrisk_ownfixed' %}
+        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 4</h1>
+{% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 5 %}
+        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 5</h1>
 {% endif %}
+
 {% endblock %}
 
 
@@ -329,7 +336,34 @@
                     {% else %}
                         <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
                     {% endif %}
+                    
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' %}
                         <div class="row" style="margin-top: 50px">
+                        <table class="table table-bordered table-sm mdall">
+                            <thead>
+                                <tr>
+                                    <td width="34%" style = "text-align: center;">Tiempo</td>
+                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su compañero</b></td>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style = "text-align: center;">Hoy</td>
+                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                    <td style = "text-align: center; color: orange" v-html="selected[1].x" v-if="mode !== 'single'"></td>
+                                </tr>
+                                <tr>
+                                    <td style = "text-align: center;">Mañana</td>
+                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm mdall">
                             <thead>
                                 <tr>
@@ -340,19 +374,18 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style = "text-align: center;" >Hoy</td>
+                                    <td style = "text-align: center;">Hoy</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
                                    
                                 </tr>
                                 <tr>
                                     <td style = "text-align: center;">Mañana</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
-                           
-                                    
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="row" v-if="mode !== 'probability'">
