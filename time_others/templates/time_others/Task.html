@@ -324,7 +324,7 @@
                     </div>
                 </div>
                 <div class="col-md-4" v-if="mode !== 'probability' && mode !== 'single_given'">
-                    {% if player.round_number == 1 %}
+                    {% if player.round_number == 1 or player.round_number == 3 %}
                         <h5>Elija la cantidad de tareas que se asignaría para usted mismo entre hoy y mañana</h5>
                     {% else %}
                         <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
