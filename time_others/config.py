@@ -35,7 +35,7 @@ data = [
 [{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
 [{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
 [{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
-[{'mode': 'sec_ownrisk_fixedother', 'm': 30, 'p_x': 2, 'a': 10, 'b': 13.3, 'p_y': 3, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 5
+[{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 5
 
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 2, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],

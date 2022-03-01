@@ -439,7 +439,7 @@
                                 <tr>
                                     <td style = "text-align: center;">Hoy</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
-                                    <td style = "text-align: center; color: orange" v-html="selected[1].x" v-if="mode !== 'single'"></td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
                                 </tr>
                                 <tr>
                                     <td style = "text-align: center;">Mañana</td>
@@ -502,9 +502,9 @@
     </div>
 -->
 
-    {% comment %}
+    
     {% next_button %}
-    {% endcomment %}
+    
 
 {% endblock %}
 

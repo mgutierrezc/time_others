@@ -197,4 +197,4 @@ SENTRY_DSN = 'http://cef5e70f5ff14cfeaefc70c9a320102d:710fd43a8a6e4cecb32c365a1d
 # anything you put after the below line will override
 # oTree's default settings. Use with caution.
 otree.settings.augment_settings(globals())
-DEBUG = False
+DEBUG = True
