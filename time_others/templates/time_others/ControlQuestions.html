@@ -46,8 +46,8 @@
             'sec_1bl_2ch': {you: 20.0, partner: 10.0},
             'sec_2bl_1ch': {you: 10.0, partner: 44.0},
             'sec_ownrisk': {you_a: 30.0, you_b: 32.0},
-            'sec_ownrisk_fixedother': {you: 20.0, partner: 30.0},
-            'sec_otherrisk_ownfixed': {you: 30.0, partner: 26.0},
+            'sec_ownrisk_fixedother': {you: 20.0, partner: 29.0},
+            'sec_otherrisk_ownfixed': {you: 30.0, partner: 13.0},
             'det_giv': {you: 50.0, partner: 25.0}
         }
     
@@ -212,6 +212,12 @@
     -->
     {% if mode == 'sec_1bl_1ch' %}
             <img src="{% static 'time_others/bloque1.PNG' %}" width="700">
+    {% elif mode == 'sec_ownrisk_fixedother'  and player.round_number == 3%}
+            <img src="{% static 'time_others/bloque3.PNG' %}" width="700"> 
+    {% elif mode == 'sec_otherrisk_ownfixed' %}
+            <img src="{% static 'time_others/bloque4.PNG' %}" width="700">  
+    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 5 %}
+            <img src="{% static 'time_others/bloque5.PNG' %}" width="700"> 
     {% endif %}
     </div>
     <hr>

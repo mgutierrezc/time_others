@@ -417,12 +417,12 @@ var vm = new Vue({
 
                     if (['independent', 'single', 'negative', 'single_fixedsquare', 'single_fixedcircle'].indexOf(self.mode) !== -1) {
                         if (index === 0) {
-                            text = 'Tú (A: ' + self.selected[index].x + ', B: ' + self.selected[index].y + ')'
+                            text = 'Tú (Hoy: ' + parseInt(self.selected[index].x) + ', Mañana: ' + parseInt(self.selected[index].y) + ')'
                         }else{
-                            text = 'Pareja (A: ' + self.selected[index].x + ', B: ' + self.selected[index].y + ')'
+                            text = 'Pareja (Hoy: ' + parseInt(self.selected[index].x) + ', Mañana: ' + parseInt(self.selected[index].y) + ')'
                         }
                     }else if (self.mode === 'single_given') {
-                        text = 'Tú: ' + self.selected[index].x + ', Pareja: ' + self.selected[index].y
+                        text = 'Tú: ' + parseInt(self.selected[index].x) + ', Pareja: ' + parseInt(self.selected[index].y)
                     }else if (self.mode === 'positive'  ) {
                         text = ' (Hoy: ' + parseInt(self.selected[index].x) + ', Mañana: ' + parseInt(self.selected[index].y) + ')'
                     }
@@ -460,12 +460,12 @@ var vm = new Vue({
 
                     if (['independent', 'single', 'negative', 'single_fixedsquare', 'single_fixedcircle'].indexOf(self.mode) !== -1) {
                         if (index == 0) {
-                            text = 'Tú (A: ' + xValue.toFixed(self.precision) + ', B: ' + yValue.toFixed(self.precision) + ')'
+                            text = 'Tú (Hoy: ' + parseInt(xValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(yValue.toFixed(self.precision)) + ')'
                         }else{
-                            text = 'Pareja (A: ' + xValue.toFixed(self.precision) + ', B: ' + yValue.toFixed(self.precision) + ')'
+                            text = 'Pareja (Hoy: ' + parseInt(xValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(yValue.toFixed(self.precision)) + ')'
                         }
                     }else if (self.mode === 'single_given') {
-                        text = 'Tu: ' + xValue.toFixed(self.precision) + ', Pareja: ' + yValue.toFixed(self.precision)
+                        text = 'Tu: ' + parseInt(xValue.toFixed(self.precision)) + ', Pareja: ' + parseInt(yValue.toFixed(self.precision))
                     }else if (self.mode === 'positive') {
                         text = ' (Hoy: ' + parseInt(xValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(yValue.toFixed(self.precision)) + ')'
                     }
@@ -509,9 +509,9 @@ var vm = new Vue({
                             var otherText = ''
 
                             if (otherIndex == 0) {
-                                otherText = 'Tú (A: ' + otherXValue.toFixed(self.precision) + ', B: ' + otherYValue.toFixed(self.precision) + ')'
+                                otherText = 'Tú (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
                             }else{
-                                otherText = 'Pareja (A: ' + otherXValue.toFixed(self.precision) + ', B: ' + otherYValue.toFixed(self.precision) + ')'
+                                otherText = 'Pareja (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
                             }
 
                             if (self.tip && self.tip[otherIndex]) {
