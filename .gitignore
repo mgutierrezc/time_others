@@ -4,6 +4,9 @@ __pycache__/
 *$py.class
 *.pyc
 
+# Migrations
+__temp_migrations/
+__temp_static_root/
 # C extensions
 *.so
 
