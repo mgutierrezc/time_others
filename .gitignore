@@ -7,7 +7,6 @@ __pycache__/
 # Migrations
 __temp_migrations/
 __temp_static_root/
-
 # C extensions
 *.so
 
