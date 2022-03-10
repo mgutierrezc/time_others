@@ -28,6 +28,20 @@ shuffle2 = False
 # If chosen rounds is empty, models.py will randomly assign the chosen round for each group.
 # indexing starts at 1, not 0
 chosen_rounds = []
+number=0
+def Randomizemode():
+    number=round(random.random())
+    if number==1:
+        return 'sec_ownrisk_fixedother' 
+    if number==0:
+        return 'sec_otherrisk_ownfixed'
+
+def Randomize3():
+    number=round(random.random())
+    if number==1:
+        return 40
+    if number==0:
+        return 100
 
 def Randomize45(period,M,R):
     if period == 1:
@@ -42,7 +56,7 @@ data = [
 #[{'mode': 'probability', 'a_x': 70, 'a_y': 10, 'b_x': 10, 'b_y': 80, 'label': {'x': 'Tus fichas', 'y': "Las fichas de tu compañero"}}],
 [{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1 
 [{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
+[{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
 [{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 5
 
