@@ -42,7 +42,7 @@ class TaskInstructions(Page):
                 'mode': mode,
                 'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
                 'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2]
+                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 }
 
         
@@ -142,7 +142,8 @@ class Results(Page):
         'sec_ownrisk': 'S-OwnRisk',
         'det_giv': 'DG',
         'sec_ownrisk_fixedother': 'S-OwnRisk-FixedOther',
-        'sec_otherrisk_ownfixed': 'S-OtherRisk-OwnFixed'}
+        'sec_otherrisk_ownfixed': 'S-OtherRisk-OwnFixed',
+        'sec_new_graph':'S-newone'}
 
         modeNum = {
         'probability': '1',
@@ -151,6 +152,7 @@ class Results(Page):
         'sec_2bl_1ch': '3',
         'sec_ownrisk': '5',
         'det_giv': '8',
+        'sec_new_graph':'9',
         'sec_ownrisk_fixedother': '6',
         'sec_otherrisk_ownfixed': '7'}
 

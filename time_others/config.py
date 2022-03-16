@@ -60,7 +60,7 @@ data = [
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
 [{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 5
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,35,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 0.9,'m2': 20, 'p_x2': 1, 'p_y2': 2, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}], #bloque 8
 
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 2, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
@@ -253,7 +253,7 @@ def flatten(shuffled_data):
 
 # converts config data into a pandas dataframe, for exporting to the visualization fcn
 def export_data(data, session_name):
-    cols = ['mode', 'm', 'p_x', 'a', 'b', 'a_x', 'a_y', 'b_x', 'b_y']
+    cols = ['mode', 'm', 'p_x', 'm2','p_x2','a', 'b', 'a_x', 'a_y', 'b_x', 'b_y']
     df = pd.DataFrame(columns=cols)
     for period in flatten(data):
         for key in period:
@@ -284,9 +284,9 @@ def fill_defaults(data):
     newdata = copy.deepcopy(data)
     for block in newdata:
         for dic in block:
-            if dic['mode'] in ['sec_1bl_1ch', 'sec_2bl_1ch', 'sec_1bl_2ch', 'sec_ownrisk']:
+            if dic['mode'] in ['sec_1bl_1ch', 'sec_2bl_1ch', 'sec_1bl_2ch', 'sec_ownrisk','new_grap']:
                 if 'p_y' not in dic:
-                    dic['p_y'] = 1
+                    dic['p_y'] = 1.2
                 if 'prob_a' not in dic:
                     dic['prob_a'] = 50
                 if 'label' not in dic:
@@ -300,9 +300,12 @@ def fill_defaults(data):
                     dic['fixed'] = {'m': dic['a'] + dic['b'], 'p_x': 1, 'p_y': 1, 'a': dic['a']}
                 if 'label' not in dic:
                     dic['label'] = {'x': 'Estado A (' + str(dic['prob_a']) + '%)', 'y': 'Estado B (' + str(100 - dic['prob_a']) + '%)'}
-            elif dic['mode'] == 'probability':
+            elif dic['mode'] in ['probability']:
                 if 'label' not in dic:
                     dic['label'] = {'x': 'Tus fichas', 'y': 'Las fichas de tu compañero'}
+            #elif dic['mode'] in ['new_grap']:
+            #    if 'label' not in dic:
+            #        dic['label'] = {'x': 'Tus fichas', 'y': 'Las fichas de tu compañero'}
             elif dic['mode'] in ['det_giv']:
                 if 'p_y' not in dic:
                     dic['p_y'] = 1

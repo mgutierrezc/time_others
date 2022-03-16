@@ -51,6 +51,9 @@ class Constants(BaseConstants):
             'm': 100,           # income
             'px': 1,            # price of X
             'py': 2,            # price of Y
+            #'m2': 100,           # income
+            #'px2': 1,            # price of X
+            #'py2': 2,            # price of Y
             'a_x': 30,        # x value of point A
             'a_y': 80,         # y value of point A
             'b_x': 65,        # x value of point B
@@ -102,6 +105,11 @@ class Player(BasePlayer):
     m = models.FloatField()
     px = models.FloatField()
     py = models.FloatField()
+    #nuevas variables del modelo
+    m2 = models.FloatField()
+    px2 = models.FloatField()
+    py2 = models.FloatField()
+
     a = models.FloatField()
     b = models.FloatField()
     ax = models.FloatField()
@@ -180,7 +188,9 @@ class Group(BaseGroup):
         'sec_ownrisk': 'single',
         'sec_ownrisk_fixedother': 'single_fixedcircle',
         'sec_otherrisk_ownfixed': 'single_fixedsquare',
-        'det_giv': 'single_given'}
+        'det_giv': 'single_given',
+        #nuevo caso añadido
+        'sec_new_graph':'newone'}
         
         # generate pseudo_random number to compare to probabilities  0 <= rnd <= 1
         rnd = random.random()
@@ -196,14 +206,14 @@ class Group(BaseGroup):
         round_data = decider.participant.vars['dynamic_values'][self.round_number - 1]
         print('round data in set payoffs', round_data)
 
-        if modeMap[round_data['mode']] == 'probability':
+        if modeMap[round_data['mode']] in ['probability']:
             decider.payoff = \
                 (rnd < decider.prob_a / 100) * round_data['a_x'] + (rnd >= decider.prob_a / 100) * round_data['b_x']
             decider.outcome = 'A' if rnd < decider.prob_a / 100 else 'B'
             nondecider.payoff = \
                 (rnd < decider.prob_a / 100) * round_data['a_y'] + (rnd >= decider.prob_a / 100) * round_data['b_y']
             nondecider.outcome = decider.outcome
-        elif modeMap[round_data['mode']] in ['positive', 'negative', 'independent']:
+        elif modeMap[round_data['mode']] in ['positive', 'negative', 'independent','newone']:
             decider.payoff = \
                 (rnd < round_data['prob_a'] / 100) * decider.me_a + (rnd >= round_data['prob_a'] / 100) * decider.me_b
             decider.outcome = 'A' if rnd < round_data['prob_a'] / 100 else 'B'
