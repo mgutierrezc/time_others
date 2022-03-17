@@ -561,16 +561,16 @@ var vm = new Vue({
             ) {
               if (index === 0) {
                 text =
-                  "Tú (A: " +
+                  "Tú (Hoy: " +
                   self.selected[index].x +
-                  ", B: " +
+                  ", Mañana: " +
                   self.selected[index].y +
                   ")";
               } else {
                 text =
-                  "Pareja (A: " +
+                  "Pareja (Hoy: " +
                   self.selected[index].x +
-                  ", B: " +
+                  ", Mañana: " +
                   self.selected[index].y +
                   ")";
               }
@@ -582,9 +582,9 @@ var vm = new Vue({
                 self.selected[index].y;
             } else if (self.mode === "positive") {
               text =
-                "Tú = Pareja (A: " +
+                "Tú = Pareja (Hoy: " +
                 self.selected[index].x +
-                ", B: " +
+                ", Mañana: " +
                 self.selected[index].y +
                 ")";
             }
@@ -633,16 +633,16 @@ var vm = new Vue({
             ) {
               if (index == 0) {
                 text =
-                  "Tú (A: " +
+                  "Tú (Hoy: " +
                   xValue.toFixed(self.precision) +
-                  ", B: " +
+                  ", Mañana: " +
                   yValue.toFixed(self.precision) +
                   ")";
               } else {
                 text =
-                  "Pareja (A: " +
+                  "Pareja (Hoy: " +
                   xValue.toFixed(self.precision) +
-                  ", B: " +
+                  ", Mañana: " +
                   yValue.toFixed(self.precision) +
                   ")";
               }
@@ -654,9 +654,9 @@ var vm = new Vue({
                 yValue.toFixed(self.precision);
             } else if (self.mode === "positive") {
               text =
-                "Tu = Pareja (A: " +
+                "Tu = Pareja (Hoy: " +
                 xValue.toFixed(self.precision) +
-                ", B: " +
+                ", Mañana: " +
                 yValue.toFixed(self.precision) +
                 ")";
             }
@@ -701,9 +701,9 @@ var vm = new Vue({
   
                   if (otherIndex == 0) {
                     otherText =
-                      "Tú = Pareja (A: " +
+                      "Tú = Pareja (Hoy: " +
                       xValue.toFixed(self.precision) +
-                      ", B: " +
+                      ", Mañana: " +
                       yValue.toFixed(self.precision) +
                       ")";
                   }
