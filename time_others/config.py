@@ -28,19 +28,21 @@ shuffle2 = False
 # If chosen rounds is empty, models.py will randomly assign the chosen round for each group.
 # indexing starts at 1, not 0
 chosen_rounds = []
-number=0
+
 def Randomizemode():
+    number=0
     number=round(random.random())
-    if number==1:
+    if number == 1:
         return 'sec_ownrisk_fixedother' 
-    if number==0:
+    if number == 0:
         return 'sec_otherrisk_ownfixed'
 
 def Randomize3():
+    number=0
     number=round(random.random())
-    if number==1:
+    if number == 1:
         return 40
-    if number==0:
+    if number == 0:
         return 100
 
 def Randomize45(period,M,R):
@@ -60,8 +62,8 @@ data = [
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
 [{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,35,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 0.9,'m2': 20, 'p_x2': 1, 'p_y2': 2, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 7
-
+[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,35,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 0.9,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 2, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 8
 
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 2, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
