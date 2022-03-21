@@ -562,30 +562,30 @@ var vm = new Vue({
               if (index === 0) {
                 text =
                   "Tú (Hoy: " +
-                  self.selected[index].x +
+                  parseInt(self.selected[index].x) +
                   ", Mañana: " +
-                  self.selected[index].y +
+                  parseInt(self.selected[index].y) +
                   ")";
               } else {
                 text =
                   "Pareja (Hoy: " +
-                  self.selected[index].x +
+                  parseInt(self.selected[index].x) +
                   ", Mañana: " +
-                  self.selected[index].y +
+                  parseInt(self.selected[index].y) +
                   ")";
               }
             } else if (self.mode === "single_given") {
               text =
                 "Tú: " +
-                self.selected[index].x +
+                parseInt(self.selected[index].x) +
                 ", Pareja: " +
-                self.selected[index].y;
+                parseInt(self.selected[index].y);
             } else if (self.mode === "positive") {
               text =
-                "Tú = Pareja (Hoy: " +
-                self.selected[index].x +
+                " (Hoy: " +
+                parseInt(self.selected[index].x) +
                 ", Mañana: " +
-                self.selected[index].y +
+                parseInt(self.selected[index].y) +
                 ")";
             }
   
@@ -634,30 +634,30 @@ var vm = new Vue({
               if (index == 0) {
                 text =
                   "Tú (Hoy: " +
-                  xValue.toFixed(self.precision) +
+                  parseInt(xValue.toFixed(self.precision)) +
                   ", Mañana: " +
-                  yValue.toFixed(self.precision) +
+                  parseInt(yValue.toFixed(self.precision)) +
                   ")";
               } else {
                 text =
                   "Pareja (Hoy: " +
-                  xValue.toFixed(self.precision) +
+                  parseInt(xValue.toFixed(self.precision)) +
                   ", Mañana: " +
-                  yValue.toFixed(self.precision) +
+                  parseInt(yValue.toFixed(self.precision)) +
                   ")";
               }
             } else if (self.mode === "single_given") {
               text =
                 "Tu: " +
-                xValue.toFixed(self.precision) +
+                parseInt(xValue.toFixed(self.precision)) +
                 ", Pareja: " +
-                yValue.toFixed(self.precision);
+                parseInt(yValue.toFixed(self.precision));
             } else if (self.mode === "positive") {
               text =
-                "Tu = Pareja (Hoy: " +
-                xValue.toFixed(self.precision) +
+                " (Hoy: " +
+                parseInt(xValue.toFixed(self.precision)) +
                 ", Mañana: " +
-                yValue.toFixed(self.precision) +
+                parseInt(yValue.toFixed(self.precision)) +
                 ")";
             }
   
@@ -701,10 +701,10 @@ var vm = new Vue({
   
                   if (otherIndex == 0) {
                     otherText =
-                      "Tú = Pareja (Hoy: " +
-                      xValue.toFixed(self.precision) +
+                      " (Hoy: " +
+                      parseInt(xValue.toFixed(self.precision)) +
                       ", Mañana: " +
-                      yValue.toFixed(self.precision) +
+                      parseInt(yValue.toFixed(self.precision)) +
                       ")";
                   }
   
