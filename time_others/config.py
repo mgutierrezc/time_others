@@ -59,10 +59,10 @@ data = [
 [{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1 
 [{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
 [{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
+[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
 [{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,35,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,35,1), 'p_x': 0.6, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
+[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
+[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize45(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
 [{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 8
 
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
