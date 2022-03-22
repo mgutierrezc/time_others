@@ -36,7 +36,7 @@
       'sec_ownrisk_fixedother': {you: 20.0, partner: 29.0},
       'sec_otherrisk_ownfixed': {you: 30.0, partner: 13.0},
       'det_giv': {you: 50.0, partner: 25.0},
-      'sec_new_graph': {you: 10.0, partner: 10.0}
+      'sec_new_graph': {you: 30.0, partner: 19.0}
   }
 
   assign_questions = function()
@@ -205,7 +205,11 @@
     {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 5 %}
             <img src="{% static 'time_others/bloque5.PNG' %}" width="700">
     {% elif mode == 'sec_new_graph' %}
-            <img src="{% static 'time_others/det_giv.PNG' %}" width="700" /> <!-- cambiar imagen -->
+            <img src="{% static 'time_others/bloque8.PNG' %}" width="700" /> <!-- cambiar imagen -->
+    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 6 %}
+            <img src="{% static 'time_others/bloque4.PNG' %}" width="700">
+    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 7 %}
+            <img src="{% static 'time_others/bloque5.PNG' %}" width="700">
     {% endif %}
 </div>
 <hr />
