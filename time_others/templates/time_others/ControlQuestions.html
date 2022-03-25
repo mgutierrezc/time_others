@@ -30,7 +30,7 @@
   var modemap = {
       'probability': {you: 70.0, partner: 10.0},
       'sec_1bl_1ch': {you: 30.0, partner: 19.0},
-      'sec_1bl_2ch': {you: 20.0, partner: 10.0},
+      'sec_1bl_2ch': {you: 31.0, partner: 18.0},
       'sec_2bl_1ch': {you: 10.0, partner: 44.0},
       'sec_ownrisk': {you_a: 30.0, you_b: 32.0},
       'sec_ownrisk_fixedother': {you: 20.0, partner: 29.0},
@@ -210,6 +210,8 @@
             <img src="{% static 'time_others/bloque4.PNG' %}" width="700">
     {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 7 %}
             <img src="{% static 'time_others/bloque5.PNG' %}" width="700">
+    {% elif mode == 'sec_1bl_2ch' and player.round_number == 9 %}
+            <img src="{% static 'time_others/bloque9.PNG' %}" width="700">
     {% endif %}
 </div>
 <hr />
