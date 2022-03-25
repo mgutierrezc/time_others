@@ -217,16 +217,15 @@ var vm = new Vue({
             px: this.fixed.px,
           });
           break;
+        case "newone":
+            this.equations.push(this.equation);
+            this.equations.push({
+              m: this.equations[0].m2,
+              py: this.equations[0].px2,
+              px: this.equations[0].py2,
+            });
+            break;
         case "independent":
-            //nuevo caso añadido
-      case "newone":
-          this.equations.push(this.equation);
-          this.equations.push({
-            m: this.equations[0].m2,
-            py: this.equations[0].px2,
-            px: this.equations[0].py2,
-          });
-          break;
         case "positive":
           this.equations.push(this.equation);
           this.equations.push({
@@ -243,7 +242,7 @@ var vm = new Vue({
             px: this.equations[0].py,
           });
           break;
-        default:
+          default:
           break;
       }
     },
@@ -671,14 +670,48 @@ var vm = new Vue({
           if (self.mode !== "probability") {
             var otherIndex = 1 - index;
             switch (self.mode) {
-              /*case 'negative':
-                            var other = d3.select('[line-index="' + otherIndex + '"]');
-                            var otherXValue = self.fnInverse(otherIndex, xValue);
-                            if (otherXValue > self.minMax[otherIndex].maxX) otherXValue = self.minMax[otherIndex].maxX;
-    @@ -521,119 +701,132 @@ var vm = new Vue({
-                                .text(otherText);
-                            }
-                        break;*/
+              case 'negative':
+                var other = d3.select('[line-index="' + otherIndex + '"]');
+                var otherXValue = self.fnInverse(otherIndex, xValue);
+                if (otherXValue > self.minMax[otherIndex].maxX) otherXValue = self.minMax[otherIndex].maxX;
+                if (otherXValue < self.minMax[otherIndex].minX) otherXValue = self.minMax[otherIndex].minX;
+                var otherX = self.graph.x(otherXValue);
+
+                var otherYValue = xValue
+                var otherY = self.graph.y(otherYValue)
+                if (otherY < 0) otherY = 0;
+
+                if (other.attr('cx')) {
+                    other.attr('cx', otherX)
+                    other.attr('cy', otherY)
+                    me.attr('x', x - self.circleRadius)
+                    me.attr('y', y - self.circleRadius)
+                }else{
+                    other.attr('x', otherX - self.circleRadius)
+                    other.attr('y', otherY - self.circleRadius)
+                    me.attr('cx', x)
+                    me.attr('cy', y)
+                }
+
+                self.selected[otherIndex].x = otherXValue.toFixed(self.precision)
+                self.selected[otherIndex].y = otherYValue.toFixed(self.precision)
+
+                var otherText = ''
+
+                if (otherIndex == 0) {
+                    otherText = 'Tú (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
+                }else{
+                    otherText = 'Pareja (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
+                }
+
+                if (self.tip && self.tip[otherIndex]) {
+                    self.tip[otherIndex]
+                    .attr('x', otherX + 15)
+                    .attr('y', otherY - 15)
+                    .text(otherText);
+                }
+
+                break;
               case "positive":
                 var other = d3.select('[line-index="' + otherIndex + '"]');
 
@@ -716,7 +749,7 @@ var vm = new Vue({
                 }
 
                 break;
-              default:
+                default:
                 me.attr("x", x - self.circleRadius);
                 me.attr("y", y - self.circleRadius);
                 break;

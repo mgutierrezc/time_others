@@ -60,7 +60,7 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 #Need to use this for Risk and Fairness
-USE_POINTS = True #False #True
+USE_POINTS = True 
 
 
 # e.g. en, de, fr, it, ja, zh-hans
