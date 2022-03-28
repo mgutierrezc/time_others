@@ -87,6 +87,15 @@
     // Notes: these can probably be offloaded to Python
     var dynamicValues  = {{ dynamic_values | json }}
 
+    //ajustando el tamaño del gráfico (que diego confirme)
+
+    var temp_m = dynamicValues[currentRound - 1]
+
+    if (temp_m.m < 10)
+    {
+        constantValues['scale']['max'] = 30
+    }
+
     var getMode = function() {
         var roundData = dynamicValues[currentRound - 1]
         if (roundData && roundData.mode) return modeMap[roundData.mode]
@@ -284,7 +293,7 @@
     }
     </script>
 
-    <script src="{% static 'js/graph_es.js' %}"></script>
+    <script src="{% static 'js/graph_sp.js' %}"></script>
 
 {% endblock %}
 
