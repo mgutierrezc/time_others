@@ -60,7 +60,7 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 #Need to use this for Risk and Fairness
-USE_POINTS = True #False #True
+USE_POINTS = True 
 
 
 # e.g. en, de, fr, it, ja, zh-hans
@@ -166,14 +166,6 @@ SESSION_CONFIGS = [
   #      'num_demo_participants': 1,
   #      'app_sequence': ['risky_preferencesAH'],
   #  },
-    {
-        'name': 'RiskAndFairness_oTree',
-        'display_name': 'Risk Preferences',
-        'num_demo_participants': 2,
-        'real_world_currency_per_point': 0.33,
-        'participation_fee': 5.00,
-        'app_sequence': ['RiskAndFairness_oTree','demograp_es']
-    },
     {
         'name': 'demograp_es',
         'name': 'time_others',

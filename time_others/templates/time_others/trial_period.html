@@ -1,8 +1,9 @@
-{% extends "global/Base.html" %}
+{% extends "global/Base.html" %} 
 {% load staticfiles otree %}
 
 {% block title %}
-<!--    {% if mode == 'probability' %}
+<!--    
+    {% if mode == 'probability' %}
         <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 1</h1>
     {% elif mode == 'sec_1bl_1ch' %}
         <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 2</h1>
@@ -20,13 +21,15 @@
          <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 8</h1>
     {% endif %}
 -->
-<h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) </h1>
+
+    <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) </h1>
+
 {% endblock %}
 
-
 {% block styles %}
-    <link href="{% static 'css/vue-range-slider.css' %}" rel="stylesheet">
-    <style> /* set the CSS */
+    <link href="{% static 'css/vue-range-slider.css' %}" rel="stylesheet" />
+    <style>
+    /* set the CSS */
     .gray line {
         stroke: Gray;
     }
@@ -46,6 +49,7 @@
         stroke: #f2f2f2;
     }
     </style>
+
 {% endblock %}
 
 {% block scripts %}
@@ -69,7 +73,8 @@
         'sec_ownrisk': 'single',
         'sec_ownrisk_fixedother': 'single_fixedcircle',
         'sec_otherrisk_ownfixed': 'single_fixedsquare',
-        'det_giv': 'single_given'
+        'det_giv': 'single_given',
+        'sec_new_graph':'newone',
     }
 
     // can I remove this?
@@ -81,6 +86,15 @@
 
     // Notes: these can probably be offloaded to Python
     var dynamicValues  = {{ dynamic_values | json }}
+
+    //ajustando el tamaño del gráfico (que diego confirme)
+
+    var temp_m = dynamicValues[currentRound - 1]
+
+    if (temp_m.m < 10)
+    {
+        constantValues['scale']['max'] = 30
+    }
 
     var getMode = function() {
         var roundData = dynamicValues[currentRound - 1]
@@ -100,6 +114,9 @@
                 m: defaultValue(roundData, 'm', defaultValues.equation, 'm'),
                 px: defaultValue(roundData, 'p_x', defaultValues.equation, 'py'),
                 py: defaultValue(roundData, 'p_y', defaultValues.equation, 'px'),
+                m2: defaultValue(roundData, 'm2', defaultValues.equation, 'm2'),
+                px2: defaultValue(roundData, 'p_x2', defaultValues.equation, 'py2'),
+                py2: defaultValue(roundData, 'p_y2', defaultValues.equation, 'px2'),
                 a: {
                     x: defaultValue(roundData, 'a_x', defaultValues.equation, 'a_x'),
                     y: defaultValue(roundData, 'a_y', defaultValues.equation, 'a_y'),
@@ -192,7 +209,7 @@
     var appSpecific = getGraphData()
 
     window.onload = function ()
-      {
+        {
         var roundData = dynamicValues[currentRound - 1]
         var mode = {{ mode | json}}
         document.getElementById("arrive_time").value = (new Date()).toISOString();
@@ -203,8 +220,17 @@
             document.getElementById("bx").value = roundData.b_x
             document.getElementById("by").value = roundData.b_y
         }
+        else if (mode === 'sec_new_graph')
+        {
+        document.getElementById("m").value = roundData.m
+        document.getElementById("px").value = roundData.p_x
+        document.getElementById("py").value = roundData.p_y
+        document.getElementById("m2").value = roundData.m2
+        document.getElementById("px2").value = roundData.p_x2
+        document.getElementById("py2").value = roundData.p_y2
+        }
         else
-        { 
+        {
             if (mode === 'sec_ownrisk_fixedother' || mode === 'sec_otherrisk_ownfixed')
             {
                 document.getElementById("a").value = roundData.a
@@ -214,11 +240,11 @@
             document.getElementById("px").value = roundData.p_x
             document.getElementById("py").value = roundData.p_y
         }
-      }
+        }
 
     function test_outcome()
     {
-        //make it pick a random value, assign payoffs, then set the inner html of 
+        //make it pick a random value, assign payoffs, then set the inner html of
         // outcome, you_payoff, partner_payoff
 
         var roundData = dynamicValues[currentRound - 1]
@@ -265,14 +291,11 @@
         document.getElementById('results').style.display='block'
         return false
     }
-
     </script>
 
-    <script src="{% static 'js/graph_es.js' %}"></script>
+    <script src="{% static 'js/graph_sp.js' %}"></script>
 
 {% endblock %}
-
-
 
 {% block content %}
 
@@ -303,7 +326,9 @@
             {% formfield player.a label=None %}
             {% formfield player.b label=None %}
         {% endif %}
+
     {% endif %}
+
     {% endcomment %}
 
     <div id="app">
@@ -323,59 +348,53 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-6">
-                            Probabilidad de A:
-                        </div>
-                        <div class="col-6" style="text-align: right;">
-                            Probabilidad de B:
-                        </div>
+                        <div class="col-6">Probabilidad de A:</div>
+                        <div class="col-6" style="text-align: right">Probabilidad de B:</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-6" v-html="prob.a.toFixed(0) + '%'">
-                        </div>
-                        <div class="col-6" v-html="prob.b.toFixed(0) + '%'" style="text-align: right;">
-                        </div>
+                        <div class="col-6" v-html="prob.a.toFixed(0) + '%'"></div>
+                        <div class="col-6" v-html="prob.b.toFixed(0) + '%'" style="text-align: right"></div>
                     </div>
-                    
+
                     <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style = "text-align: center;">Probabilidad del resultado</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Sus fichas</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange"><b>Fichas de su compañero</b></td>
+                                    <td width="34%" style="text-align: center"> Probabilidad del resultado </td>
+                                    <td width="33%" style="text-align: center; color: blue"> <b>Sus fichas</b></td>
+                                    <td width="33%" style="text-align: center; color: orange"><b>Fichas de su compañero</b></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style = "text-align: center;" v-html="'A: ' + prob.a.toFixed(0) + '%'"></td>
-                                    <td style = "text-align: center; color: blue" v-html="equation.a.x"></td>
-                                    <td style = "text-align: center; color: orange" v-html="equation.a.y"></td>
+                                    <td style="text-align: center" v-html="'A: ' + prob.a.toFixed(0) + '%'"></td>
+                                    <td style="text-align: center; color: blue" v-html="equation.a.x"></td>
+                                    <td style="text-align: center; color: orange" v-html="equation.a.y"></td>
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;" v-html="'B: ' + prob.b.toFixed(0) + '%'"></td>
-                                    <td style = "text-align: center; color: blue" v-html="equation.b.x"></td>
-                                    <td style = "text-align: center; color: orange" v-html="equation.b.y"></td>
+                                    <td style="text-align: center" v-html="'B: ' + prob.b.toFixed(0) + '%'"></td>
+                                    <td style="text-align: center; color: blue" v-html="equation.b.x"></td>
+                                    <td style="text-align: center; color: orange" v-html="equation.b.y"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="row" id="results" style="display: none; margin-top: 40px;">
+                    <div class="row" id="results" style="display: none; margin-top: 40px">
                         <h5>Resultados de la prueba</h5>
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style = "text-align: center;">Resultados</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Su pago</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
+                                    <td width="34%" style="text-align: center">Resultados</td>
+                                    <td width="33%" style="text-align: center; color: blue"> <b>Su pago</b></td>
+                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id="outcome" style = "text-align: center;">N/A</td>
-                                    <td id="you_payoff" style = "text-align: center; color: blue">N/A</td>
-                                    <td id="partner_payoff" style = "text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
+                                    <td id="outcome" style="text-align: center">N/A</td>
+                                    <td id="you_payoff" style="text-align: center; color: blue">N/A</td>
+                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'" > N/A </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -387,8 +406,8 @@
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="50%" style="color: blue; text-align: center;"><b>Sus fichas</b></td>
-                                    <td width="50%" v-if="mode !== 'single'" style="color: orange; text-align: center;"><b>Fichas de su compañero</b></td>
+                                    <td width="50%" style="color: blue; text-align: center"> <b>Sus fichas</b> </td>
+                                    <td width="50%" v-if="mode !== 'single'"  style="color: orange; text-align: center" > <b>Fichas de su compañero</b> </td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -399,32 +418,34 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="row" id="results" style="display: none; margin-top: 40px;">
-                        <h5>Resultados de la prueba: </h5>
+                    <div class="row" id="results" style="display: none; margin-top: 40px">
+                        <h5>Resultados de la prueba:</h5>
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="50%" style="text-align: center; color: blue"><b>Su pago</b></td>
-                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
+                                    <td width="50%" style="text-align: center; color: blue"> <b>Su pago</b> </td>
+                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>El pago de su compañero</b> </td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id="you_payoff" style="text-align: center; color: blue">N/A</td>
-                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
+                                    <td id="you_payoff" style="text-align: center; color: blue"> N/A </td>
+                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'"  > N/A </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'">
-                    {% if player.round_number == 1 or player.round_number == 3 or player.round_number == 5%}
-                        <h5>Elija la cantidad de tareas que se asignaría para usted mismo entre hoy y mañana</h5>
-                    {% else %}
+                <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >
+                    {% if player.round_number == 1 or player.round_number == 5 or player.round_number == 7 or mode == 'sec_ownrisk_fixedother' %}
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
+                    {% elif player.round_number == 4 or player.round_number == 6 or mode == 'sec_otherrisk_ownfixed' %}  
                         <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
+                    {% elif player.round_number == 8 %}
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su compañero entre hoy y mañana</h5>
                     {% endif %}
-                    
-                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' %}
+
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or player.round_number == 8 %}
                         <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm mdall">
                             <thead>
@@ -432,7 +453,7 @@
                                     <td width="34%" style = "text-align: center;">Tiempo</td>
                                     <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
                                     <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su compañero</b></td>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -456,14 +477,14 @@
                                 <tr>
                                     <td width="34%" style = "text-align: center;">Tiempo</td>
                                     <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
-                                    
+                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td style = "text-align: center;">Hoy</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
-                                   
+
                                 </tr>
                                 <tr>
                                     <td style = "text-align: center;">Mañana</td>
@@ -478,16 +499,16 @@
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style = "text-align: center;">Resultados</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Su pago</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
+                                    <td width="34%" style="text-align: center">Resultados</td>
+                                    <td width="33%" style="text-align: center; color: blue"><b>Su pago</b></td>
+                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id="outcome" style = "text-align: center;">N/A</td>
-                                    <td id="you_payoff" style = "text-align: center; color: blue">N/A</td>
-                                    <td id="partner_payoff" style = "text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
+                                    <td id="outcome" style="text-align: center">N/A</td>
+                                    <td id="you_payoff" style="text-align: center; color: blue"> N/A</td>
+                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -496,16 +517,13 @@
             </div>
         </div>
     </div>
-<!--
+    <!--
     <div>
-        <button id="go" type="button" class="btn-large" onclick="test_outcome()">Resultado de la prueba:</button>
+    <button id="go" type="button" class="btn-large" onclick="test_outcome()">
+        Resultado de la prueba:
+    </button>
     </div>
--->
-
-    
+    -->
     {% next_button %}
-    
 
 {% endblock %}
-
-{#cd RiskAndFairness_espanol/ && git add templates/RiskAndFairness_espanol/Graph.html && git commit -m "___________" && git pus#}

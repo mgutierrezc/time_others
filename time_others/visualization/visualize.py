@@ -50,7 +50,7 @@ def plot_prob(csv, player_id, df, show=False):
         size_a = 7 * row['prob_a']
         size_b = 7 * row['prob_b']
 
-        ax.plot([row['ax'], row['bx']], [row['ay'], row['by']], color='#b2b2b2', zorder=3, alpha=1, linewidth=.5)
+        #ax.plot([row['ax'], row['bx']], [row['ay'], row['by']], color='#b2b2b2', zorder=3, alpha=1, linewidth=.5)
 
         ax.scatter([row['ax']], [row['ay']], color='#eb860d', zorder=4, alpha=.75, s=size_a)
         ax.text(row['ax'] + 5, row['ay'] - 5, 'Resultado A: ' + str(row['prob_a']) + '%')
@@ -128,13 +128,13 @@ def plot_data(csv, player_id, data, mode, display='color', show=False):
                     dot = line
                 ax.plot([row['m'] / row['px'], 0], [0, row['m'] / row['py']], color=line, alpha=0.55, zorder=3, linewidth=.5)
                 
-                if mode == 'sec_2bl_1ch':
+                if mode in [ 'sec_new_graph','sec_2bl_1ch']:
                     ax.plot([0, row['m'] / row['py']], [row['m'] / row['px'], 0], color=line, alpha=0.55, zorder=3, linewidth=.5)
                 
                 if mode != 'sec_otherrisk_ownfixed':
                     ax.scatter(row['me_a'], row['me_b'], color=dot, alpha=.6, zorder=4)
                 
-                if mode in ['sec_1bl_1ch', 'sec_1bl_2ch', 'sec_2bl_1ch', 'sec_otherrisk_ownfixed']:
+                if mode in ['sec_1bl_1ch', 'sec_1bl_2ch', 'sec_2bl_1ch', 'sec_otherrisk_ownfixed','sec_new_grap']:
                     ax.scatter(row['partner_a'], row['partner_b'], color=dot, marker='s', alpha=.6, zorder=4)
 
         if show == True:
