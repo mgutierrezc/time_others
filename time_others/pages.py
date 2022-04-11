@@ -22,6 +22,39 @@ class InitialInstructions(Page):
         numberOfPeriod = config.numberOfPeriod()
         return {'participation_fee': self.session.config['participation_fee']}
 
+class InitialInstructions_2(Page):
+    form_model = 'player'
+    form_fields = ['time_InitialInstructions']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def vars_for_template(self):
+        numberOfPeriod = config.numberOfPeriod()
+        return {'participation_fee': self.session.config['participation_fee']}
+
+class InitialInstructions_3(Page):
+    form_model = 'player'
+    form_fields = ['time_InitialInstructions']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def vars_for_template(self):
+        numberOfPeriod = config.numberOfPeriod()
+        return {'participation_fee': self.session.config['participation_fee']}
+
+class InitialInstructions_4(Page):
+    form_model = 'player'
+    form_fields = ['time_InitialInstructions']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def vars_for_template(self):
+        numberOfPeriod = config.numberOfPeriod()
+        return {'participation_fee': self.session.config['participation_fee']}
+
 
 class TaskInstructions(Page):
     form_model = 'player'
@@ -215,6 +248,9 @@ class Results(Page):
 
 page_sequence = [
     InitialInstructions,
+    InitialInstructions_2,
+    InitialInstructions_3,
+    InitialInstructions_4,
     TaskInstructions,
     ControlQuestions,
     Task,
