@@ -110,15 +110,15 @@
 
     var temp_m = dynamicValues[currentRound - 1]
 
-    if (temp_m.m < 30)
+    if (temp_m.m < 30 || temp_m.m1 < 30 || temp_m.m2 < 30)
     {
         constantValues['scale']['max'] = 30
 
-    }else if (temp_m.m >= 60) 
+    }else if (temp_m.m >= 60 || temp_m.m1 >= 60 || temp_m.m2 >= 60) 
     {
         constantValues['scale']['max'] = 100
 
-    }else if (temp_m.m >= 30 && temp_m.m < 60)
+    }else if (temp_m.m >= 30 && temp_m.m < 60 || temp_m.m1 >= 30 && temp_m.m1 < 60 || temp_m.m2 >= 30 && temp_m.m2 < 60)
     {
         constantValues['scale']['max'] = 60
 
