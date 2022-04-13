@@ -56,16 +56,16 @@ def Randomize45(period,M,R):
 
 data = [
 #[{'mode': 'probability', 'a_x': 70, 'a_y': 10, 'b_x': 10, 'b_y': 80, 'label': {'x': 'Tus fichas', 'y': "Las fichas de tu compañero"}}],
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1 
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'sec_1bl_1ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1 
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
 [{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
 [{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
 [{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3

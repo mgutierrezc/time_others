@@ -575,10 +575,11 @@ var vm = new Vue({
             }
           } else if (self.mode === "single_given") {
             text =
-              "Tú: " +
-              parseInt(self.selected[index].x) +
-              ", Pareja: " +
-              parseInt(self.selected[index].y);
+            "(Hoy: " +
+            parseInt(self.selected[index].x) +
+            ", Mañana: " +
+            parseInt(self.selected[index].y) +
+            ")";
           } else if (self.mode === "positive") {
             text =
               " (Hoy: " +
