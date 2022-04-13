@@ -66,11 +66,11 @@ data = [
 [{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
 [{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
 [{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': Randomizemode(), 'm': Randomize3(), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
 [{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize45(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4

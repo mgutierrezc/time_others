@@ -3,6 +3,7 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 from . import config
+import random
 
 """
 Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
@@ -124,6 +125,9 @@ class Task(Page):
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
         mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
+        #create random number(1: block 1, 2: block 2) for block 3:
+        random_number = random.randint(1,2)
+        print('block ', random_number)
         print('MODE MODE MODE', mode)
         if self.round_number > 1:
             counter = 1
@@ -140,6 +144,7 @@ class Task(Page):
                 'counter': counter,
                 'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
                 'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
+                'random_number': random_number
                 }
 
     def before_next_page(self):
