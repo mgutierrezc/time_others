@@ -45,6 +45,8 @@ def Randomize3():
     if number == 0:
         return 100
 
+this_m=Randomize3()
+
 def Randomize4567(period,M,R):
     if period == 1:
         choice = random.choice(['HL','LH']) 
@@ -56,51 +58,51 @@ def Randomize4567(period,M,R):
 
 data = [
 #[{'mode': 'probability', 'a_x': 70, 'a_y': 10, 'b_x': 10, 'b_y': 80, 'label': {'x': 'Tus fichas', 'y': "Las fichas de tu compañero"}}],
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 1 
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 2
-[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': 'det_giv', 'm': Randomize3(), 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 3
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 4
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,50,1), 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 5
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_otherrisk_ownfixed', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 6
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
-[{'mode': 'sec_ownrisk_fixedother', 'm': Randomize4567(1,35,1), 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 7
-[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 8
-[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 8
-[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 8
-[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 8
-[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': Randomize3(), 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 8
-[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 9
-[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 9
-[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 9
-[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}], #bloque 9
-[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'Mañana'}}] #bloque 9
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 1
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 1 
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': 50, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 2
+[{'mode': 'det_giv', 'm': this_m, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': this_m, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': this_m, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': this_m, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 3
+[{'mode': 'det_giv', 'm': this_m, 'p_x': 1, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 3
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 4
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 4
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 4
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 4
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 4
+[{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 5
+[{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 5
+[{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 5
+[{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 5
+[{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_x': 1, 'a': 10, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 33.3, 'p_x': 1, 'p_y': 1, 'a': 11}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 5
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 6
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 6
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 6
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 6
+[{'mode': 'sec_otherrisk_ownfixed', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 6
+[{'mode': 'sec_ownrisk_fixedother', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 7
+[{'mode': 'sec_ownrisk_fixedother', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 7
+[{'mode': 'sec_ownrisk_fixedother', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 7
+[{'mode': 'sec_ownrisk_fixedother', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 7
+[{'mode': 'sec_ownrisk_fixedother', 'm': 35, 'p_x': 1, 'a': 30, 'b': 13.3, 'p_y': 1, 'prob_a': 50, 'fixed': {'m': 43.3, 'p_x': 1, 'p_y': 1, 'a': 30}, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 7
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': this_m, 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 8
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': this_m, 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 8
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': this_m, 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 8
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': this_m, 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 8
+[{'mode': 'sec_new_graph', 'm': 50, 'p_x': 1, 'p_y': 1,'m2': this_m, 'p_x2': 1, 'p_y2': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 8
+[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 9
+[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 9
+[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 9
+[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}], #bloque 9
+[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 1, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Hoy', 'y': 'En una semana'}}] #bloque 9
 
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 2, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],

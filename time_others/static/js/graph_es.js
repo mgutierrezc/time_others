@@ -633,14 +633,14 @@ var vm = new Vue({
           ) {
             if (index == 0) {
               text =
-                " (Hoy: " +
+                "Tú (Hoy: " +
                 parseInt(xValue.toFixed(self.precision)) +
                 ", En una semana: " +
                 parseInt(yValue.toFixed(self.precision)) +
                 ")";
             } else {
               text =
-                " (Hoy: " +
+                "Pareja (Hoy: " +
                 parseInt(xValue.toFixed(self.precision)) +
                 ", En una semana: " +
                 parseInt(yValue.toFixed(self.precision)) +
@@ -701,9 +701,9 @@ var vm = new Vue({
                 var otherText = ''
 
                 if (otherIndex == 0) {
-                    otherText = ' (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', En una semana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
+                    otherText = 'Tú (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', En una semana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
                 }else{
-                    otherText = ' (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', En una semana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
+                    otherText = 'Pareja (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', En una semana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
                 }
 
                 if (self.tip && self.tip[otherIndex]) {

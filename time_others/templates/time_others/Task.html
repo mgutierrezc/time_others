@@ -1,47 +1,6 @@
 {% extends "global/Base.html" %}
 {% load staticfiles otree %}
-{% block title %}
-    <!--
-        {% if mode == 'probability' %}
-        <h1 style="color: #bfbfbf">Tarea 1 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_1bl_1ch' %}
-        <h1 style="color: #bfbfbf">Tarea 2 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_2bl_1ch' %}
-        <h1 style="color: #bfbfbf">Tarea 3 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_1bl_2ch' %}
-        <h1 style="color: #bfbfbf">Tarea 4 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_ownrisk' %}
-        <h1 style="color: #bfbfbf">Tarea 5 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_ownrisk_fixedother' %}
-        <h1 style="color: #bfbfbf">Tarea 6 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_otherrisk_ownfixed' %}
-        <h1 style="color: #bfbfbf">Tarea 7 - Decisión {{ counter }}</h1>
-        {% elif mode == 'det_giv' %}
-        <h1 style="color: #bfbfbf">Tarea 8 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_new_graph' %}
-        <h1 style="color: #bfbfbf">Tarea 9 - Decisión {{ counter }}</h1>
-        {% endif %}
-    -->
 
-    {% if mode == 'sec_ownrisk_fixedother' and player.round_number == 3 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 3 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 4 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 4 </h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 5 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 5</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 6 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 6 </h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 7 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 7</h1>
-    {% elif player.round_number == 8 %}   
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 8</h1>
-    {% elif player.round_number == 9 %}   
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 9</h1>
-    {% endif %} 
-
-{% endblock %} 
 
 {% block styles %}
 
@@ -270,7 +229,7 @@
         }
     </script>
 
-    <script src="{% static 'js/graph_sp.js' %}"></script>
+    <script src="{% static 'js/graph_es.js' %}"></script>
 
 {% endblock %} 
 
@@ -400,7 +359,7 @@
                                     <tr>
                                         <td width="34%" style = "text-align: center;">Tiempo</td>
                                         <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
-                                        <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su compañero</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su pareja</b></td>
 
                                     </tr>
                                 </thead>
