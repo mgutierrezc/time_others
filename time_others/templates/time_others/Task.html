@@ -23,9 +23,7 @@
         {% endif %}
     -->
 
-    {% if mode == 'sec_1bl_1ch' %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque {{ counter }}</h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 3 %}
+    {% if mode == 'sec_ownrisk_fixedother' and player.round_number == 3 %}
         <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
     {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 3 %}
         <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>

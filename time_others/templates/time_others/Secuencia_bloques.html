@@ -2,46 +2,15 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    <!--
-        {% if mode == 'probability' %}
-        <h1 style="color: #bfbfbf">Tarea 1 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_1bl_1ch' %}
-        <h1 style="color: #bfbfbf">Tarea 2 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_2bl_1ch' %}
-        <h1 style="color: #bfbfbf">Tarea 3 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_1bl_2ch' %}
-        <h1 style="color: #bfbfbf">Tarea 4 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_ownrisk' %}
-        <h1 style="color: #bfbfbf">Tarea 5 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_ownrisk_fixedother' %}
-        <h1 style="color: #bfbfbf">Tarea 6 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_otherrisk_ownfixed' %}
-        <h1 style="color: #bfbfbf">Tarea 7 - Decisión {{ counter }}</h1>
-        {% elif mode == 'det_giv' %}
-        <h1 style="color: #bfbfbf">Tarea 8 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_new_graph' %}
-        <h1 style="color: #bfbfbf">Tarea 9 - Decisión {{ counter }}</h1>
-        {% endif %}
-    -->
 
     {% if mode == 'det_giv' %}
-        <h1 style="color:#BFBFBF">Bloques 1-3</h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 3 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 3 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 4 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 4 </h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 5 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 5</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 6 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 6 </h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 7 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 7</h1>
-    {% elif player.round_number == 8 %}   
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 8</h1>
-    {% elif player.round_number == 9 %}   
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 9</h1>
+        <h1>Bloques 1-3</h1>
+    {% elif mode == 'sec_otherrisk_ownfixed' or mode == 'sec_ownrisk_fixedother' %}
+        <h1>Bloques 4-7</h1>
+    {% elif mode == 'sec_new_graph' %}
+        <h1>Bloque 8</h1>
+    {% elif mode == 'sec_1bl_2ch' %}
+        <h1>Bloque 9</h1>
     {% endif %} 
 
 {% endblock %} 
@@ -61,17 +30,39 @@
     Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
     Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
 -->
-    <input type="hidden" name="time_TaskInstructions" id="arrive_time"/>
-    
-    {% if mode == 'probability' %}
-        {% include Constants.instructions_probability %}
-    {% elif sec0 == 'sec' %}
-        {% include Constants.instructions_sec %}
-    {% elif mode == 'det_giv' %}
-        {% include Constants.instructions_det_giv %}
+    <div class="instructions well well-lg">
+    {% if mode == 'det_giv' %}
+        <p>
+            A continuación, tomará decisiones de los bloques 1 al 3. Deberá decidir 
+            cuántas tareas realizará usted o su pareja entre hoy y la siguiente semana. Antes de 
+            realizar las decisiones que podrían determinar su asignación de tareas final, tomará una 
+            decisión de práctica.
+        </p>
+    {% elif mode == 'sec_otherrisk_ownfixed' or mode == 'sec_ownrisk_fixedother' %}
+        <p>
+            A continuación, tomará decisiones de los bloques 4 al 7. Recibirá información sobre la 
+            asignación aleatoria de tareas que usted o su pareja deberá realizar, y luego deberá 
+            decidir cuántas tareas realizará usted o su pareja entre hoy y la siguiente semana. 
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, 
+            tomará una decisión de práctica.
+        </p>
+    {% elif mode == 'sec_new_graph' %}
+        <p>
+            A continuación, tomará decisiones del bloque 8. Deberá decidir, tanto para 
+            usted como para su pareja, cuántas tareas realizarán de manera independiente entre hoy 
+            y la siguiente semana.
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, 
+            tomará una decisión de práctica.
+        </p>
+    {% elif mode == 'sec_1bl_2ch' %}
+        <p>
+            A continuación, tomará decisiones del bloque 9. Deberá decidir cuántas tareas 
+            realizará usted hoy y cuántas tareas realizará su pareja hoy.
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, 
+            tomará una decisión de práctica.
+        </p>
     {% endif %}
-   
-    {% include Constants.trial_period %}
+    </div>
 
     {% next_button %}
 

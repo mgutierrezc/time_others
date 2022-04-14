@@ -56,6 +56,37 @@ class InitialInstructions_4(Page):
         numberOfPeriod = config.numberOfPeriod()
         return {'participation_fee': self.session.config['participation_fee']}
 
+class Secuencia_bloques(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
+        if self.round_number > 1:
+            prevmode = self.player.participant.vars['dynamic_values'][self.round_number - 2]['mode']
+        return self.round_number == 1 or mode != prevmode
+
+    def vars_for_template(self):
+        dynamic_values = self.player.participant.vars['dynamic_values']
+        round_data = dynamic_values[self.round_number - 1]
+        mode = round_data['mode']
+        # this will be used in the conditional display of instructions
+        return {'dynamic_values': dynamic_values,
+                'mode': mode,
+                'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
+                'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
+                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
+                }
+
+class AntesdelBloque(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        return self.round_number == 1 or self.round_number == 6 or self.round_number == 11 or self.round_number == 16  or self.round_number == 21 or self.round_number == 26 or self.round_number == 31 or self.round_number == 36 or self.round_number == 41
+    
+    def vars_for_template(self):
+        random_number=Constants.random_number
+        # this will be used in the conditional display of instructions
+        return {'random_number': random_number}
 
 class TaskInstructions(Page):
     form_model = 'player'
@@ -126,8 +157,7 @@ class Task(Page):
         dynamic_values = self.player.participant.vars['dynamic_values']
         mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
         #create random number(1: block 1, 2: block 2) for block 3:
-        random_number = random.randint(1,2)
-        print('block ', random_number)
+        random_number = Constants.random_number
         print('MODE MODE MODE', mode)
         if self.round_number > 1:
             counter = 1
@@ -256,8 +286,9 @@ page_sequence = [
     InitialInstructions_2,
     InitialInstructions_3,
     InitialInstructions_4,
+    Secuencia_bloques,
     TaskInstructions,
-    ControlQuestions,
+    AntesdelBloque,
     Task,
     ResultsWaitPage,
     Results

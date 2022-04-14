@@ -18,6 +18,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = config.numberOfPeriod()
     participation_fee = c(5)
+    random_number = random.randint(1,2) #si es 1, el bloque 3 tendrá las decisiones del bloque 1. Si es 2, del bloque 2.
 
     # I'm offloading the heavy lifting to JavaScript because I'm very bad at Python
     static_values = {
@@ -74,9 +75,6 @@ class Constants(BaseConstants):
 
     # INSTRUCTIONS PATHS
     # list instruction templates
-    instructions_probability = 'time_others/Probability.html'
-    instructions_sec = 'time_others/sec.html'
-    instructions_det_giv = 'time_others/det_giv.html'
     trial_period = 'time_others/trial_period.html'
 
 
@@ -116,7 +114,7 @@ class Player(BasePlayer):
     ay = models.FloatField()
     bx = models.FloatField()
     by = models.FloatField()
-
+    
 
     def role(self):
         if self.id_in_group == 1:

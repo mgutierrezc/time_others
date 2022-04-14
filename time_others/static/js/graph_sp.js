@@ -648,10 +648,11 @@ var vm = new Vue({
             }
           } else if (self.mode === "single_given") {
             text =
-              "Tu: " +
+              "(Hoy: " +
               parseInt(xValue.toFixed(self.precision)) +
-              ", Pareja: " +
-              parseInt(yValue.toFixed(self.precision));
+              ", Mañana: " +
+              parseInt(yValue.toFixed(self.precision)) +
+              ")";
           } else if (self.mode === "positive") {
             text =
               " (Hoy: " +

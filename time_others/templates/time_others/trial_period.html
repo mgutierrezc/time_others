@@ -1,30 +1,6 @@
 {% extends "global/Base.html" %} 
 {% load staticfiles otree %}
 
-{% block title %}
-<!--    
-    {% if mode == 'probability' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 1</h1>
-    {% elif mode == 'sec_1bl_1ch' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 2</h1>
-    {% elif mode == 'sec_2bl_1ch' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 3</h1>
-    {% elif mode == 'sec_1bl_2ch' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 4</h1>
-    {% elif mode == 'sec_ownrisk' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 5</h1>
-    {% elif mode == 'sec_ownrisk_fixedother' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 6</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 7</h1>
-    {% elif mode == 'det_giv' %}
-         <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 8</h1>
-    {% endif %}
--->
-
-    <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) </h1>
-
-{% endblock %}
 
 {% block styles %}
     <link href="{% static 'css/vue-range-slider.css' %}" rel="stylesheet" />
@@ -87,13 +63,22 @@
     // Notes: these can probably be offloaded to Python
     var dynamicValues  = {{ dynamic_values | json }}
 
-    //ajustando el tamaño del gráfico (que diego confirme)
+    //ajustando el tamaño del gráfico 
 
     var temp_m = dynamicValues[currentRound - 1]
 
-    if (temp_m.m < 10)
+    if (temp_m.m < 30 || temp_m.m1 < 30 || temp_m.m2 < 30)
     {
         constantValues['scale']['max'] = 30
+
+    }else if (temp_m.m >= 60 || temp_m.m1 >= 60 || temp_m.m2 >= 60) 
+    {
+        constantValues['scale']['max'] = 100
+
+    }else if (temp_m.m >= 30 && temp_m.m < 60 || temp_m.m1 >= 30 && temp_m.m1 < 60 || temp_m.m2 >= 30 && temp_m.m2 < 60)
+    {
+        constantValues['scale']['max'] = 60
+
     }
 
     var getMode = function() {
@@ -268,24 +253,24 @@
         }
         else if (mode === 'single_given')
         {
-            document.getElementById('you_payoff').innerHTML=vm.selected[0].x
-            document.getElementById('partner_payoff').innerHTML=vm.selected[0].y
+            document.getElementById('you_payoff').innerHTML=parseInt(vm.selected[0].x)
+            document.getElementById('partner_payoff').innerHTML=parseInt(vm.selected[0].y)
         }
         else
         {
             if (rand * 100 < roundData['prob_a'])
             {
                 document.getElementById('outcome').innerHTML='A'
-                document.getElementById('you_payoff').innerHTML=vm.selected[0].x
+                document.getElementById('you_payoff').innerHTML=parseInt(vm.selected[0].x)
                 if (mode !== 'single')
-                    document.getElementById('partner_payoff').innerHTML=vm.selected[1].x
+                    document.getElementById('partner_payoff').innerHTML=parseInt(vm.selected[1].x)
             }
             else
             {
                 document.getElementById('outcome').innerHTML='B'
-                document.getElementById('you_payoff').innerHTML=vm.selected[0].y
+                document.getElementById('you_payoff').innerHTML=parseInt(vm.selected[0].y)
                 if (mode !== 'single')
-                    document.getElementById('partner_payoff').innerHTML=vm.selected[1].y
+                    document.getElementById('partner_payoff').innerHTML=parseInt(vm.selected[1].y)
             }
         }
         document.getElementById('results').style.display='block'
@@ -385,9 +370,9 @@
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style="text-align: center">Resultados</td>
-                                    <td width="33%" style="text-align: center; color: blue"> <b>Su pago</b></td>
-                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
+                                    <td width="34%" style="text-align: center">Tareas asignadas:</td>
+                                    <td width="33%" style="text-align: center; color: blue"> <b>Tareas para hoy</b></td>
+                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas para mañana</b></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -403,7 +388,7 @@
                 <div class="col-3" v-if="mode === 'single_given'">
                     {% if player.round_number == 1  or player.round_number == 2 or player.round_number == 3 or player.round_number == 4 or player.round_number == 5 %}
                         <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
-                    {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 1 %}  
+                    {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 10 %}  
                         <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
                     {% endif %}
                     <div class="row" style="margin-top: 50px">
@@ -429,12 +414,17 @@
                         </table>
                     </div>
                     <div class="row" id="results" style="display: none; margin-top: 40px">
-                        <h5>Resultados de la prueba:</h5>
+                        {% if player.round_number == 1  or player.round_number == 2 or player.round_number == 3 or player.round_number == 4 or player.round_number == 5 %}
+                            <h5>Si esta fuese la decisión que cuenta, usted tendría que resolver:</h5>
+                        {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 10 %}  
+                            <h5>Si esta fuese la decisión que cuenta, su pareja tendría que resolver:</h5>
+                        {% endif %}
+                        
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="50%" style="text-align: center; color: blue"> <b>Su pago</b> </td>
-                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>El pago de su compañero</b> </td>
+                                    <td width="50%" style="text-align: center; color: blue"> <b>Tareas para hoy</b> </td>
+                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>Tareas para mañana</b> </td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -509,9 +499,9 @@
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style="text-align: center">Resultados</td>
-                                    <td width="33%" style="text-align: center; color: blue"><b>Su pago</b></td>
-                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
+                                    <td width="34%" style="text-align: center">Tareas asignadas</td>
+                                    <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
+                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>Tareas para mañana</b></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -527,13 +517,13 @@
             </div>
         </div>
     </div>
-    <!--
+    
     <div>
     <button id="go" type="button" class="btn-large" onclick="test_outcome()">
         Resultado de la prueba:
     </button>
     </div>
-    -->
+    
     {% next_button %}
 
 {% endblock %}
