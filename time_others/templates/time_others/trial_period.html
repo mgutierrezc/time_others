@@ -372,7 +372,7 @@
                                 <tr>
                                     <td width="34%" style="text-align: center">Tareas asignadas:</td>
                                     <td width="33%" style="text-align: center; color: blue"> <b>Tareas para hoy</b></td>
-                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas para mañana</b></td>
+                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas en una semana </b></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -387,9 +387,9 @@
                 </div>
                 <div class="col-3" v-if="mode === 'single_given'">
                     {% if player.round_number == 1  or player.round_number == 2 or player.round_number == 3 or player.round_number == 4 or player.round_number == 5 %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
                     {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 10 %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y en una semana</h5>
                     {% endif %}
                     <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm small">
@@ -407,7 +407,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;">Mañana</td>
+                                    <td style = "text-align: center;">En una semana</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                 </tr>
                             </tbody>
@@ -424,7 +424,7 @@
                             <thead>
                                 <tr>
                                     <td width="50%" style="text-align: center; color: blue"> <b>Tareas para hoy</b> </td>
-                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>Tareas para mañana</b> </td>
+                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>Tareas en una semana</b> </td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -438,11 +438,11 @@
                 </div>
                 <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >
                     {% if player.round_number == 1 or player.round_number == 5 or player.round_number == 7 or mode == 'sec_ownrisk_fixedother' %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
                     {% elif player.round_number == 4 or player.round_number == 6 or mode == 'sec_otherrisk_ownfixed' %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y en una semana</h5>
                     {% elif player.round_number == 8 %}
-                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su compañero entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su compañero entre hoy y en una semana</h5>
                     {% endif %}
 
                     {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or player.round_number == 8 %}
@@ -463,7 +463,7 @@
                                     <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;">Mañana</td>
+                                    <td style = "text-align: center;">En una semana</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                     <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
                                 </tr>
@@ -487,7 +487,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;">Mañana</td>
+                                    <td style = "text-align: center;">En una semana</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                 </tr>
                             </tbody>
@@ -501,7 +501,7 @@
                                 <tr>
                                     <td width="34%" style="text-align: center">Tareas asignadas</td>
                                     <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
-                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>Tareas para mañana</b></td>
+                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
                                 </tr>
                             </thead>
                             <tbody>

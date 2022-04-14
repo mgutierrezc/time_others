@@ -348,14 +348,14 @@
                 </div>
                 <div class="col-md-4" v-if="mode === 'single_given'">
                     {% if player.round_number == 1  or player.round_number == 2 or player.round_number == 3 or player.round_number == 4 or player.round_number == 5 %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
                     {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 10 %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
                     {% elif player.round_number == 11 or player.round_number == 12 or player.round_number == 13 or player.round_number == 14 or player.round_number == 15 %}
                         {% if random_number == 1 %}
-                            <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
+                            <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
                         {% elif random_number == 2 %}
-                            <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
+                            <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
                         {% endif %}
                     {% endif %}
                     
@@ -375,7 +375,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: center;">Mañana</td>
+                                    <td style = "text-align: center;">En una semana</td>
                                     <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                 </tr>
                             </tbody>
@@ -384,11 +384,11 @@
                 </div>
                 <div class="col-md-4" v-if="mode !== 'probability' && mode !== 'single_given'" >
                     {% if player.round_number == 1  or player.round_number == 5 or player.round_number == 7 or mode == 'sec_ownrisk_fixedother' %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
                     {% elif player.round_number == 2 or player.round_number == 4 or player.round_number == 6 or mode == 'sec_otherrisk_ownfixed' %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
                     {% elif player.round_number == 8 or mode == 'sec_1bl_2ch' %}
-                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su compañero entre hoy y mañana</h5>
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja entre hoy y en una semana</h5>
             
                     {% endif %}
 
@@ -411,7 +411,7 @@
                                         <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
                                     </tr>
                                     <tr>
-                                        <td style = "text-align: center;">Mañana</td>
+                                        <td style = "text-align: center;">En una semana</td>
                                         <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                         <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
                                     </tr>
@@ -435,7 +435,7 @@
 
                                     </tr>
                                     <tr>
-                                        <td style = "text-align: center;">Mañana</td>
+                                        <td style = "text-align: center;">En una semana</td>
                                         <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                     </tr>
                                 </tbody>
