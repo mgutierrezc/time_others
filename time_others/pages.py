@@ -60,7 +60,7 @@ class Secuencia_bloques(Page):
     form_model = 'player'
 
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == 6 or self.round_number == 16 or self.round_number == 36 or self.round_number == 41
+        return self.round_number == 1 or self.round_number == 16 or self.round_number == 36 or self.round_number == 41
 
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']

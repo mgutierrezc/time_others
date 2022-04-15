@@ -446,71 +446,71 @@
 
                     {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or player.round_number == 8 %}
                         <div class="row" style="margin-top: 50px">
-                        <table class="table table-bordered table-sm mdall">
-                            <thead>
-                                <tr>
-                                    <td width="34%" style = "text-align: center;">Tiempo</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su pareja</b></td>
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su pareja</b></td>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style = "text-align: center;">Hoy</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
-                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
-                                </tr>
-                                <tr>
-                                    <td style = "text-align: center;">En una semana</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
-                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style = "text-align: center;">En una semana</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     {% else %}
-                    <div class="row" style="margin-top: 50px">
-                        <table class="table table-bordered table-sm mdall">
-                            <thead>
-                                <tr>
-                                    <td width="34%" style = "text-align: center;">Tiempo</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                        <div class="row" style="margin-top: 50px">
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
                     
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style = "text-align: center;">Hoy</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
 
-                                </tr>
-                                <tr>
-                                    <td style = "text-align: center;">En una semana</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </tr>
+                                    <tr>
+                                        <td style = "text-align: center;">En una semana</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     {% endif %}
-                    <div class="row" id="results" style="display: none; margin-top: 40px;">
-                        <h5>Resultados de la prueba:</h5>
-                        <table class="table table-bordered table-sm small">
-                            <thead>
-                                <tr>
-                                    <td width="34%" style="text-align: center">Tareas asignadas</td>
-                                    <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
-                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="you_payoff" style="text-align: center; color: blue"> N/A</td>
-                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                            <h5>Resultados de la prueba:</h5>
+                            <table class="table table-bordered table-sm small">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style="text-align: center">Tareas asignadas</td>
+                                        <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
+                                        <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="you_payoff" style="text-align: center; color: blue"> N/A</td>
+                                        <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                 </div>
             </div>
         </div>
