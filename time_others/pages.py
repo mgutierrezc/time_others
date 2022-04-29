@@ -93,7 +93,7 @@ class TaskInstructions(Page):
         mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
         if self.round_number > 1:
             prevmode = self.player.participant.vars['dynamic_values'][self.round_number - 2]['mode']
-        return self.round_number == 1 or mode != prevmode
+        return self.round_number == 1 or mode != prevmode or self.round_number == 16 or self.round_number == 36 or self.round_number == 41
 
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
