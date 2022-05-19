@@ -21,7 +21,7 @@ class InitialInstructions(Page):
 
     def vars_for_template(self):
         numberOfPeriod = config.numberOfPeriod()
-        return {'participation_fee': self.session.config['participation_fee']}
+        return {'participation_fee': self.session.config['participation_fee'], 'numberOfPeriod': numberOfPeriod}
 
 class InitialInstructions_2(Page):
     form_model = 'player'
@@ -90,10 +90,7 @@ class TaskInstructions(Page):
     form_fields = ['time_TaskInstructions']
 
     def is_displayed(self):
-        mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
-        if self.round_number > 1:
-            prevmode = self.player.participant.vars['dynamic_values'][self.round_number - 2]['mode']
-        return self.round_number == 1 or mode != prevmode or self.round_number == 16 or self.round_number == 36 or self.round_number == 41
+        return self.round_number == 1 or self.round_number == 16 or self.round_number == 36 or self.round_number == 41
 
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
@@ -181,6 +178,23 @@ class Task(Page):
         elif self.player.id_in_group == 1 and self.round_number == self.player.participant.vars['pr']:
             self.group.set_payoffs()
 
+
+class Finalizar_tareas(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+class Determinar_tareas(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+    
+    def vars_for_template(self):
+        role = self.player.role()
+        return {'role' : role}
+
 class ResultsWaitPage(WaitPage):
 
     def is_displayed(self):
@@ -229,27 +243,33 @@ class Results(Page):
 
         pr = decider.participant.vars['pr']
         pr2 = nondecider.participant.vars['pr']
-        if mode == 'probability':
-            dec_a = round(decider.in_round(pr).prob_a, 1)
-            dec_b = round(decider.in_round(pr).prob_b, 1)
-        elif mode == 'det_giv':
-            if self.player.id_in_group == 1:
-                dec_a = round(decider.in_round(pr).me_a, 1) 
-                dec_b = None
-            else:
-                dec_a = round(decider.in_round(pr).me_b, 1)
-                dec_b = None
-        else:
-            if self.player.id_in_group == 1:
-                dec_a = round(decider.in_round(pr).me_a, 1)
-                dec_b = round(decider.in_round(pr).me_b, 1)
-            elif mode != 'sec_ownrisk':
-                dec_a = round(decider.in_round(pr).partner_a, 1)
-                dec_b = round(decider.in_round(pr).partner_b, 1)
+        # if mode == 'probability':
+        #     deci_a = round(decider.in_round(pr).prob_a, 1)
+        #     deci_b = round(decider.in_round(pr).prob_b, 1)
+        # elif mode == 'det_giv':
+        #     if self.player.id_in_group == 1:
+        #         deci_a = round(decider.in_round(pr).me_a, 1) 
+        #         deci_b = None
+        #     else:
+        #         deci_a = round(decider.in_round(pr).me_b, 1)
+        #         deci_b = None
+        # else:
+        if self.player.id_in_group == 1:
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 1)
+                dec_yo_manana = round(decider.in_round(pr).me_b, 1)
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 1)
+                dec_partner_manana = round(decider.in_round(pr).partner_b, 1)
+                
+        elif mode != 'sec_ownrisk':
+                dec_yo_hoy = round(decider.in_round(pr).partner_a, 1)
+                dec_yo_manana = round(decider.in_round(pr).partner_b, 1)
+                dec_partner_hoy = round(decider.in_round(pr).me_a, 1)
+                dec_partner_manana = round(decider.in_round(pr).me_b, 1)
+
             # single mode
-            else:
-                dec_a = round(nondecider.in_round(pr2).me_a, 1)
-                dec_b = round(nondecider.in_round(pr2).me_b, 1)
+            # else:
+            #     deci_a = round(nondecider.in_round(pr2).me_a, 1)
+            #     deci_b = round(nondecider.in_round(pr2).me_b, 1)
 
         outcome = self.player.in_round(self.player.participant.vars['pr']).outcome
         #payoff = self.player.in_round(Constants.num_rounds).payoff
@@ -274,8 +294,11 @@ class Results(Page):
         else:
             counter = 1
         
-        return {'mode': modeMap[mode], 'mode_num': modeNum[mode], 'dec_a': dec_a, 'dec_b': dec_b, 'role': role,
-                    'counter': counter, 'outcome': outcome, 'payoff': payoff, 'partner_payoff': partner_payoff}
+        return {'mode': modeMap[mode], 'mode_num': modeNum[mode],  'role': role,
+                    'counter': counter, 'outcome': outcome, 'payoff': payoff, 'partner_payoff': partner_payoff,
+                    'dec_yo_hoy': dec_yo_hoy, 'dec_partner_hoy': dec_partner_hoy, 'dec_yo_manana': dec_yo_manana, 
+                    'dec_partner_manana': dec_partner_manana}
+
 
 
 page_sequence = [
@@ -287,6 +310,8 @@ page_sequence = [
     TaskInstructions,
     AntesdelBloque,
     Task,
+    Finalizar_tareas,
+    Determinar_tareas,
     ResultsWaitPage,
     Results
 ]

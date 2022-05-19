@@ -1,0 +1,31 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Determinación de las tareas que deberán realizarse
+{% endblock %} 
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+
+{% block content %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+    <div class="instructions well well-lg">
+        ¡Has completado todas las decisiones! Antes de determinar las tareas que deberá realizar, 
+        decidiremos a qué grupo (azul o rojo) pertenecerá usted. Al presionar en “Siguiente”, 
+        esta asignación se hará automáticamente.
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

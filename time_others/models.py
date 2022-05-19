@@ -61,8 +61,8 @@ class Constants(BaseConstants):
             'b_y': 45         # y value of point B
         },
         'prob': {
-            'a': 0,
-            'b': 100
+            'a': 100,
+            'b': 0
         }
     }
     

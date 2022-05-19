@@ -258,7 +258,7 @@
         }
         else
         {
-            if ( mode == 'single_fixedcircle'){
+            if ( mode == 'single_fixedcircle' ){
                 document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
                 document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
             }
@@ -271,6 +271,10 @@
                 document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
                 document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
                 document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
+            }
+            else if (mode == 'single' ){
+                document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
+                document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
             }
 
             
@@ -388,17 +392,6 @@
                     </div>
                 </div>
                 <div class="col-3" v-if="mode === 'single_given'">
-                    {% if player.round_number == 1  or player.round_number == 2 or player.round_number == 3 or player.round_number == 4 or player.round_number == 5 %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
-                    {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 10 %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
-                    {% elif player.round_number == 11 or player.round_number == 12 or player.round_number == 13 or player.round_number == 14 or player.round_number == 15 %}
-                        {% if random_number == 1 %}
-                            <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
-                        {% elif random_number == 2 %}
-                            <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
-                        {% endif %}
-                    {% endif %}
                     <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm small">
                             <thead>
@@ -422,11 +415,6 @@
                         </table>
                     </div>
                     <div class="row" id="results" style="display: none; margin-top: 40px">
-                        {% if player.round_number == 1  or player.round_number == 2 or player.round_number == 3 or player.round_number == 4 or player.round_number == 5 %}
-                            <h5>Si esta fuese la decisión que cuenta, usted tendría que resolver:</h5>
-                        {% elif player.round_number == 6  or player.round_number == 7 or player.round_number == 8 or player.round_number == 9 or player.round_number == 10 %}  
-                            <h5>Si esta fuese la decisión que cuenta, su pareja tendría que resolver:</h5>
-                        {% endif %}
                         
                         <table class="table table-bordered table-sm small">
                             <thead>
@@ -444,8 +432,8 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >
-                    {% if mode == 'sec_ownrisk_fixedother' %}
+                <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >   
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_ownrisk' %}
                         <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
                     {% elif mode == 'sec_otherrisk_ownfixed' %}  
                         <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
@@ -453,7 +441,7 @@
                         <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja entre hoy y en una semana</h5>
                     {% endif %}
 
-                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' %}
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' or mode == 'sec_ownrisk' %}
                         <div class="row" style="margin-top: 50px">
                             <table class="table table-bordered table-sm mdall">
                                 <thead>
@@ -493,6 +481,25 @@
                                         <tr>
                                             <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
                                             <td id="you_payoff_1" style="text-align: center; color: blue" v-if="mode !== 'single'">N/A</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+
+                        {% elif mode == 'sec_ownrisk' %}
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                                <h5>Si esta fuese la decisión que cuenta, usted tendría que resolver:</h5>
+                                <table class="table table-bordered table-sm small">
+                                    <thead>
+                                        <tr>
+                                            <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
+                                            <td width="33%"style="text-align: center; color: blue"v-if="mode == 'single'"><b>Tareas en una semana</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
+                                            <td id="you_payoff_1" style="text-align: center; color: blue" v-if="mode == 'single'">N/A</td>
                                         </tr>
                                     </tbody>
                                 </table>
