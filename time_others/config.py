@@ -331,6 +331,14 @@ def shuffle(data):
 
     return shuffled_data
 
+def shuffle_blocks(data):
+
+    if shuffle_blocks == False:
+        return data
+
+    shuffle_data=random.shuffle(data)
+    return shuffle_data
+
 
 def flatten(shuffled_data):
     return [period for block in shuffled_data for period in block]
