@@ -1,0 +1,63 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+
+{% block title %}
+    Instrucciones del experimento
+{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        .shades {
+            color:#EE4B2B
+        }
+        .under {
+            text-decoration: underline;
+        }
+    </style>
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+    <input type="hidden" name="time_InitialInstructions_2" id="arrive_time"/>
+    <br>
+    <h4>¡Bienvenido al experimento!</h4>
+    <br>
+    <h3>Descripción General</h3>
+    <p>
+        En este estudio, deberás resolver una serie de tareas de transcripción. Tendrás que trabajar en estas tareas de transcripción en 
+        cada una de las dos sesiones. Cuántas tareas tendrás que resolver en cada sesión dependerá de tus decisiones y del azar. Aun así, 
+        en cada sesión deberás resolver un número mínimo de tareas. Por lo tanto, es necesario que te presentes a las dos sesiones.
+    </p>
+    <h3>Tarea de transcripción</h3>
+    <p>
+        La tarea de transcripción consiste en escribir en un recuadro el texto que se te presenta en la pantalla, que es una combinación de 
+        aproximadamente 60 caracteres. Para esto, tendrás que intentar ser exacto y asegurarte de poner todas las letras y espacios en las 
+        posiciones que correspondan. La siguiente captura de pantalla aclara lo recién expuesto:
+    </p>
+    <img src="{% static 'time_others_instructions/image1.PNG' %}" width="700">
+    <p>
+        Tan pronto como ingreses todos los caracteres correctamente, un nuevo texto aparecerá, consistiendo nuevamente de alrededor de 
+        60 caracteres. Cada nuevo texto se compone de caracteres diferentes asignados aleatoriamente, así que es muy probable que sean 
+        muy diferentes entre sí.
+
+    </p>
+    <p>
+        <span class="under">Entradas incorrectas</span>: En caso de que cometas tres errores en la transcripción de texto y presiones el botón “Next”, una nota 
+        aparecerá en tu pantalla. En tal caso, deberás transcribir la palabra completa nuevamente. Sin embargo, el texto a ser transcrito 
+        seguirá siendo el mismo.
+    </p>
+    
+
+    {% next_button %}
+{% endblock %}
+

@@ -1,0 +1,112 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+
+{% block title %}
+    Instrucciones del experimento
+{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        .shades {
+            color:#EE4B2B
+        }
+        .under {
+            text-decoration: underline;
+        }
+        .italic {
+            font-style: italic;
+        }
+    </style>
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+    <input type="hidden" name="time_InitialInstructions_4" id="arrive_time"/>
+    <br>
+    <h4>¡Bienvenido al experimento!</h4>
+    <br>
+    <h3>Determinación de "la decisión que cuenta"</h3>
+    <p>
+        En la sesión de hoy, tomarás un total de 45 decisiones. Inmediatamente después de tomar todas las decisiones, una decisión será 
+        escogida de manera aleatoria. Esta “decisión que cuenta” define cuántas tareas tú y tu pareja necesitarán resolver en las sesiones 
+        de hoy y de la siguiente semana. La determinación de la “decisión que cuenta” se detalla a continuación:
+    </p>
+    <p>
+        <ol>
+            <li>Primero, dividimos a todos los participantes en dos grupos: rojo y azul. Esta selección se hará automáticamente por el 
+                programa que usarás para tomar tus decisiones. Las chances de pertenecer al grupo rojo es la misma que la de pertenecer 
+                al grupo azul.</li>
+            <li>Luego, cada participante del grupo azul será emparejado aleatoriamente con un participante del grupo rojo. Las decisiones 
+                de los participantes del grupo rojo determinarán cuántas tareas ambos participantes tendrán que resolver en las sesiones 
+                de hoy y de la siguiente semana.</li>
+            <li>Después de esto, se determinará qué decisión será relevante. Para esto, primero uno de los nueve bloques es escogido 
+                aleatoriamente con probabilidades iguales, Luego, una de las cinco decisiones del bloque escogido será elegida de manera 
+                aleatoria con probabilidades iguales.</li>
+        </ol>
+    </p>
+    <p>
+        Dicha decisión será “la que cuenta”. La distribución de tareas en esta decisión determinará cuántas tareas tú y la otra persona 
+        necesitarán resolver en las sesiones de hoy y la siguiente semana. Este procedimiento asegura que cada decisión tiene la misma 
+        probabilidad de ser escogida. Más aún, esto implica que “la decisión que cuenta” podrá ser diferente de un participante a otro.
+    </p>
+    <p>
+        Ejemplo: Para un participante del grupo rojo, la decisión 5 del bloque 4 es escogida:
+    </p>
+    <!--Falta Imagen-->
+    <p>
+        Esto significa que el participante del grupo rojo necesita resolver X tareas hoy y Y tareas en la siguiente semana, y el 
+        participante azul (la “pareja”) necesita resolver XX tareas hoy y YY tareas en la siguiente semana, además del requerimiento 
+        mínimo de 10 tareas cada uno en cada sesión.
+    </p>
+    <p>
+        Para otro participante del grupo rojo, la decisión 3 del bloque 8 es escogida:
+    </p>
+    <!--Falta Imagen-->
+    <p>
+        Esto significa que el participante del grupo rojo necesita resolver A tareas hoy y B tareas en la siguiente semana, y el 
+        participante azul (la “pareja”) necesita resolver AA tareas hoy y BB tareas en la siguiente semana, además del requerimiento 
+        mínimo de 10 tareas cada uno en cada sesión.
+    </p>
+    <p>
+        <b>Información: Por favor, tenga en cuenta que toda decisión que tomes puede ser “la decisión que cuenta”. Por tanto, por favor 
+            tome cada decisión como si fuese la que determinará las tareas que hará.</b>
+    </p>
+    <h3>Resumen</h3>
+    <p>
+        Estás participando en un estudio con un total de dos sesiones experimentales: hoy y en la siguiente semana.
+    </p>
+    <p>
+        <ul>
+            <li>Si te presentas a todas las sesiones y resuelves todas tus tareas, recibirás un pago de S/30 al final de la segunda sesión.</li>
+            <li>Si te pierdes una o ambas sesiones y/o no resuelves todas tus tareas, recibirás un pago de compensación de S/5, que se te 
+                transferirá al final de la segunda sesión.</li>
+            <li>En la sesión de hoy, tomarás varias decisiones en las que distribuirás tareas entre hoy y la siguiente semana. Una de 
+                esas decisiones será escogida aleatoriamente y se implementará inmediatamente después. Esta “decisión que cuenta” 
+                determinará cuántas tareas tú y otra persona necesitarán resolver después de tomar sus decisiones en la sesión de hoy y 
+                en la sesión de la siguiente semana.</li>
+            <li>Todos los participantes necesitan resolver un mínimo de 10 tareas, independientemente de “la decisión que cuenta” en cada 
+                una de las dos semanas.</li>
+            <li>Tan pronto como resuelvas tus tareas en las sesiones de hoy y la siguiente semana, podrás abandonar la sesión virtual. 
+                No tienes que esperar a los demás participantes.</li>
+        </ul>
+    </p>
+    <p class="shades">
+        En caso de que tengas alguna pregunta, por favor comunícaselo al experimentador. Responderemos tus preguntas de manera privada. 
+        Luego, el experimento empezará con la pantalla de prueba y las preguntas de control.
+    </p>
+
+
+
+    {% next_button %}
+{% endblock %}
+

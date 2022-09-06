@@ -173,7 +173,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'real_world_currency_per_point': 0.33,
         'participation_fee': 5.00,
-        'app_sequence': ['real_effort','time_others','demograp_es']
+        'app_sequence': ['time_others_instructions','real_effort','time_others','demograp_es']
     },
     {
         'name': 'demograp',
