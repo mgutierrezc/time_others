@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<head>
+<style>
+h2 {
+        color: #F8F4EE;
+}
+</style>
+</head>
+<body>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+    <h3>
+        Instrucciones del Bloque
+    </h3>
+
+    <p>
+        <div align="justify">
+
+            Al comenzar la ronda, realizarás una tarea de transcripción que te generará ingresos en SOLES.
+                Mientras mejor sea la transcripción, mayores serán tus ingresos.
+            <br><br>
+            {% next_button %}
+    </div>
+</div>
+</body>
+
+
+{% endblock %}
+

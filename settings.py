@@ -20,20 +20,20 @@ else:
 SECRET_KEY = '2$8ov+&por@ab)d*#v#@upknv=8^^$5a64g$dvsiynxe*7216g'
 
 
-DATABASES = {
-    'default': dj_database_url.config(
-        # Rather than hardcoding the DB parameters here,
-        # it's recommended to set the DATABASE_URL environment variable.
-        # This will allow you to use SQLite locally, and postgres/mysql
-        # on the server
-        # Examples:
-        # export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
-        # export DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Rather than hardcoding the DB parameters here,
+#         # it's recommended to set the DATABASE_URL environment variable.
+#         # This will allow you to use SQLite locally, and postgres/mysql
+#         # on the server
+#         # Examples:
+#         # export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
+#         # export DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME
 
-        # fall back to SQLite if the DATABASE_URL env var is missing
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-    )
-}
+#         # fall back to SQLite if the DATABASE_URL env var is missing
+#         default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+#     )
+# }
 
 # AUTH_LEVEL:
 # this setting controls which parts of your site are freely accessible,
@@ -173,7 +173,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'real_world_currency_per_point': 0.33,
         'participation_fee': 5.00,
-        'app_sequence': ['time_others','demograp_es']
+        'app_sequence': ['real_effort','time_others','demograp_es']
     },
     {
         'name': 'demograp',

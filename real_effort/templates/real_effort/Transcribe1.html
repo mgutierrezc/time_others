@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Transcripción
+{% endblock %}
+
+{% block content %}
+
+        <p> Trascribe el siguiente texto en el recuadro.</p>
+<p>Trata de ser exacto y asegúrate de poner todas las letras y espacios correspondientes.</p>
+
+
+    {% formfield player.transcribed_text2 label="" %}
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        var referenceText = {{ reference_text|json }};
+        $('#prefill').click(function () {
+            $('#id_transcribed_text').val(referenceText);
+        })
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Reporte de Ingresos
+{% endblock %}
+
+{% block content %}
+
+        <p> La precisión de tu transcripción fue de {{ display_ratio }}%.</p>
+        <p>Por lo tanto, tu ingreso es de {{ display_income }}. ({{display_ratio}}% de {{ endowment }}).
+        </p>
+
+    {% next_button %}
+
+
+{% endblock %}
