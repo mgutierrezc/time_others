@@ -91,23 +91,7 @@ def generateText2(difficulty):
 
     return generated
 
-# def getPageCode(self):
-#     """This method generates a page code in the format T_1_A_5, where the number after "T" represents the transcription
-#     mode (0 or 1) and the number after "A" represents the authority mode (1 or 2). This page code is displayed at the
-#     top right of every page in the game."""
 
-#     config = self.session.vars["config"]
-#     t_code = 0
-#     auth_code = config[0][self.round_number - 1]["mode"]
-
-#     if config[0][self.round_number - 1]["transcription"] == True:
-#         t_code = 1
-
-#     return "T" + str(t_code) + "_" + "A" + str(auth_code)
-
-# PAGES
-
-    
 class InstructionsB(Page):
     """Description of the game block"""
     def is_displayed(self):
@@ -134,12 +118,12 @@ class Transcribe1(Page):
 
     def vars_for_template(self):
         
-        writeText(self.player.refText, 'real_effort/static/real_effort2/paragraphs/{}.png'.format(player.id_in_group))
+        writeText(self.player.refText, 'real_effort/static/real_effort2/paragraphs/{}.png'.format(self.player.id_in_group))
         return {
             'image_path': 'real_effort/static/real_effort2/paragraphs/{}.png'.format(1),
             'reference_text': self.player.refText,
             'round_num': self.player.round_number,
-            'required_accuracy': 100 * (1 - Constants.allowed_error_rates[0]),
+            'required_accuracy': 100 * (1 - Constants.allowed_error_rates[1]),
         }
 
     def before_next_page(self):
@@ -148,7 +132,7 @@ class Transcribe1(Page):
 
 
 class Transcribe2(Page):
-    """Second transcription task that's shown to the player that determines the ratio sfor the player's starting income"""
+    """Second transcription task that's shown to the player that determines the ratios for the player's starting income"""
     form_model = 'player'
     form_fields = ['transcribed_text']
 
@@ -165,7 +149,7 @@ class Transcribe2(Page):
         return {
             'image_path': 'real_effort2/paragraphs/{}.png'.format(2),
             'reference_text': self.player.refText,
-            'required_accuracy': 100 * (1 - Constants.allowed_error_rates[0]),
+            'required_accuracy': 100 * (1 - Constants.allowed_error_rates[1]), # allows .8  error rate
             'round_num': self.player.round_number
         }
 
@@ -173,7 +157,7 @@ class Transcribe2(Page):
         """Determines the player's transcription accuracy."""
 
         reference_text = self.player.refText
-        allowed_error_rate = Constants.allowed_error_rates[0] # allows .99 error rate
+        allowed_error_rate = Constants.allowed_error_rates[1] # allows .8 error rate
         distance, ok = distance_and_ok(transcribed_text, reference_text,
                                        allowed_error_rate)
         if ok:
@@ -186,24 +170,7 @@ class Transcribe2(Page):
                 return "Para avanzar, debes transcribir más caracteres similares a la transcripción original."
 
 
-class ReportIncome(Page):
-    """Page where the player reports his/her income"""
-
-
-    def contribution_max(self):
-        """Dynamically sets the maximum amount of each player's income that he/she can report"""
-        return self.player.income
-
-    def vars_for_template(self):
-        return {'display_ratio': round(Constants.ratio * 100, 1), 
-                'endowment': Constants.endowment,
-                'display_income': Constants.income, 
-                'round_num': self.player.round_number
-        }
-
-
 
 
 page_sequence = [InstructionsB, 
-                Transcribe2, 
-                ReportIncome]
+                Transcribe2]
