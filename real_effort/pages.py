@@ -8,7 +8,6 @@ from random import *
 import random
 import string
 
-
 def writeText(text, fileName):
     """"This method generates the image with the garbled/randomized transcription text on it
     and saves it to fileName"""
@@ -95,7 +94,7 @@ def generateText2(difficulty):
 class InstructionsB(Page):
     """Description of the game block"""
     def is_displayed(self):
-        return self.player.round_number == 1
+        return self.round_number == 1
     
 class Transcribe1(Page):
     """First transcription task that's shown to the player that is merely for practice and does not determine the ratio
@@ -168,9 +167,6 @@ class Transcribe2(Page):
                 return "La transcripción debe ser exactamente igual a la original."
             else:
                 return "Para avanzar, debes transcribir más caracteres similares a la transcripción original."
-
-
-
 
 page_sequence = [InstructionsB, 
                 Transcribe2]

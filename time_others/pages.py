@@ -12,50 +12,6 @@ Contributors:
     Rachel Chen <me@rachelchen.me>
 """
 
-class InitialInstructions(Page):
-    form_model = 'player'
-    form_fields = ['time_InitialInstructions']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def vars_for_template(self):
-        numberOfPeriod = config.numberOfPeriod()
-        return {'participation_fee': self.session.config['participation_fee'], 'numberOfPeriod': numberOfPeriod}
-
-class InitialInstructions_2(Page):
-    form_model = 'player'
-    form_fields = ['time_InitialInstructions']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def vars_for_template(self):
-        numberOfPeriod = config.numberOfPeriod()
-        return {'participation_fee': self.session.config['participation_fee']}
-
-class InitialInstructions_3(Page):
-    form_model = 'player'
-    form_fields = ['time_InitialInstructions']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def vars_for_template(self):
-        numberOfPeriod = config.numberOfPeriod()
-        return {'participation_fee': self.session.config['participation_fee']}
-
-class InitialInstructions_4(Page):
-    form_model = 'player'
-    form_fields = ['time_InitialInstructions']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def vars_for_template(self):
-        numberOfPeriod = config.numberOfPeriod()
-        return {'participation_fee': self.session.config['participation_fee']}
-
 class Secuencia_bloques(Page):
     form_model = 'player'
 
@@ -302,10 +258,6 @@ class Results(Page):
 
 
 page_sequence = [
-    InitialInstructions,
-    InitialInstructions_2,
-    InitialInstructions_3,
-    InitialInstructions_4,
     Secuencia_bloques,
     TaskInstructions,
     AntesdelBloque,

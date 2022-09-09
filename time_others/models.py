@@ -94,7 +94,6 @@ class Player(BasePlayer):
     cq_failed_attempts = models.IntegerField()
     cq_a1 = models.LongStringField()
     cq_a2 = models.LongStringField()
-    time_InitialInstructions = models.LongStringField()
     time_TaskInstructions =  models.LongStringField()
     time_ControlQuestions = models.LongStringField()
     time_Graph =  models.LongStringField()
