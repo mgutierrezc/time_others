@@ -41,7 +41,7 @@ def distance_and_ok(transcribed_text, reference_text, max_error_rate):
 
 class Constants(BaseConstants):
     name_in_url = 'real_effort'
-    num_rounds = 10
+    num_rounds = 1
     #num_groups = 1
     players_per_group = None
     info_code = 'real_effort/Code.html'
