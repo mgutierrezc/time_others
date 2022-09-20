@@ -113,7 +113,7 @@ class Player(BasePlayer):
     ay = models.FloatField()
     bx = models.FloatField()
     by = models.FloatField()
-    block = models.StringField()
+    bloque = models.StringField()
     
 
     def role(self):
