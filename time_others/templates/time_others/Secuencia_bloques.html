@@ -31,7 +31,7 @@
     Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
 -->
     <div class="instructions well well-lg">
-    {% if mode == 'sec_ownrisk' %}
+    {% if block == 'self' %}
         <p>
             A continuación, tendrás que decidir cuántas tareas <b>tú</b> quieres resolver hoy y cuántas tareas quieres resolver en la siguiente semana.
             Para esto, ten en cuenta que recibirás <b>información sobre cuántas tareas tu pareja ha sido asignada aleatoriamente a resolver</b> entre hoy y la siguiente semana.
@@ -41,7 +41,7 @@
             Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.
             
         </p>
-    {% elif mode == 'sec_otherrisk_ownfixed' or mode == 'sec_ownrisk_fixedother' %}
+    {% elif block == 'other' %}
         <p>
             A continuación, tendrás que decidir cuántas tareas quieres que tu <b>pareja asignada aleatoriamente</b> resuelva hoy y cuántas tareas quieres que resuelva en la siguiente semana.
             Para esto, ten en cuenta que recibirás <b>información sobre cuántas tareas se te ha asignado aleatoriamente a ti resolver</b> entre hoy y la siguiente semana.
@@ -50,13 +50,13 @@
             Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.
 
         </p>
-    {% elif mode == 'sec_new_graph' %}
+    {% elif block == 'simultaneous' %}
         <p>
             A continuación, tendrás que decidir <b>simultáneamente</b> cuántas tareas quieres tú completar hoy y en la siguiente semana, y cuántas tareas quieres que tu pareja complete hoy y en la siguiente semana.
             En otras palabras, cada decisión en este bloque, en realidad, consiste en dos, en el sentido de que si una decisión de este bloque es escogida como “la que cuenta”, tanto tú como tu pareja deberán completar sus respectivas asignaciones, tal como tú hayas decidido.
             Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.            
         </p>
-    {% elif mode == 'sec_1bl_2ch' %}
+    {% elif block == 'dictator' %}
         <p>
             A continuación, tendrás que asignar <b>cuántas tareas deberás resolver tú y tu pareja hoy</b>. A diferencia de los demás bloques, estas decisiones 
             están sujetas a un mismo presupuesto de tareas para ti y tu pareja. Es decir, asignar menos tareas para ti implica asignar más tareas a tu pareja, y viceversa.

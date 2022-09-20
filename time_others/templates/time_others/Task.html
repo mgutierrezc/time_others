@@ -87,6 +87,12 @@
         return 'negative'
     }
 
+    var getBlock = function() {
+        var roundData = dynamicValues[currentRound - 1]
+        if (roundData) return roundData.block
+        return 'self'
+    }
+
     var defaultValue = function(sourceObj, sourceKey, defaultObj, defaultKey) {
         return (typeof sourceObj[sourceKey] === 'undefined' ? defaultObj[defaultKey] : sourceObj[sourceKey])
     }
@@ -182,6 +188,7 @@
             label: getLabels(),
             equation: getEquation(),
             prob: getProb(),
+            block: getBlock(),
             onChangeCallback: function() {
                 somethingChanged = true
                 console.log('changed cb')
@@ -197,6 +204,8 @@
         {
         var roundData = dynamicValues[currentRound - 1]
         var mode = {{ mode | json}}
+        var block = {{ block | json}}
+        document.getElementById("block").value == {{ block | json }}
         document.getElementById("arrive_time").value = (new Date()).toISOString();
         document.getElementById("mode").value = {{ mode | json }}
         if (mode === 'probability')

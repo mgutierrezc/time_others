@@ -22,9 +22,11 @@ class Secuencia_bloques(Page):
         dynamic_values = self.player.participant.vars['dynamic_values']
         round_data = dynamic_values[self.round_number - 1]
         mode = round_data['mode']
+        block = round_data['block']
         # this will be used in the conditional display of instructions
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
+                'block': block,
                 'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
                 'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
                 'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
