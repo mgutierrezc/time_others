@@ -113,71 +113,79 @@ this_r4=Randomize(4,0,1)
 
 data = [
 #[{'mode': 'probability', 'a_x': 70, 'a_y': 10, 'b_x': 10, 'b_y': 80, 'label': {'x': 'Tus fichas', 'y': "Las fichas de tu compañero"}}],
-[{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 1
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 1
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 1
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 1
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}], #bloque 1 
-[{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 2
-{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 2
-{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 2
-{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 2
-{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}], #bloque 2
-[{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 3
-{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 3
-{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 3
-{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 3
-{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}], #bloque 3
-[{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 4
-{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 4
-{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 4
-{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 4
-{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}], #bloque 4
-[{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 5
-{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 5
-{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 5
-{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}, #bloque 5
-{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self'}], #bloque 5
-[{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}], #bloque 6 
-[{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 7
-{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 7
-{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 7
-{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 7
-{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}], #bloque 7
-[{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 8
-{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 8
-{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 8
-{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 8
-{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}], #bloque 8
-[{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 9
-{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 9
-{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 9
-{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 9
-{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}], #bloque 9
-[{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 10
-{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 10
-{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 10
-{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}, #bloque 10
-{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other'}], #bloque 10
-[{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m0, 'p_y': this_r0, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 11
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m1, 'p_y': this_r1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 11
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m2, 'p_y': this_r2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 11
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m3, 'p_y': this_r3, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 11
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m4, 'p_y': this_r4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}], #bloque 11
-[{'mode': 'sec_new_graph', 'm': this_m0, 'p_x': 1, 'p_y': this_r0,'m2': 40, 'p_x2': 0.6, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 12
-{'mode': 'sec_new_graph', 'm': this_m1, 'p_x': 1, 'p_y': this_r1,'m2': 45, 'p_x2': 0.8, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 12
-{'mode': 'sec_new_graph', 'm': this_m2, 'p_x': 1, 'p_y': this_r2,'m2': 50, 'p_x2': 1, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 12
-{'mode': 'sec_new_graph', 'm': this_m3, 'p_x': 1, 'p_y': this_r3,'m2': 55, 'p_x2': 1.2, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}, #bloque 12
-{'mode': 'sec_new_graph', 'm': this_m4, 'p_x': 1, 'p_y': this_r4,'m2': 60, 'p_x2': 1.4, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous'}], #bloque 12
-[{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator'}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator'}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator'}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator'}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator'}], #bloque 13 
+[
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 1}, #bloque 1
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 1}, #bloque 1
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 1}, #bloque 1
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 1}, #bloque 1
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 1}, #bloque 1 
+{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 2}, #bloque 2
+{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 2}, #bloque 2
+{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 2}, #bloque 2
+{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 2}, #bloque 2
+{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 2}, #bloque 2
+{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 3}, #bloque 3
+{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 3}, #bloque 3
+{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 3}, #bloque 3
+{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 3}, #bloque 3
+{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 3}, #bloque 3
+{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 4}, #bloque 4
+{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 4}, #bloque 4
+{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 4}, #bloque 4
+{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 4}, #bloque 4
+{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 4}, #bloque 4
+{'mode': 'sec_ownrisk_fixedother', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 5}, #bloque 5
+{'mode': 'sec_ownrisk_fixedother', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 5}, #bloque 5
+{'mode': 'sec_ownrisk_fixedother', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 5}, #bloque 5
+{'mode': 'sec_ownrisk_fixedother', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 5}, #bloque 5
+{'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 5}, #bloque 5
+],
+[
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6 
+{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
+{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
+{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
+{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
+{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
+{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 8}, #bloque 8
+{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 8}, #bloque 8
+{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 8}, #bloque 8
+{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 8}, #bloque 8
+{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 8}, #bloque 8
+{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 9}, #bloque 9
+{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 9}, #bloque 9
+{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 9}, #bloque 9
+{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.95*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 9}, #bloque 9
+{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.95*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 9}, #bloque 9
+{'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40*0.7, 'p_x': 1, 'p_y': 0.6, 'a': 0.05*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 10}, #bloque 10
+{'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45*0.7, 'p_x': 1, 'p_y': 0.8, 'a': 0.05*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 10}, #bloque 10
+{'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50*0.7, 'p_x': 1, 'p_y': 1, 'a': 0.05*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 10}, #bloque 10
+{'mode': 'sec_otherrisk_ownfixed', 'm': 55, 'p_y': 1.2, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 55*0.7, 'p_x': 1, 'p_y': 1.2, 'a': 0.05*55}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 10}, #bloque 10
+{'mode': 'sec_otherrisk_ownfixed', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 10}, #bloque 10
+],
+[
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m0, 'p_y': this_r0, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 11}, #bloque 11
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m1, 'p_y': this_r1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 11}, #bloque 11
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m2, 'p_y': this_r2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 11}, #bloque 11
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m3, 'p_y': this_r3, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 11}, #bloque 11
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': this_m4, 'p_y': this_r4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 11}, #bloque 11
+{'mode': 'sec_new_graph', 'm': this_m0, 'p_x': 1, 'p_y': this_r0,'m2': 40, 'p_x2': 0.6, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 12}, #bloque 12
+{'mode': 'sec_new_graph', 'm': this_m1, 'p_x': 1, 'p_y': this_r1,'m2': 45, 'p_x2': 0.8, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 12}, #bloque 12
+{'mode': 'sec_new_graph', 'm': this_m2, 'p_x': 1, 'p_y': this_r2,'m2': 50, 'p_x2': 1, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 12}, #bloque 12
+{'mode': 'sec_new_graph', 'm': this_m3, 'p_x': 1, 'p_y': this_r3,'m2': 55, 'p_x2': 1.2, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 12}, #bloque 12
+{'mode': 'sec_new_graph', 'm': this_m4, 'p_x': 1, 'p_y': this_r4,'m2': 60, 'p_x2': 1.4, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 12}, #bloque 12
+],
+[
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13 
+]
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 2, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_ownrisk', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
@@ -354,9 +362,50 @@ def shuffle(data):
         return data
 
     shuffled_data = []
+
+    # shuffle each block
+    session_1=[1,2,3,4]
+    session_2=[1,2,4,3]
+    session_3=[2,1,3,4]
+    session_4=[2,1,4,3]
+    session_5=[2,3,1,4]
+    session_6=[3,2,1,4]
+    session_7=[2,3,4,1]
+    session_8=[3,2,4,1]
+    session_9=[3,4,1,2]
+    session_10=[3,4,2,1]
+    session_11=[4,3,1,2]
+    session_12=[3,4,2,1]
+
+    list_sessions=[session_1, session_2, session_3, session_4, session_5, session_6, session_7, session_8, session_9, session_10, session_11, session_12]
+    random_session= random.choice(list_sessions)
+    print('random_session: ',random_session)
+    sorted_data = [i for _,i in sorted(zip(random_session,data))]
+
+    bloques_randomizados=[]
+    for x in range(1,14):
+        bloques_randomizados.append(x)
+    bloques_randomizados = random.sample(bloques_randomizados, 13)
+    print('orden bloques: ', bloques_randomizados)
     # shuffle each dict within each block
-    for block in data:
-        shuffled_data.append(random.sample(block, k=len(block))) ##randomiza el orden de las tareas por bloque
+    for block in sorted_data:
+        temp2 = []
+        for x in bloques_randomizados:
+            temp = []
+            for dic in block:
+                if dic['numero'] == x:
+                    temp.append(dic)
+                else: 
+                    pass 
+            if not len(temp):
+                pass
+            else:
+                temp = random.sample(temp,len(temp))
+                temp2 = temp2 + temp
+        shuffled_data.append(temp2)
+        
+    #for block in sorted_data:
+    #    shuffled_data.append(random.sample(block, k=len(block))) ##randomiza el orden de las tareas por bloque
 
     # shuffle each block
     #random.shuffle(shuffled_data)  ## randomiza orden de los bloques
