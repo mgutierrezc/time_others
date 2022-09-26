@@ -575,7 +575,7 @@ var vm = new Vue({
             }
           } else if (self.mode === "single_given") {
             text =
-            "(Hoy: " +
+            "Pareja (Hoy: " +
             parseInt(self.selected[index].x) +
             ", En una semana: " +
             parseInt(self.selected[index].y) +

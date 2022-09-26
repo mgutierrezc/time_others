@@ -35,12 +35,15 @@ class Secuencia_bloques(Page):
                 'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 }
 
-class AntesdelBloque(Page):
+class AntesdelTask(Page):
     form_model = 'player'
 
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == 6 or self.round_number == 11 or self.round_number == 16  or self.round_number == 21 or self.round_number == 26 or self.round_number == 31 or self.round_number == 36 or self.round_number == 41
-    
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
+        if self.round_number > 1:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+        return self.round_number == 1 or bloque != prevbloque
+
     def vars_for_template(self):
         random_number=Constants.random_number
         # this will be used in the conditional display of instructions
@@ -51,15 +54,20 @@ class TaskInstructions(Page):
     form_fields = ['time_TaskInstructions']
 
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == 16 or self.round_number == 36 or self.round_number == 41
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
+        if self.round_number > 1:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+        return self.round_number == 1 or bloque != prevbloque
 
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
         round_data = dynamic_values[self.round_number - 1]
         mode = round_data['mode']
+        bloque = round_data['bloque']
         # this will be used in the conditional display of instructions
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
+                'bloque': bloque,
                 'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
                 'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
                 'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
@@ -111,8 +119,10 @@ class Task(Page):
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
         mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
+        round_data = dynamic_values[self.round_number - 1]
         #create random number(1: block 1, 2: block 2) for block 3:
         random_number = Constants.random_number
+        bloque = round_data['bloque']
         print('MODE MODE MODE', mode)
         if self.round_number > 1:
             counter = 1
@@ -127,6 +137,7 @@ class Task(Page):
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
                 'counter': counter,
+                'bloque': bloque,
                 'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
                 'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 'random_number': random_number
@@ -265,7 +276,7 @@ class Results(Page):
 page_sequence = [
     Secuencia_bloques,
     TaskInstructions,
-    AntesdelBloque,
+    AntesdelTask,
     Task,
     Finalizar_tareas,
     Determinar_tareas,

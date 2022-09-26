@@ -141,11 +141,11 @@ data = [
 {'mode': 'sec_ownrisk_fixedother', 'm': 60, 'p_y': 1.4, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 60*0.7, 'p_x': 1, 'p_y': 1.4, 'a': 0.05*60}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'self', 'numero': 5}, #bloque 5
 ],
 [
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6 
+{'mode': 'det_giv', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'det_giv', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'det_giv', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'det_giv', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6
+{'mode': 'det_giv', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 6}, #bloque 6 
 {'mode': 'sec_otherrisk_ownfixed', 'm': 40, 'p_y': 0.6, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 40, 'p_x': 1, 'p_y': 0.6, 'a': 0.95*40}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
 {'mode': 'sec_otherrisk_ownfixed', 'm': 45, 'p_y': 0.8, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 45, 'p_x': 1, 'p_y': 0.8, 'a': 0.95*45}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7
 {'mode': 'sec_otherrisk_ownfixed', 'm': 50, 'p_y': 1, 'a': 30, 'b': 13.3, 'p_x': 1, 'prob_a': 100, 'fixed': {'m': 50, 'p_x': 1, 'p_y': 1, 'a': 0.95*50}, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'other', 'numero': 7}, #bloque 7

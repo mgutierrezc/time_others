@@ -4,13 +4,13 @@
 {% block title %}
 
     {% if bloque == 'self' %}
-        <h1>Bloques 1-5</h1>
+        <h1>Decide cómo distribuir tus tareas</h1>
     {% elif bloque == 'other' %}
-        <h1>Bloques 6-10</h1>
+        <h1>Decide cómo distribuir las tareas de tu pareja</h1>
     {% elif bloque == 'simultaneous' %}
-        <h1>Bloques 11-12</h1>
+        <h1>Decide cómo distribuir tanto tus tareas como las de tu pareja</h1>
     {% elif bloque == 'dictator' %}
-        <h1>Bloque 13</h1>
+        <h1>Decide cómo distribuir tareas entre tú y tu pareja</h1>
     {% endif %} 
 
 {% endblock %} 
@@ -31,6 +31,9 @@
     Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
 -->
     <div class="instructions well well-lg">
+        <div class="card bg-light instructions">
+            <div class="card-body">
+
     {% if bloque == 'self' %}
         <p>
             A continuación, tendrás que decidir cuántas tareas <b>tú</b> quieres resolver hoy y cuántas tareas quieres resolver en la siguiente semana.
@@ -64,7 +67,9 @@
         </p>
     {% endif %}
     </div>
-
+    </div>
+    </div>
+    <br>
     {% next_button %}
 
 {% endblock %}
