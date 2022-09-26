@@ -180,11 +180,11 @@ data = [
 {'mode': 'sec_new_graph', 'm': this_m4, 'p_x': 1, 'p_y': this_r4,'m2': 60, 'p_x2': 1.4, 'p_y2': 1, 'prob_a': 100, 'label': {'x': 'Tareas a completar hoy', 'y': 'Tareas a completar en la siguiente semana'}, 'bloque': 'simultaneous', 'numero': 12}, #bloque 12
 ],
 [
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
-{'mode': 'sec_ownrisk', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13 
+{'mode': 'dictator', 'prob_a': 100, 'm': 40, 'p_y': 0.6, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'dictator', 'prob_a': 100, 'm': 45, 'p_y': 0.8, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'dictator', 'prob_a': 100, 'm': 50, 'p_y': 1, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'dictator', 'prob_a': 100, 'm': 55, 'p_y': 1.2, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13
+{'mode': 'dictator', 'prob_a': 100, 'm': 60, 'p_y': 1.4, 'p_x': 1, 'label': {'x': 'Tareas a completar hoy (tú)', 'y': 'Tareas a completar hoy (pareja)'}, 'bloque': 'dictator', 'numero': 13}, #bloque 13 
 ]
 #[{'mode': 'sec_2bl_1ch', 'm': 50, 'p_x': 0.6, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],
 #[{'mode': 'sec_1bl_2ch', 'm': 50, 'p_x': 2, 'p_y': 1, 'prob_a': 50, 'label': {'x': 'Estado A (50%)', 'y': 'Estado B (50%)'}}],

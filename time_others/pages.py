@@ -30,9 +30,6 @@ class Secuencia_bloques(Page):
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
                 'bloque': bloque,
-                'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
-                'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 }
 
 class AntesdelTask(Page):
@@ -68,9 +65,6 @@ class TaskInstructions(Page):
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
                 'bloque': bloque,
-                'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
-                'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 }
 
         
@@ -107,6 +101,8 @@ class Task(Page):
                 return ['mode', 'prob_a', 'prob_b', 'time_Graph', 'ax', 'ay', 'bx', 'by']
             elif round_data['mode'] == 'sec_ownrisk':
                 return ['mode', 'me_a', 'me_b', 'prob_a', 'prob_b', 'time_Graph', 'm', 'px', 'py']
+            elif round_data['mode'] == 'dictator':
+                return ['mode', 'me_a', 'me_b', 'prob_a', 'prob_b', 'time_Graph', 'm', 'px', 'py']
             elif round_data['mode'] == 'sec_ownrisk_fixedother' or round_data['mode'] == 'sec_otherrisk_ownfixed':
                 return ['mode', 'partner_a', 'partner_b', 'me_a', 'me_b', 'prob_a',
                         'prob_b', 'time_Graph', 'm', 'px', 'py', 'a', 'b']
@@ -138,8 +134,6 @@ class Task(Page):
                 'mode': mode,
                 'counter': counter,
                 'bloque': bloque,
-                'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
                 'random_number': random_number
                 }
 

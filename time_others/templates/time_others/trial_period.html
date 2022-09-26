@@ -392,25 +392,28 @@
                         </table>
                     </div>
                 </div>
+
                 <div class="col-3" v-if="mode === 'single_given'">
+                    <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
+
                     <div class="row" style="margin-top: 50px">
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
                                     <td width="34%" style = "text-align: center;">Tiempo</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                    <td width="33%" style = "text-align: center; color: orange"><b>Tareas</b></td>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td style = "text-align: center;">Hoy</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].x)"></td>
 
                                 </tr>
                                 <tr>
                                     <td style = "text-align: center;">En una semana</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].y)"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -445,7 +448,7 @@
 
                     {% endif %}
 
-                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' or mode == 'sec_ownrisk' %}
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' or mode == 'sec_ownrisk' or mode == 'dictator' %}
                         <div class="row" style="margin-top: 50px">
                             <table class="table table-bordered table-sm mdall">
                                 <thead>
@@ -504,6 +507,25 @@
                                         <tr>
                                             <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
                                             <td id="you_payoff_1" style="text-align: center; color: blue" v-if="mode == 'single'">N/A</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+
+                        {% elif mode == 'dictator' %}
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                                <h5>Si esta fuese la decisión que cuenta, tú y tu pareja tendrían que resolver hoy:</h5>
+                                <table class="table table-bordered table-sm small">
+                                    <thead>
+                                        <tr>
+                                            <td width="33%" style="text-align: center; color: blue"><b>Tú</b></td>
+                                            <td width="33%"style="text-align: center; color: orange"v-if="mode == 'new_single'"><b>Tu pareja</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
+                                            <td id="you_payoff_1" style="text-align: center; color: orange" v-if="mode == 'new_single'">N/A</td>
                                         </tr>
                                     </tbody>
                                 </table>
