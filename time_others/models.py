@@ -188,7 +188,8 @@ class Group(BaseGroup):
         'sec_otherrisk_ownfixed': 'single_fixedsquare',
         'det_giv': 'single_given',
         #nuevo caso añadido
-        'sec_new_graph':'newone'}
+        'sec_new_graph':'newone',
+        'dictator': 'new_single'}
         
         # generate pseudo_random number to compare to probabilities  0 <= rnd <= 1
         rnd = random.random()

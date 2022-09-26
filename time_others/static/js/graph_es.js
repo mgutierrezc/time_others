@@ -193,6 +193,9 @@ var vm = new Vue({
         case "single_given":
           this.equations.push(this.equation);
           break;
+        case "new_single":
+          this.equations.push(this.equation);
+          break;
         case "probability":
           this.equations = [];
           this.equations.push({
@@ -587,6 +590,14 @@ var vm = new Vue({
               ", En una semana: " +
               parseInt(self.selected[index].y) +
               ")";
+          
+          } else if (self.mode === "new_single") {
+            text =
+              " (Tú: " +
+              parseInt(self.selected[index].x) +
+              ", Tu pareja: " +
+              parseInt(self.selected[index].y) +
+              ")";
           }
 
           self.tip[index] = this.graph.svg
@@ -658,6 +669,13 @@ var vm = new Vue({
               " (Hoy: " +
               parseInt(xValue.toFixed(self.precision)) +
               ", En una semana: " +
+              parseInt(yValue.toFixed(self.precision)) +
+              ")";
+          } else if (self.mode === "positive") {
+            text =
+              " (Tú: " +
+              parseInt(xValue.toFixed(self.precision)) +
+              ", Tu pareja: " +
               parseInt(yValue.toFixed(self.precision)) +
               ")";
           }

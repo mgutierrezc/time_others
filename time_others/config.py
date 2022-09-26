@@ -457,7 +457,7 @@ def fill_defaults(data):
     newdata = copy.deepcopy(data)
     for block in newdata:
         for dic in block:
-            if dic['mode'] in ['sec_1bl_1ch', 'sec_2bl_1ch', 'sec_1bl_2ch', 'sec_ownrisk','new_grap']:
+            if dic['mode'] in ['sec_1bl_1ch', 'sec_2bl_1ch', 'sec_1bl_2ch', 'sec_ownrisk','new_grap', 'dictator']:
                 if 'p_y' not in dic:
                     dic['p_y'] = 1.2
                 if 'prob_a' not in dic:

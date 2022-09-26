@@ -194,7 +194,8 @@ class Results(Page):
         'det_giv': 'DG',
         'sec_ownrisk_fixedother': 'S-OwnRisk-FixedOther',
         'sec_otherrisk_ownfixed': 'S-OtherRisk-OwnFixed',
-        'sec_new_graph':'S-newone'}
+        'sec_new_graph':'S-newone',
+        'dictator': 'S-new'}
 
         modeNum = {
         'probability': '1',
@@ -205,7 +206,8 @@ class Results(Page):
         'det_giv': '8',
         'sec_new_graph':'9',
         'sec_ownrisk_fixedother': '6',
-        'sec_otherrisk_ownfixed': '7'}
+        'sec_otherrisk_ownfixed': '7',
+        'dictator': '10'}
 
         # variables:
         mode = self.group.get_player_by_id(1).participant.vars['pr_dict']['mode']

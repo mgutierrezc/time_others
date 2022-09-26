@@ -193,6 +193,9 @@ var vm = new Vue({
         case "single_given":
           this.equations.push(this.equation);
           break;
+        case "new_single":
+          this.equations.push(this.equation);
+          break;
         case "probability":
           this.equations = [];
           this.equations.push({
@@ -575,16 +578,24 @@ var vm = new Vue({
             }
           } else if (self.mode === "single_given") {
             text =
-              "(Hoy: " +
-              parseInt(self.selected[index].x) +
-              ", En una semana: " +
-              parseInt(self.selected[index].y) +
-              ")";
+            "Pareja (Hoy: " +
+            parseInt(self.selected[index].x) +
+            ", En una semana: " +
+            parseInt(self.selected[index].y) +
+            ")";
           } else if (self.mode === "positive") {
             text =
               " (Hoy: " +
               parseInt(self.selected[index].x) +
               ", En una semana: " +
+              parseInt(self.selected[index].y) +
+              ")";
+          
+          } else if (self.mode === "new_single") {
+            text =
+              " (Tú: " +
+              parseInt(self.selected[index].x) +
+              ", Tu pareja: " +
               parseInt(self.selected[index].y) +
               ")";
           }
@@ -648,16 +659,23 @@ var vm = new Vue({
             }
           } else if (self.mode === "single_given") {
             text =
-            "(Hoy: " +
-            parseInt(xValue.toFixed(self.precision)) +
-            ", En una semana: " +
-            parseInt(yValue.toFixed(self.precision)) +
-            ")";
+              "(Hoy: " +
+              parseInt(xValue.toFixed(self.precision)) +
+              ", En una semana: " +
+              parseInt(yValue.toFixed(self.precision)) +
+              ")";
           } else if (self.mode === "positive") {
             text =
               " (Hoy: " +
               parseInt(xValue.toFixed(self.precision)) +
               ", En una semana: " +
+              parseInt(yValue.toFixed(self.precision)) +
+              ")";
+          } else if (self.mode === "positive") {
+            text =
+              " (Tú: " +
+              parseInt(xValue.toFixed(self.precision)) +
+              ", Tu pareja: " +
               parseInt(yValue.toFixed(self.precision)) +
               ")";
           }
