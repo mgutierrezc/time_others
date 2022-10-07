@@ -185,7 +185,6 @@
             prob: getProb(),
             onChangeCallback: function() {
                 somethingChanged = true
-                console.log('changed cb')
             }
         })
 
@@ -197,8 +196,10 @@
     window.onload = function ()
         {
         var roundData = dynamicValues[currentRound - 1]
-        var mode = {{ mode | json}}
+        var mode = {{ mode | json }}
         document.getElementById("arrive_time").value = (new Date()).toISOString();
+        document.getElementById("pyy").innerHTML = roundData.p_y
+        document.getElementById("pxx2").innerHTML = roundData.p_x2
         if (mode === 'probability')
         {
             document.getElementById("ax").value = roundData.a_x
@@ -225,8 +226,10 @@
             document.getElementById("m").value = roundData.m
             document.getElementById("px").value = roundData.p_x
             document.getElementById("py").value = roundData.p_y
+            document.getElementById("pyy").innerHTML = roundData.p_y
         }
-        }
+        }   
+        
 
     function test_outcome()
     {
@@ -235,8 +238,8 @@
 
         var roundData = dynamicValues[currentRound - 1]
         var mode = getMode()
+        console.log(mode)
         var rand = Math.random()
-
         if (mode === 'probability')
         {
             if (rand * 100 < vm.prob.a)
@@ -262,21 +265,27 @@
             if ( mode == 'single_fixedcircle' ){
                 document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
                 document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
+                document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
+                document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
+                
             }
             else if (mode == 'single_fixedsquare' ){
                 document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
                 document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
+                document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
+                document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
             }
-            else if (mode == 'newone' || mode == 'independent' ){
+            else if (  mode == 'independent' || mode == "newone" ){
                 document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
                 document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
                 document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
                 document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
             }
-            else if (mode == 'single' ){
+            else if (mode == 'single' || mode == "new_single"  ){
                 document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
                 document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
             }
+
 
             
         }
@@ -395,8 +404,9 @@
 
                 <div class="col-3" v-if="mode === 'single_given'">
                     <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
-
+                    
                     <div class="row" style="margin-top: 50px">
+                        <h6>Tasa: 1:<span id="pyy"></span></h6>
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
@@ -419,21 +429,7 @@
                         </table>
                     </div>
                     <div class="row" id="results" style="display: none; margin-top: 40px">
-                        
-                        <table class="table table-bordered table-sm small">
-                            <thead>
-                                <tr>
-                                    <td width="50%" style="text-align: center; color: blue"> <b>Tareas para hoy</b> </td>
-                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>Tareas en una semana</b> </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="you_payoff" style="text-align: center; color: blue"> N/A </td>
-                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'"  > N/A </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver 0 tareas hoy y 0 en la siguiente semana. Y su pareja tendría que resolver <span id="you_payoff" style="color:orange"></span> tareas hoy y <span id="partner_payoff" style="color:orange"></span> en la siguiente semana.</h6>
                     </div>
                 </div>
                 <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >   
@@ -448,8 +444,9 @@
 
                     {% endif %}
 
-                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' or mode == 'sec_ownrisk' or mode == 'dictator' %}
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' or mode == 'sec_ownrisk' %}
                         <div class="row" style="margin-top: 50px">
+                            <h6>Tasa: 1:<span id="pyy"></span>{% if mode == "sec_new_graph" %} & Tasa: 1:<span id="pxx2"></span> {% endif %}</h6>
                             <table class="table table-bordered table-sm mdall">
                                 <thead>
                                     <tr>
@@ -474,118 +471,49 @@
                             </table>
                         </div>
 
-                        {% if mode == 'sec_ownrisk_fixedother' %}
+                        {% if mode == 'sec_ownrisk_fixedother'  or mode == "sec_otherrisk_ownfixed" %}
                         <div class="row" id="results" style="display: none; margin-top: 40px;">
-                                <h5>Si esta fuese la decisión que cuenta, usted tendría que resolver:</h5>
-                                <table class="table table-bordered table-sm small">
-                                    <thead>
-                                        <tr>
-                                            <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
-                                            <td width="33%"style="text-align: center; color: blue"v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
-                                            <td id="you_payoff_1" style="text-align: center; color: blue" v-if="mode !== 'single'">N/A</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver <span id="you_payoff_2" style="color:blue"></span> tareas hoy y <span id="you_payoff_1" style="color:blue"></span> en la siguiente semana. Y su pareja tendría que resolver <span id="partner_payoff_2" style="color:orange"></span> tareas hoy y <span id="partner_payoff_1" style="color:orange"></span>  en la siguiente semana.</h6>
                         </div>
-
                         {% elif mode == 'sec_ownrisk' %}
                         <div class="row" id="results" style="display: none; margin-top: 40px;">
-                                <h5>Si esta fuese la decisión que cuenta, usted tendría que resolver:</h5>
-                                <table class="table table-bordered table-sm small">
-                                    <thead>
-                                        <tr>
-                                            <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
-                                            <td width="33%"style="text-align: center; color: blue"v-if="mode == 'single'"><b>Tareas en una semana</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
-                                            <td id="you_payoff_1" style="text-align: center; color: blue" v-if="mode == 'single'">N/A</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+                        <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver <span id="you_payoff_2" style="color:blue"></span> tareas hoy y <span id="you_payoff_1" style="color:blue"></span> en la siguiente semana. Y su pareja tendría que resolver 0 tareas hoy y 0 en la siguiente semana.</h6>
+                        </div>
+                        {% elif mode == "sec_new_graph" %}
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+
+                            <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver <span id="you_payoff_2" style="color:blue"></span> tareas hoy y <span id="you_payoff_1" style="color:blue"></span> en la siguiente semana. Y su pareja tendría que resolver <span id="partner_payoff_2" style="color:orange"></span> tareas hoy y <span id="partner_payoff_1" style="color:orange"></span>  en la siguiente semana.</h6>
                         </div>
 
-                        {% elif mode == 'dictator' %}
-                        <div class="row" id="results" style="display: none; margin-top: 40px;">
-                                <h5>Si esta fuese la decisión que cuenta, tú y tu pareja tendrían que resolver hoy:</h5>
-                                <table class="table table-bordered table-sm small">
-                                    <thead>
-                                        <tr>
-                                            <td width="33%" style="text-align: center; color: blue"><b>Tú</b></td>
-                                            <td width="33%"style="text-align: center; color: orange"v-if="mode == 'new_single'"><b>Tu pareja</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
-                                            <td id="you_payoff_1" style="text-align: center; color: orange" v-if="mode == 'new_single'">N/A</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </div>
-
-                        {% elif mode == 'sec_otherrisk_ownfixed' %}  
-                        <div class="row" id="results" style="display: none; margin-top: 40px;">
-                                <h5>Si esta fuese la decisión que cuenta, su pareja tendría que resolver:</h5>
-                                <table class="table table-bordered table-sm small">
-                                    <thead>
-                                        <tr>
-                                            <td width="33%" style="text-align: center; color: orange"><b>Tareas para hoy</b></td>
-                                            <td width="33%"style="text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id="partner_payoff_2" style="text-align: center; color: orange"> N/A</td>
-                                            <td id="partner_payoff_1" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </div>
-
-                        {% elif mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' %}  
-                        
-                        <div class="row" id="results" style="display: none; margin-top: 40px;">
-                            <h5>Si esta fuese la decisión que cuenta, usted tendría que resolver:</h5>
-                            <table class="table table-bordered table-sm small">
-                                <thead>
-                                    <tr>
-                                        <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
-                                        <td width="33%"style="text-align: center; color: blue"v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="you_payoff_2" style="text-align: center; color: blue"> N/A</td>
-                                        <td id="you_payoff_1" style="text-align: center; color: blue" v-if="mode !== 'single'">N/A</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <h5>Si esta fuese la decisión que cuenta, su pareja tendría que resolver:</h5>
-                            <table class="table table-bordered table-sm small">
-                                <thead>
-                                    <tr>
-                                        <td width="33%" style="text-align: center; color: orange"><b>Tareas para hoy</b></td>
-                                        <td width="33%"style="text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="partner_payoff_2" style="text-align: center; color: orange"> N/A</td>
-                                        <td id="partner_payoff_1" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        
                         {% endif %}
+                    
+                    {% elif mode == "dictator" %}
+                        
+                        <div class="row" style="margin-top: 50px">
+                            <h6>Tasa: 1:<span id="pyy"></span></h6>    
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].y)" ></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                            <h6>Si esta fuese la decisión que cuenta, tú tendrías que resolver <span id="you_payoff_2" style=" color: blue"></span> tareas hoy y tu pareja <span id="you_payoff_1" style=" color: orange"> </span> tareas hoy.</h6>
+                        </div>
 
                     {% else %}
                         <div class="row" style="margin-top: 50px">

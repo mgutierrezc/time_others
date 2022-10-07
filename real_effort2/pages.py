@@ -119,7 +119,7 @@ class Transcribe1(Page):
         
         writeText(self.player.refText, 'real_effort/static/real_effort2/paragraphs/{}.png'.format(self.player.id_in_group))
         return {
-            'image_path': 'real_effort/static/real_effort2/paragraphs/{}.png'.format(1),
+            'image_path': 'real_effort2/static/real_effort2/paragraphs/{}.png'.format(1),
             'reference_text': self.player.refText,
             'round_num': self.player.round_number,
             'required_accuracy': 100 * (1 - Constants.allowed_error_rates[1]),
@@ -140,7 +140,7 @@ class Transcribe2(Page):
         print("Inside Transcribe2 page")
         # creating an image with the text to be transcribed
         self.player.refText = generateText2(Constants.difficulty)            
-        writeText(self.player.refText, 'real_effort/static/real_effort2/paragraphs/{}.png'.format(2))
+        writeText(self.player.refText, 'real_effort2/static/real_effort4/paragraphs/{}.png'.format(2))
         self.player.tareas_yo_hoy = self.player.participant.vars['tareas_yo_hoy']
         tareas = self.player.tareas_yo_hoy
         if tareas == 0:
@@ -152,7 +152,7 @@ class Transcribe2(Page):
 
     def vars_for_template(self):
         return {
-            'image_path': 'real_effort2/paragraphs/{}.png'.format(2),
+            'image_path': 'real_effort4/paragraphs/{}.png'.format(2),
             'reference_text': self.player.refText,
             'required_accuracy': 100 * (1 - Constants.allowed_error_rates[1]), # allows .8  error rate
             'round_num': self.player.round_number

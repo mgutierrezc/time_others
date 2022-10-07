@@ -57,7 +57,7 @@ def generateText1(difficulty):
         for i in range(5):
              allchar += vowels[i]
     
-    while(len(generated) < 70 - max_char):
+    while(len(generated) < 50 - max_char):
         add = "".join(choice(allchar) for x in range(randint(min_char, max_char)))
         generated += (add +".")
 
@@ -84,7 +84,7 @@ def generateText2(difficulty):
         for i in range(5):
             allchar += vowels[i]
 
-    while (len(generated) < 70 - max_char):
+    while (len(generated) < 50 - max_char):
         add = "".join(choice(allchar) for x in range(randint(min_char, max_char)))
         generated += (add + ".")
 
