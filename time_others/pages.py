@@ -221,6 +221,7 @@ class Results(Page):
                 dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
                 dec_partner_manana = decider.in_round(pr).partner_b
                 #reemplazar partner_a con me_b 
+                
             
             elif mode == 'det_giv':
                 decider.in_round(pr).partner_a = decider.in_round(pr).me_a
@@ -247,40 +248,16 @@ class Results(Page):
                 dec_partner_manana = round(decider.in_round(pr).partner_b, 0)
 
         elif self.player.id_in_group == 2:
-            if mode == 'dictator' :
-                decider.in_round(pr).me_a = decider.in_round(pr).partner_b 
-                decider.in_round(pr).partner_b = 0
-                decider.in_round(pr).me_b = 0
                 dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
                 dec_yo_manana = decider.in_round(pr).partner_b
                 dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
                 dec_partner_manana = decider.in_round(pr).me_b
                 #reemplazar partner_a con me_b 
-            
-            elif mode == 'det_giv':
-                decider.in_round(pr).me_a = decider.in_round(pr).partner_a
-                decider.in_round(pr).me_b = decider.in_round(pr).partner_b
-                decider.in_round(pr).partner_a = 0
-                decider.in_round(pr).partner_b = 0
-                dec_yo_hoy = decider.in_round(pr).partner_a
-                dec_yo_manana = decider.in_round(pr).partner_b
-                dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
-                dec_partner_manana = round(decider.in_round(pr).me_b, 0)
-            
-            elif mode == 'sec_ownrisk':
-                decider.in_round(pr).me_a = 0
-                decider.in_round(pr).me_b = 0
-                dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
-                dec_yo_manana = round(decider.in_round(pr).partner_b, 0)
-                dec_partner_hoy = decider.in_round(pr).me_a
-                dec_partner_manana = decider.in_round(pr).me_b
-            
-            else:
-                dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
-                dec_yo_manana = round(decider.in_round(pr).partner_b, 0)
-                dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
-                dec_partner_manana = round(decider.in_round(pr).me_b, 0)
-       
+
+        self.player.tareas_yo_hoy = dec_yo_hoy
+        self.player.tareas_yo_manana = dec_yo_manana
+        self.player.participant.vars['tareas_yo_hoy'] = self.player.tareas_yo_hoy
+        self.player.participant.vars['tareas_yo_manana'] = self.player.tareas_yo_manana
             # single mode
             # else:
             #     deci_a = round(nondecider.in_round(pr2).me_a, 1)

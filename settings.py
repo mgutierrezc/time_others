@@ -140,7 +140,12 @@ SESSION_CONFIG_DEFAULTS = {
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
 }
-
+PARTICIPANT_FIELDS = [
+        'tareas_yo_hoy',
+        'tareas_yo_manana',
+        'tareas_partner_hoy',
+        'tareas_partner_manana'
+]
 SESSION_CONFIGS = [ 
   #   {
   #       'name': 'risky_preferences',
@@ -173,7 +178,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'real_world_currency_per_point': 0.33,
         'participation_fee': 5.00,
-        'app_sequence': ['time_others_instructions','real_effort','time_others','demograp_es']
+        'app_sequence': ['time_others_instructions','real_effort','time_others','real_effort2']
     },
     {
         'name': 'demograp',

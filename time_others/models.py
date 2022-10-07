@@ -98,6 +98,8 @@ class Player(BasePlayer):
     time_ControlQuestions = models.LongStringField()
     time_Graph =  models.LongStringField()
     time_Results =  models.LongStringField()
+    tareas_yo_hoy = models.FloatField()
+    tareas_yo_manana = models.FloatField()
 
     m = models.FloatField()
     px = models.FloatField()

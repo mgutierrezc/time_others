@@ -34,8 +34,8 @@ def distance_and_ok(transcribed_text, reference_text, max_error_rate):
     return distance, ok
 
 class Constants(BaseConstants):
-    name_in_url = 'real_effort'
-    num_rounds = 10 #10 para los pilotos/produccion
+    name_in_url = 'real_effort2'
+    num_rounds = 400 #maxima cantidad de tareas parece ser 330? checkear bien eso para poner num_rounds
     #num_groups = 1
     players_per_group = None
     info_code = 'real_effort/Code.html'
@@ -85,3 +85,5 @@ class Player(BasePlayer):
     transcriptionDone = models.BooleanField()
     income = models.CurrencyField()
     refText = models.LongStringField()
+    tareas_yo_hoy = models.FloatField()
+    tareas_yo_manana = models.FloatField()
