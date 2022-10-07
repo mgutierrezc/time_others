@@ -217,9 +217,9 @@ class Results(Page):
                 decider.in_round(pr).me_b = 0
                 decider.in_round(pr).partner_b = 0
                 dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
-                dec_yo_manana = decider.in_round(pr).me_b
+                dec_yo_manana = round(decider.in_round(pr).me_b,0)
                 dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
-                dec_partner_manana = decider.in_round(pr).partner_b
+                dec_partner_manana = round(decider.in_round(pr).partner_b,0)
                 #reemplazar partner_a con me_b 
                 
             
@@ -228,8 +228,8 @@ class Results(Page):
                 decider.in_round(pr).partner_b = decider.in_round(pr).me_b
                 decider.in_round(pr).me_a = 0
                 decider.in_round(pr).me_b = 0
-                dec_yo_hoy = decider.in_round(pr).me_a
-                dec_yo_manana = decider.in_round(pr).me_b
+                dec_yo_hoy = round(decider.in_round(pr).me_a,0)
+                dec_yo_manana = round(decider.in_round(pr).me_b,0)
                 dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
                 dec_partner_manana = round(decider.in_round(pr).partner_b, 0)
             
@@ -238,8 +238,8 @@ class Results(Page):
                 decider.in_round(pr).partner_b = 0
                 dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
                 dec_yo_manana = round(decider.in_round(pr).me_b, 0)
-                dec_partner_hoy = decider.in_round(pr).partner_a
-                dec_partner_manana = decider.in_round(pr).partner_b
+                dec_partner_hoy = round(decider.in_round(pr).partner_a,0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b,0)
             
             else:
                 dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
@@ -249,9 +249,9 @@ class Results(Page):
 
         elif self.player.id_in_group == 2:
                 dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
-                dec_yo_manana = decider.in_round(pr).partner_b
+                dec_yo_manana = round(decider.in_round(pr).partner_b,0)
                 dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
-                dec_partner_manana = decider.in_round(pr).me_b
+                dec_partner_manana = round(decider.in_round(pr).me_b,0)
                 #reemplazar partner_a con me_b 
 
         self.player.tareas_yo_hoy = dec_yo_hoy
