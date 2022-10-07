@@ -1,5 +1,5 @@
 from otree.api import Currency as c, currency_range
-from ._builtin import Page, WaitPage
+from .builtin import Page, WaitPage
 from .models import Constants
 from .models import levenshtein, distance_and_ok
 from PIL import Image, ImageDraw, ImageFont
