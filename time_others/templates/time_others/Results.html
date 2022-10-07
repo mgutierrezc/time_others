@@ -17,8 +17,15 @@
 {% block content %}
 
     <input type="hidden" name="time_Results" id="arrive_time"/>
-    
-    <h5>La ronda que se pagará fue la Tarea {{ mode_num }} - Decisión {{ counter }}.
+    {% if bloque == "self" %}
+        <h5>Se le pagará la ronda {{ counter }} del bloque "Decide cómo distribuir tus tareas"</h5>
+    {% elif bloque == 'other' %}
+        <h5>Se le pagará la ronda {{ counter }} del bloque "Decide cómo distribuir las tareas de tu pareja"</h5>
+    {% elif bloque == 'simultaneous' %}
+        <h5>Se le pagará la ronda {{ counter }} del bloque "Decide cómo distribuir tanto tus tareas como las de tu pareja" </h5>
+    {% elif bloque == 'dictator' %}
+        <h5>Se le pagará la ronda {{ counter }} del bloque "Decide cómo distribuir tareas entre tú y tu pareja" </h1>
+    {% endif %} 
     <hr>
     <!--
     {% if mode == 'PR' %}
@@ -69,7 +76,7 @@
     -->
     <table style="width:60%">
         <tr>
-            {% if role == 'Decider' or mode == 'S-OwnRisk' %}
+            {% if role == 'Decider' %} 
             <th>Su elección:</th>
             {% else %}
             <th>La elección de su pareja:</th>
@@ -77,19 +84,19 @@
         </tr>
         <tr>
             <th>Sus tareas para hoy</th>
-            <td>{{ dec_yo_hoy | json }} </td>
+            <td>{{ dec_yo_hoy }} </td>
         </tr>
         <tr>
             <th>Sus tareas para mañana</th>
-            <td>{{ dec_yo_manana | json }} </td>
+            <td>{{ dec_yo_manana }} </td>
         </tr>
         <tr>
             <th>Tareas de su pareja para hoy</th>
-            <td>{{ dec_partner_hoy | json }}
+            <td>{{ dec_partner_hoy }}
         </tr>
         <tr>
             <th>Tareas de su pareja para mañana</th>
-            <td>{{ dec_partner_manana | json }} </td>
+            <td>{{ dec_partner_manana }} </td>
         </tr>
     </table>
     {% endif %}

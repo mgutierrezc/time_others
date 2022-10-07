@@ -68,11 +68,11 @@
 
     var temp_m = dynamicValues[currentRound - 1]
 
-    if (temp_m.m === 40 || temp_m.m1 === 40 || temp_m.m2 === 40)
-    {
-        constantValues['scale']['max'] = 210
+    //if (temp_m.m === 40 || temp_m.m1 === 40 || temp_m.m2 === 40)
+    //{
+    //    constantValues['scale']['max'] = 210
 
-    }else{
+    //}else{
 
         constantValues['scale']['max'] = 120
 
@@ -80,7 +80,7 @@
     //{
     //    constantValues['scale']['max'] = 60
 
-    }
+    //}
 
     var getMode = function() {
         var roundData = dynamicValues[currentRound - 1]
@@ -335,14 +335,14 @@
                     </div>
                 </div>
                 <div class="col-md-4" v-if="mode !== 'probability' && mode !== 'single_given'" >
-                    {{ form.errors }}
-                    {% if block == 'self' %}
+
+                    {% if bloque == 'self' %}
                         <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
-                    {% elif block == 'other' %}  
+                    {% elif bloque == 'other' %}  
                         <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
-                    {% elif block == 'simultaneous' %}
+                    {% elif bloque == 'simultaneous' %}
                         <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja entre hoy y en una semana</h5>
-                    {% elif block == 'dictator' %}
+                    {% elif bloque == 'dictator' %}
                         <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja para hoy</h5>
 
                     {% endif %}

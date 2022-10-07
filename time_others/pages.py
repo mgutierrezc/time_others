@@ -115,19 +115,18 @@ class Task(Page):
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
         mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
-        round_data = dynamic_values[self.round_number - 1]
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
         #create random number(1: block 1, 2: block 2) for block 3:
         random_number = Constants.random_number
-        bloque = round_data['bloque']
         print('MODE MODE MODE', mode)
         if self.round_number > 1:
             counter = 1
-            prevmode = self.player.participant.vars['dynamic_values'][self.round_number - 2]['mode']
-            while mode == prevmode:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+            while bloque == prevbloque:
                 counter += 1;
                 if counter == self.round_number:
                     break
-                prevmode = self.player.participant.vars['dynamic_values'][self.round_number - (counter + 1)]['mode']
+                prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - (counter + 1)]['bloque']
         else:
             counter = 1
         return {'dynamic_values': dynamic_values,
@@ -179,18 +178,6 @@ class Results(Page):
 
     def vars_for_template(self):
 
-        modeMap = {
-        'probability': 'PR',
-        'sec_1bl_1ch': 'S-1B-1C',
-        'sec_1bl_2ch': 'S-1B-2C',
-        'sec_2bl_1ch': 'S-2B-1C',
-        'sec_ownrisk': 'S-OwnRisk',
-        'det_giv': 'DG',
-        'sec_ownrisk_fixedother': 'S-OwnRisk-FixedOther',
-        'sec_otherrisk_ownfixed': 'S-OtherRisk-OwnFixed',
-        'sec_new_graph':'S-newone',
-        'dictator': 'S-new'}
-
         modeNum = {
         'probability': '1',
         'sec_1bl_1ch': '2',
@@ -204,7 +191,9 @@ class Results(Page):
         'dictator': '10'}
 
         # variables:
+
         mode = self.group.get_player_by_id(1).participant.vars['pr_dict']['mode']
+        bloque = self.group.get_player_by_id(1).participant.vars['pr_dict']['bloque']
 
         decider = self.group.get_player_by_id(1)
         nondecider = self.group.get_player_by_id(2)
@@ -223,17 +212,75 @@ class Results(Page):
         #         deci_b = None
         # else:
         if self.player.id_in_group == 1:
-                dec_yo_hoy = round(decider.in_round(pr).me_a, 1)
-                dec_yo_manana = round(decider.in_round(pr).me_b, 1)
-                dec_partner_hoy = round(decider.in_round(pr).partner_a, 1)
-                dec_partner_manana = round(decider.in_round(pr).partner_b, 1)
-                
-        elif mode != 'sec_ownrisk':
-                dec_yo_hoy = round(decider.in_round(pr).partner_a, 1)
-                dec_yo_manana = round(decider.in_round(pr).partner_b, 1)
-                dec_partner_hoy = round(decider.in_round(pr).me_a, 1)
-                dec_partner_manana = round(decider.in_round(pr).me_b, 1)
+            if mode == 'dictator' :
+                decider.in_round(pr).partner_a = decider.in_round(pr).me_b 
+                decider.in_round(pr).me_b = 0
+                decider.in_round(pr).partner_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_yo_manana = decider.in_round(pr).me_b
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_partner_manana = decider.in_round(pr).partner_b
+                #reemplazar partner_a con me_b 
+            
+            elif mode == 'det_giv':
+                decider.in_round(pr).partner_a = decider.in_round(pr).me_a
+                decider.in_round(pr).partner_b = decider.in_round(pr).me_b
+                decider.in_round(pr).me_a = 0
+                decider.in_round(pr).me_b = 0
+                dec_yo_hoy = decider.in_round(pr).me_a
+                dec_yo_manana = decider.in_round(pr).me_b
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b, 0)
+            
+            elif mode == 'sec_ownrisk':
+                decider.in_round(pr).partner_a = 0
+                decider.in_round(pr).partner_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).me_b, 0)
+                dec_partner_hoy = decider.in_round(pr).partner_a
+                dec_partner_manana = decider.in_round(pr).partner_b
+            
+            else:
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).me_b, 0)
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b, 0)
 
+        elif self.player.id_in_group == 2:
+            if mode == 'dictator' :
+                decider.in_round(pr).me_a = decider.in_round(pr).partner_b 
+                decider.in_round(pr).partner_b = 0
+                decider.in_round(pr).me_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_yo_manana = decider.in_round(pr).partner_b
+                dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_partner_manana = decider.in_round(pr).me_b
+                #reemplazar partner_a con me_b 
+            
+            elif mode == 'det_giv':
+                decider.in_round(pr).me_a = decider.in_round(pr).partner_a
+                decider.in_round(pr).me_b = decider.in_round(pr).partner_b
+                decider.in_round(pr).partner_a = 0
+                decider.in_round(pr).partner_b = 0
+                dec_yo_hoy = decider.in_round(pr).partner_a
+                dec_yo_manana = decider.in_round(pr).partner_b
+                dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).me_b, 0)
+            
+            elif mode == 'sec_ownrisk':
+                decider.in_round(pr).me_a = 0
+                decider.in_round(pr).me_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).partner_b, 0)
+                dec_partner_hoy = decider.in_round(pr).me_a
+                dec_partner_manana = decider.in_round(pr).me_b
+            
+            else:
+                dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).partner_b, 0)
+                dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).me_b, 0)
+       
             # single mode
             # else:
             #     deci_a = round(nondecider.in_round(pr2).me_a, 1)
@@ -252,17 +299,17 @@ class Results(Page):
 
         if self.player.participant.vars['pr'] - 1 > 0:
             counter = 1
-            prevmode = self.player.participant.vars['dynamic_values'][self.player.participant.vars['pr'] - 2]['mode']
-            while mode == prevmode:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.player.participant.vars['pr'] - 2]['bloque']
+            while bloque == prevbloque:
                 counter += 1;
                 if counter == self.player.participant.vars['pr']:
                     break
-                prevmode = self.player.participant.vars['dynamic_values'] \
-                            [self.player.participant.vars['pr'] - (counter + 1)]['mode']
+                prevbloque = self.player.participant.vars['dynamic_values'] \
+                            [self.player.participant.vars['pr'] - (counter + 1)]['bloque']
         else:
             counter = 1
         
-        return {'mode': modeMap[mode], 'mode_num': modeNum[mode],  'role': role,
+        return {'mode': mode, 'mode_num': modeNum[mode],  'role': role, 'bloque': bloque,
                     'counter': counter, 'outcome': outcome, 'payoff': payoff, 'partner_payoff': partner_payoff,
                     'dec_yo_hoy': dec_yo_hoy, 'dec_partner_hoy': dec_partner_hoy, 'dec_yo_manana': dec_yo_manana, 
                     'dec_partner_manana': dec_partner_manana}

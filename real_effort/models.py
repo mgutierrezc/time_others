@@ -52,7 +52,7 @@ class Constants(BaseConstants):
     maxdistance1 = len(reference_texts[0])
     maxdistance2 = len(reference_texts[1])
 
-    allowed_error_rates = [0, 0.8]
+    allowed_error_rates = [0, 0.2]
     difficulty = 1
     ratio = 1
     endowment = 2
