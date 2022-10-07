@@ -1,5 +1,5 @@
 from otree.api import Currency as c, currency_range
-from .builtin import Page, WaitPage
+from ._builtin import Page, WaitPage
 from .models import Constants
 
 
