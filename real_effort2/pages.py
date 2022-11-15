@@ -151,7 +151,12 @@ class Transcribe2(Page):
             return self.round_number < tareas
 
     def vars_for_template(self):
+        if self.round_number > 1:
+            counter = self.round_number
+        else:
+            counter = 1
         return {
+            'counter': counter,
             'image_path': 'real_effort4/paragraphs/{}.png'.format(2),
             'reference_text': self.player.refText,
             'required_accuracy': 100 * (1 - Constants.allowed_error_rates[1]), # allows .8  error rate
