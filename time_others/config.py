@@ -33,9 +33,11 @@ list1_m = [32, 36, 40, 44, 48]
 list2_m = [80, 90, 100, 110, 120]
 list1_r = [0.24, 0.32, 0.4, 0.48, 0.56]
 list2_r = [1.5, 2, 2.5, 3, 3.5]
-
-def Randomize(B,M,R):
-    number=round(random.random())
+number1 = round(random.random())
+print(number1)
+def Randomize(B,M,R):   
+    number = number1
+    print('simultaneous',number)
     if M == 1:
         if number == 1:
             return list1_m[B]
@@ -62,6 +64,7 @@ this_r4=Randomize(4,0,1)
 def Randomizemode():
     number = 0
     number = round(random.random())
+    print('mode',number)
     if number == 1:
         return 'det_giv'
     elif number == 0:
