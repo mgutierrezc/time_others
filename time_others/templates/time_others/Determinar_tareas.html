@@ -1,0 +1,59 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Determinación de las tareas que deberán realizarse
+{% endblock %} 
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+
+{% block content %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+    <div class="instructions well well-lg">
+        
+    {% if role == 'Decider' %}
+    <h5>
+        Usted ha sido asignado al grupo rojo. Al presionar "Siguiente" se emparejará aleatoriamente
+        con otro participante del grupo azul.
+    </h5>
+    <p>
+        Como usted es del grupo rojo, serán sus decisiones las que determinen cuántas tareas 
+        realizará hoy y en la siguiente semana.
+    </p>
+    <p> 
+        Tome en cuenta que su pareja puede que aun esté tomando las decisiones correspondientes.
+        Estará esperando unos minutos después de presionar "Siguiente" en una página de espera si 
+        este es su caso. ¡Muchas gracias!
+    </p>
+    {% else %}
+    <h5>
+        Usted ha sido asignado al grupo azul. Al presionar "Siguiente" se emparejará aleatoriamente
+        con otro participante del grupo rojo.
+    </h5>
+    <p>
+        Como su pareja será del grupo rojo, serán las decisiones de su pareja las que determinen 
+        cuántas tareas realizará hoy y en la siguiente semana.
+    </p>
+    <p> 
+        Tome en cuenta que su pareja puede que aun esté tomando las decisiones correspondientes.
+        Estará esperando unos minutos después de presionar "Siguiente" en una página de espera si 
+        este es su caso. ¡Muchas gracias!
+    </p>
+    {% endif %}
+
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

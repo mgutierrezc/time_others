@@ -18,6 +18,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = config.numberOfPeriod()
     participation_fee = c(5)
+    random_number = random.randint(1,2) #si es 1, el bloque 3 tendrá las decisiones del bloque 1. Si es 2, del bloque 2.
 
     # I'm offloading the heavy lifting to JavaScript because I'm very bad at Python
     static_values = {
@@ -60,8 +61,8 @@ class Constants(BaseConstants):
             'b_y': 45         # y value of point B
         },
         'prob': {
-            'a': 0,
-            'b': 100
+            'a': 100,
+            'b': 0
         }
     }
     
@@ -74,9 +75,6 @@ class Constants(BaseConstants):
 
     # INSTRUCTIONS PATHS
     # list instruction templates
-    instructions_probability = 'time_others/Probability.html'
-    instructions_sec = 'time_others/sec.html'
-    instructions_det_giv = 'time_others/det_giv.html'
     trial_period = 'time_others/trial_period.html'
 
 
@@ -96,11 +94,12 @@ class Player(BasePlayer):
     cq_failed_attempts = models.IntegerField()
     cq_a1 = models.LongStringField()
     cq_a2 = models.LongStringField()
-    time_InitialInstructions = models.LongStringField()
     time_TaskInstructions =  models.LongStringField()
     time_ControlQuestions = models.LongStringField()
     time_Graph =  models.LongStringField()
     time_Results =  models.LongStringField()
+    tareas_yo_hoy = models.FloatField()
+    tareas_yo_manana = models.FloatField()
 
     m = models.FloatField()
     px = models.FloatField()
@@ -116,7 +115,8 @@ class Player(BasePlayer):
     ay = models.FloatField()
     bx = models.FloatField()
     by = models.FloatField()
-
+    bloque = models.StringField()
+    
 
     def role(self):
         if self.id_in_group == 1:
@@ -190,7 +190,8 @@ class Group(BaseGroup):
         'sec_otherrisk_ownfixed': 'single_fixedsquare',
         'det_giv': 'single_given',
         #nuevo caso añadido
-        'sec_new_graph':'newone'}
+        'sec_new_graph':'newone',
+        'dictator': 'new_single'}
         
         # generate pseudo_random number to compare to probabilities  0 <= rnd <= 1
         rnd = random.random()

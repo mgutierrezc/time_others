@@ -1,49 +1,6 @@
 {% extends "global/Base.html" %}
 {% load staticfiles otree %}
-{% block title %}
-    <!--
-        {% if mode == 'probability' %}
-        <h1 style="color: #bfbfbf">Tarea 1 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_1bl_1ch' %}
-        <h1 style="color: #bfbfbf">Tarea 2 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_2bl_1ch' %}
-        <h1 style="color: #bfbfbf">Tarea 3 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_1bl_2ch' %}
-        <h1 style="color: #bfbfbf">Tarea 4 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_ownrisk' %}
-        <h1 style="color: #bfbfbf">Tarea 5 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_ownrisk_fixedother' %}
-        <h1 style="color: #bfbfbf">Tarea 6 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_otherrisk_ownfixed' %}
-        <h1 style="color: #bfbfbf">Tarea 7 - Decisión {{ counter }}</h1>
-        {% elif mode == 'det_giv' %}
-        <h1 style="color: #bfbfbf">Tarea 8 - Decisión {{ counter }}</h1>
-        {% elif mode == 'sec_new_graph' %}
-        <h1 style="color: #bfbfbf">Tarea 9 - Decisión {{ counter }}</h1>
-        {% endif %}
-    -->
 
-    {% if mode == 'sec_1bl_1ch' %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque {{ counter }}</h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 3 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 3 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 3</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 4 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 4 </h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 5 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 5</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' and player.round_number == 6 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 6 </h1>
-    {% elif mode == 'sec_ownrisk_fixedother' and player.round_number == 7 %}
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 7</h1>
-    {% elif player.round_number == 8 %}   
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 8</h1>
-    {% elif player.round_number == 9 %}   
-        <h1 style="color:#BFBFBF">Asignación de tareas - Bloque 9</h1>
-    {% endif %} 
-
-{% endblock %} 
 
 {% block styles %}
 
@@ -95,6 +52,7 @@
         'sec_otherrisk_ownfixed': 'single_fixedsquare',
         'det_giv': 'single_given',
         'sec_new_graph':'newone',
+        'dictator': 'new_single'
     }
 
     var somethingChanged = false;
@@ -105,24 +63,24 @@
 
     // Notes: these can probably be offloaded to Python
     var dynamicValues  = {{ dynamic_values | json }}
-
+    
     //ajustando el tamaño del gráfico (que diego confirme)
 
     var temp_m = dynamicValues[currentRound - 1]
 
-    if (temp_m.m < 30)
-    {
-        constantValues['scale']['max'] = 30
+    //if (temp_m.m === 40 || temp_m.m1 === 40 || temp_m.m2 === 40)
+    //{
+    //    constantValues['scale']['max'] = 210
 
-    }else if (temp_m.m >= 60) 
-    {
-        constantValues['scale']['max'] = 100
+    //}else{
 
-    }else if (temp_m.m >= 30 && temp_m.m < 60)
-    {
-        constantValues['scale']['max'] = 60
+        constantValues['scale']['max'] = 120
 
-    }
+    //}else if (temp_m.m >= 30 && temp_m.m < 60 || temp_m.m1 >= 30 && temp_m.m1 < 60 || temp_m.m2 >= 30 && temp_m.m2 < 60)
+    //{
+    //    constantValues['scale']['max'] = 60
+
+    //}
 
     var getMode = function() {
         var roundData = dynamicValues[currentRound - 1]
@@ -227,7 +185,6 @@
             prob: getProb(),
             onChangeCallback: function() {
                 somethingChanged = true
-                console.log('changed cb')
             }
         })
 
@@ -242,6 +199,8 @@
         var mode = {{ mode | json}}
         document.getElementById("arrive_time").value = (new Date()).toISOString();
         document.getElementById("mode").value = {{ mode | json }}
+        document.getElementById("pyy").innerHTML = roundData.p_y
+
         if (mode === 'probability')
         {
             document.getElementById("ax").value = roundData.a_x
@@ -257,6 +216,9 @@
             document.getElementById("m2").value = roundData.m2
             document.getElementById("px2").value = roundData.p_x2
             document.getElementById("py2").value = roundData.p_y2
+            document.getElementById("pxx2").innerHTML = roundData.p_x2
+            document.getElementById("pyy").innerHTML = roundData.p_y
+            console.log(roundData.p_x2)
         }
         else
         {
@@ -266,13 +228,16 @@
                 document.getElementById("b").value = roundData.b
             }
             document.getElementById("m").value = roundData.m
+            console.log(m)
             document.getElementById("px").value = roundData.p_x
             document.getElementById("py").value = roundData.p_y
+            document.getElementById("pyy").innerHTML = roundData.p_y
+            console.log(roundData.p_y)
         }
         }
     </script>
 
-    <script src="{% static 'js/graph_sp.js' %}"></script>
+    <script src="{% static 'js/graph_es.js' %}"></script>
 
 {% endblock %} 
 
@@ -348,44 +313,59 @@
                         </table>
                     </div>
                 </div>
+
                 <div class="col-md-4" v-if="mode === 'single_given'">
-                    <h5>Esta es su decisión:</h5>
-                    <div class="row col-12" style="margin-top: 50px">
+                    <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
+                    <div class="row" style="margin-top: 50px">
+                        <h6>Tasa: 1:<span id="pyy"></span></h6>
                         <table class="table table-bordered table-sm mdall">
                             <thead>
                                 <tr>
-                                    <td width="50%" style="color: blue"><b>Sus fichas</b></td>
-                                    <td width="50%" v-if="mode !== 'single'" style="color: orange"> <b>Fichas de su compañero</b> </td>
+                                    <td width="34%" style = "text-align: center;">Tiempo</td>
+                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                    <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td v-html="selected[0].x"></td>
-                                    <td v-html="selected[0].y"></td>
+                                    <td style = "text-align: center;">Hoy</td>
+                                    <td style = "text-align: center; color: blue">0</td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].x)"></td>
+
+                                </tr>
+                                <tr>
+                                    <td style = "text-align: center;">En una semana</td>
+                                    <td style = "text-align: center; color: blue">0</td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].y)"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="col-md-4" v-if="mode !== 'probability' && mode !== 'single_given'" >
-                    {% if player.round_number == 1  or player.round_number == 5 or player.round_number == 7 or mode == 'sec_ownrisk_fixedother' %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
-                    {% elif player.round_number == 2 or player.round_number == 4 or player.round_number == 6 or mode == 'sec_otherrisk_ownfixed' %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
-                    {% elif player.round_number == 8 or mode == 'sec_1bl_2ch' %}
-                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su compañero entre hoy y mañana</h5>
-            
-                    {% endif %}
 
-                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or player.round_number == 8 or mode == 'sec_1bl_2ch' %}
+                    {% if bloque == 'self' %}
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
+                    {% elif bloque == 'other' %}  
+                        <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
+                    {% elif bloque == 'simultaneous' %}
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja entre hoy y en una semana</h5>
+                    {% elif bloque == 'dictator' %}
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja para hoy</h5>
+
+                    {% endif %}
+                    
+                {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' %}
 
                         <div class="row" style="margin-top: 50px">
+                            <h6>Tasa: 1:<span id="pyy"></span>{% if mode == "sec_new_graph" %} & Tasa: 1:<span id="pxx2"></span> {% endif %}</h6>
                             <table class="table table-bordered table-sm mdall">
                                 <thead>
                                     <tr>
                                         <td width="34%" style = "text-align: center;">Tiempo</td>
                                         <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
-                                        <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su compañero</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su pareja</b></td>
 
                                     </tr>
                                 </thead>
@@ -396,32 +376,62 @@
                                         <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
                                     </tr>
                                     <tr>
-                                        <td style = "text-align: center;">Mañana</td>
+                                        <td style = "text-align: center;">En una semana</td>
                                         <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
                                         <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    {% else %}
+
+                    {% elif mode == 'dictator' %}
+
                         <div class="row" style="margin-top: 50px">
+                            <h6>Tasa: 1:<span id="pyy"></span></h6>
                             <table class="table table-bordered table-sm mdall">
                                 <thead>
                                     <tr>
                                         <td width="34%" style = "text-align: center;">Tiempo</td>
                                         <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
-
+                                        <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td style = "text-align: center;">Hoy</td>
                                         <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].y)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style = "text-align: center;">En una semana</td>
+                                        <td style = "text-align: center; color: blue">0</td>
+                                        <td style = "text-align: center; color: orange">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="row" style="margin-top: 50px">
+                            <h6>Tasa: 1:<span id="pyy"></span></h6>
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange">0</td>
 
                                     </tr>
                                     <tr>
-                                        <td style = "text-align: center;">Mañana</td>
+                                        <td style = "text-align: center;">En una semana</td>
                                         <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                        <td style = "text-align: center; color: orange">0</td>
                                     </tr>
                                 </tbody>
                             </table>

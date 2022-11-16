@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<head>
+<style>
+h2 {
+        color: #F8F4EE;
+}
+</style>
+</head>
+<body>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+    <h3>
+        ¡Gracias por su participación de hoy!
+    </h3>
+
+    <p>
+        <div align="justify">
+
+            Ya culminó todas las tareas que tenía que resolver el día de hoy. Recuerde que en una semana habrá otra sesión para que realice las tareas que le toca la siguiente semana. ¡Muchas gracias!
+            <br><br>
+            {% next_button %}
+    </div>
+</div>
+</body>
+
+
+{% endblock %}

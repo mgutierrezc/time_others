@@ -193,6 +193,9 @@ var vm = new Vue({
         case "single_given":
           this.equations.push(this.equation);
           break;
+        case "new_single":
+          this.equations.push(this.equation);
+          break;
         case "probability":
           this.equations = [];
           this.equations.push({
@@ -562,28 +565,37 @@ var vm = new Vue({
               text =
                 "Tú (Hoy: " +
                 parseInt(self.selected[index].x) +
-                ", Mañana: " +
+                ", En una semana: " +
                 parseInt(self.selected[index].y) +
                 ")";
             } else {
               text =
                 "Pareja (Hoy: " +
                 parseInt(self.selected[index].x) +
-                ", Mañana: " +
+                ", En una semana: " +
                 parseInt(self.selected[index].y) +
                 ")";
             }
           } else if (self.mode === "single_given") {
             text =
-              "Tú: " +
-              parseInt(self.selected[index].x) +
-              ", Pareja: " +
-              parseInt(self.selected[index].y);
+            "Pareja (Hoy: " +
+            parseInt(self.selected[index].x) +
+            ", En una semana: " +
+            parseInt(self.selected[index].y) +
+            ")";
           } else if (self.mode === "positive") {
             text =
               " (Hoy: " +
               parseInt(self.selected[index].x) +
-              ", Mañana: " +
+              ", En una semana: " +
+              parseInt(self.selected[index].y) +
+              ")";
+          
+          } else if (self.mode === "new_single") {
+            text =
+              " (Tú: " +
+              parseInt(self.selected[index].x) +
+              ", Tu pareja: " +
               parseInt(self.selected[index].y) +
               ")";
           }
@@ -634,28 +646,36 @@ var vm = new Vue({
               text =
                 "Tú (Hoy: " +
                 parseInt(xValue.toFixed(self.precision)) +
-                ", Mañana: " +
+                ", En una semana: " +
                 parseInt(yValue.toFixed(self.precision)) +
                 ")";
             } else {
               text =
                 "Pareja (Hoy: " +
                 parseInt(xValue.toFixed(self.precision)) +
-                ", Mañana: " +
+                ", En una semana: " +
                 parseInt(yValue.toFixed(self.precision)) +
                 ")";
             }
           } else if (self.mode === "single_given") {
             text =
-              "Tu: " +
+              "(Hoy: " +
               parseInt(xValue.toFixed(self.precision)) +
-              ", Pareja: " +
-              parseInt(yValue.toFixed(self.precision));
+              ", En una semana: " +
+              parseInt(yValue.toFixed(self.precision)) +
+              ")";
           } else if (self.mode === "positive") {
             text =
               " (Hoy: " +
               parseInt(xValue.toFixed(self.precision)) +
-              ", Mañana: " +
+              ", En una semana: " +
+              parseInt(yValue.toFixed(self.precision)) +
+              ")";
+          } else if (self.mode === "positive") {
+            text =
+              " (Tú: " +
+              parseInt(xValue.toFixed(self.precision)) +
+              ", Tu pareja: " +
               parseInt(yValue.toFixed(self.precision)) +
               ")";
           }
@@ -699,9 +719,9 @@ var vm = new Vue({
                 var otherText = ''
 
                 if (otherIndex == 0) {
-                    otherText = 'Tú (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
+                    otherText = 'Tú (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', En una semana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
                 }else{
-                    otherText = 'Pareja (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', Mañana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
+                    otherText = 'Pareja (Hoy: ' + parseInt(otherXValue.toFixed(self.precision)) + ', En una semana: ' + parseInt(otherYValue.toFixed(self.precision)) + ')'
                 }
 
                 if (self.tip && self.tip[otherIndex]) {
@@ -736,7 +756,7 @@ var vm = new Vue({
                   otherText =
                     " (Hoy: " +
                     parseInt(xValue.toFixed(self.precision)) +
-                    ", Mañana: " +
+                    ", En una semana: " +
                     parseInt(yValue.toFixed(self.precision)) +
                     ")";
                 }

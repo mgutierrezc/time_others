@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<head>
+<style>
+h2 {
+        color: #F8F4EE;
+}
+</style>
+</head>
+<body>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+    <h3>
+        Tareas de transcripción de hoy
+    </h3>
+
+    <p>
+        <div align="justify">
+
+            A continuación, resolverá la cantidad de tareas de transcripción que le toca el día de la sesión de hoy.
+            <br><br>
+            {% next_button %}
+    </div>
+</div>
+</body>
+
+
+{% endblock %}
+

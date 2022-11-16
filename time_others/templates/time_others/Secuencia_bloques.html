@@ -1,0 +1,75 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+
+    {% if bloque == 'self' %}
+        <h1>Decide cómo distribuir tus tareas</h1>
+    {% elif bloque == 'other' %}
+        <h1>Decide cómo distribuir las tareas de tu pareja</h1>
+    {% elif bloque == 'simultaneous' %}
+        <h1>Decide cómo distribuir tanto tus tareas como las de tu pareja</h1>
+    {% elif bloque == 'dictator' %}
+        <h1>Decide cómo distribuir tareas entre tú y tu pareja</h1>
+    {% endif %} 
+
+{% endblock %} 
+
+{% block scripts %}
+    <script type="text/javascript">
+      window.onload = function () 
+      {
+        document.getElementById("arrive_time").value = (new Date()).toISOString();
+      }
+    </script>
+{% endblock %}
+
+
+{% block content %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+    <div class="instructions well well-lg">
+        <div class="card bg-light instructions">
+            <div class="card-body">
+
+    {% if bloque == 'self' %}
+        <p>
+            A continuación, tendrás que decidir cuántas tareas <b>tú</b> quieres resolver hoy y cuántas tareas quieres resolver en la siguiente semana.
+            Para esto, ten en cuenta que recibirás <b>información sobre cuántas tareas tu pareja ha sido asignada aleatoriamente a resolver</b> entre hoy y la siguiente semana.
+            Las decisiones variarán según el número total de tareas que deberás asignar y el valor de la tasa entre hoy y la siguiente semana.
+            <i>Nota: La asignación de tareas que tu pareja deberá completar solo será válida si dicha decisión es escogida para 
+            ser “la que cuenta”. No se acumulan las tareas entre decisiones.</i>
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.
+            
+        </p>
+    {% elif bloque == 'other' %}
+        <p>
+            A continuación, tendrás que decidir cuántas tareas quieres que tu <b>pareja asignada aleatoriamente</b> resuelva hoy y cuántas tareas quieres que resuelva en la siguiente semana.
+            Para esto, ten en cuenta que recibirás <b>información sobre cuántas tareas se te ha asignado aleatoriamente a ti resolver</b> entre hoy y la siguiente semana.
+            Las decisiones variarán según el número total de tareas que deberás asignar y el valor de la tasa entre hoy y la siguiente semana.
+            <i>Nota: La asignación de tareas que tú deberás completar solo será válida si dicha decisión es escogida para ser “la que cuenta”. No se acumulan las tareas entre decisiones.</i>
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.
+
+        </p>
+    {% elif bloque == 'simultaneous' %}
+        <p>
+            A continuación, tendrás que decidir <b>simultáneamente</b> cuántas tareas quieres tú completar hoy y en la siguiente semana, y cuántas tareas quieres que tu pareja complete hoy y en la siguiente semana.
+            En otras palabras, cada decisión en este bloque, en realidad, consiste en dos, en el sentido de que si una decisión de este bloque es escogida como “la que cuenta”, tanto tú como tu pareja deberán completar sus respectivas asignaciones, tal como tú hayas decidido.
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.            
+        </p>
+    {% elif bloque == 'dictator' %}
+        <p>
+            A continuación, tendrás que asignar <b>cuántas tareas deberás resolver tú y tu pareja hoy</b>. A diferencia de los demás bloques, estas decisiones 
+            están sujetas a un mismo presupuesto de tareas para ti y tu pareja. Es decir, asignar menos tareas para ti implica asignar más tareas a tu pareja, y viceversa.
+            Antes de realizar las decisiones que podrían determinar su asignación de tareas final, tomará una decisión de práctica.            
+        </p>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+    <br>
+    {% next_button %}
+
+{% endblock %}

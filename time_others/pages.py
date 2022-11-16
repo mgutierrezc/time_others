@@ -3,6 +3,7 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 from . import config
+import random
 
 """
 Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
@@ -11,38 +12,59 @@ Contributors:
     Rachel Chen <me@rachelchen.me>
 """
 
-class InitialInstructions(Page):
+class Secuencia_bloques(Page):
     form_model = 'player'
-    form_fields = ['time_InitialInstructions']
 
     def is_displayed(self):
-        return self.round_number == 1
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
+        if self.round_number > 1:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+        return self.round_number == 1 or bloque != prevbloque
 
     def vars_for_template(self):
-        numberOfPeriod = config.numberOfPeriod()
-        return {'participation_fee': self.session.config['participation_fee']}
+        dynamic_values = self.player.participant.vars['dynamic_values']
+        round_data = dynamic_values[self.round_number - 1]
+        mode = round_data['mode']
+        bloque = round_data['bloque']
+        # this will be used in the conditional display of instructions
+        return {'dynamic_values': dynamic_values,
+                'mode': mode,
+                'bloque': bloque,
+                }
 
+class AntesdelTask(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
+        if self.round_number > 1:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+        return self.round_number == 1 or bloque != prevbloque
+
+    def vars_for_template(self):
+        random_number=Constants.random_number
+        # this will be used in the conditional display of instructions
+        return {'random_number': random_number}
 
 class TaskInstructions(Page):
     form_model = 'player'
     form_fields = ['time_TaskInstructions']
 
     def is_displayed(self):
-        mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
         if self.round_number > 1:
-            prevmode = self.player.participant.vars['dynamic_values'][self.round_number - 2]['mode']
-        return self.round_number == 1 or mode != prevmode
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+        return self.round_number == 1 or bloque != prevbloque
 
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
         round_data = dynamic_values[self.round_number - 1]
         mode = round_data['mode']
+        bloque = round_data['bloque']
         # this will be used in the conditional display of instructions
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
-                'sec0': '' if mode in ['probability', 'det_giv'] else mode.split('_')[0],
-                'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
+                'bloque': bloque,
                 }
 
         
@@ -79,6 +101,8 @@ class Task(Page):
                 return ['mode', 'prob_a', 'prob_b', 'time_Graph', 'ax', 'ay', 'bx', 'by']
             elif round_data['mode'] == 'sec_ownrisk':
                 return ['mode', 'me_a', 'me_b', 'prob_a', 'prob_b', 'time_Graph', 'm', 'px', 'py']
+            elif round_data['mode'] == 'dictator':
+                return ['mode', 'me_a', 'me_b', 'prob_a', 'prob_b', 'time_Graph', 'm', 'px', 'py']
             elif round_data['mode'] == 'sec_ownrisk_fixedother' or round_data['mode'] == 'sec_otherrisk_ownfixed':
                 return ['mode', 'partner_a', 'partner_b', 'me_a', 'me_b', 'prob_a',
                         'prob_b', 'time_Graph', 'm', 'px', 'py', 'a', 'b']
@@ -91,22 +115,25 @@ class Task(Page):
     def vars_for_template(self):
         dynamic_values = self.player.participant.vars['dynamic_values']
         mode = self.player.participant.vars['dynamic_values'][self.round_number - 1]['mode']
+        bloque = self.player.participant.vars['dynamic_values'][self.round_number - 1]['bloque']
+        #create random number(1: block 1, 2: block 2) for block 3:
+        random_number = Constants.random_number
         print('MODE MODE MODE', mode)
         if self.round_number > 1:
             counter = 1
-            prevmode = self.player.participant.vars['dynamic_values'][self.round_number - 2]['mode']
-            while mode == prevmode:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - 2]['bloque']
+            while bloque == prevbloque:
                 counter += 1;
                 if counter == self.round_number:
                     break
-                prevmode = self.player.participant.vars['dynamic_values'][self.round_number - (counter + 1)]['mode']
+                prevbloque = self.player.participant.vars['dynamic_values'][self.round_number - (counter + 1)]['bloque']
         else:
             counter = 1
         return {'dynamic_values': dynamic_values,
                 'mode': mode,
                 'counter': counter,
-                'sec1': '' if mode in ['probability', 'det_giv'] else mode.split('_')[1],
-                'sec2': '' if mode in ['probability', 'det_giv', 'sec_ownrisk'] else mode.split('_')[2],
+                'bloque': bloque,
+                'random_number': random_number
                 }
 
     def before_next_page(self):
@@ -115,6 +142,23 @@ class Task(Page):
             self.player.set_payoffs()
         elif self.player.id_in_group == 1 and self.round_number == self.player.participant.vars['pr']:
             self.group.set_payoffs()
+
+
+class Finalizar_tareas(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+class Determinar_tareas(Page):
+    form_model = 'player'
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+    
+    def vars_for_template(self):
+        role = self.player.role()
+        return {'role' : role}
 
 class ResultsWaitPage(WaitPage):
 
@@ -134,17 +178,6 @@ class Results(Page):
 
     def vars_for_template(self):
 
-        modeMap = {
-        'probability': 'PR',
-        'sec_1bl_1ch': 'S-1B-1C',
-        'sec_1bl_2ch': 'S-1B-2C',
-        'sec_2bl_1ch': 'S-2B-1C',
-        'sec_ownrisk': 'S-OwnRisk',
-        'det_giv': 'DG',
-        'sec_ownrisk_fixedother': 'S-OwnRisk-FixedOther',
-        'sec_otherrisk_ownfixed': 'S-OtherRisk-OwnFixed',
-        'sec_new_graph':'S-newone'}
-
         modeNum = {
         'probability': '1',
         'sec_1bl_1ch': '2',
@@ -154,37 +187,81 @@ class Results(Page):
         'det_giv': '8',
         'sec_new_graph':'9',
         'sec_ownrisk_fixedother': '6',
-        'sec_otherrisk_ownfixed': '7'}
+        'sec_otherrisk_ownfixed': '7',
+        'dictator': '10'}
 
         # variables:
+
         mode = self.group.get_player_by_id(1).participant.vars['pr_dict']['mode']
+        bloque = self.group.get_player_by_id(1).participant.vars['pr_dict']['bloque']
 
         decider = self.group.get_player_by_id(1)
         nondecider = self.group.get_player_by_id(2)
 
         pr = decider.participant.vars['pr']
         pr2 = nondecider.participant.vars['pr']
-        if mode == 'probability':
-            dec_a = round(decider.in_round(pr).prob_a, 1)
-            dec_b = round(decider.in_round(pr).prob_b, 1)
-        elif mode == 'det_giv':
-            if self.player.id_in_group == 1:
-                dec_a = round(decider.in_round(pr).me_a, 1) 
-                dec_b = None
+        # if mode == 'probability':
+        #     deci_a = round(decider.in_round(pr).prob_a, 1)
+        #     deci_b = round(decider.in_round(pr).prob_b, 1)
+        # elif mode == 'det_giv':
+        #     if self.player.id_in_group == 1:
+        #         deci_a = round(decider.in_round(pr).me_a, 1) 
+        #         deci_b = None
+        #     else:
+        #         deci_a = round(decider.in_round(pr).me_b, 1)
+        #         deci_b = None
+        # else:
+        if self.player.id_in_group == 1:
+            if mode == 'dictator' :
+                decider.in_round(pr).partner_a = decider.in_round(pr).me_b 
+                decider.in_round(pr).me_b = 0
+                decider.in_round(pr).partner_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).me_b,0)
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b,0)
+                #reemplazar partner_a con me_b 
+                
+            
+            elif mode == 'det_giv':
+                decider.in_round(pr).partner_a = decider.in_round(pr).me_a
+                decider.in_round(pr).partner_b = decider.in_round(pr).me_b
+                decider.in_round(pr).me_a = 0
+                decider.in_round(pr).me_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).me_a,0)
+                dec_yo_manana = round(decider.in_round(pr).me_b,0)
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b, 0)
+            
+            elif mode == 'sec_ownrisk':
+                decider.in_round(pr).partner_a = 0
+                decider.in_round(pr).partner_b = 0
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).me_b, 0)
+                dec_partner_hoy = round(decider.in_round(pr).partner_a,0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b,0)
+            
             else:
-                dec_a = round(decider.in_round(pr).me_b, 1)
-                dec_b = None
-        else:
-            if self.player.id_in_group == 1:
-                dec_a = round(decider.in_round(pr).me_a, 1)
-                dec_b = round(decider.in_round(pr).me_b, 1)
-            elif mode != 'sec_ownrisk':
-                dec_a = round(decider.in_round(pr).partner_a, 1)
-                dec_b = round(decider.in_round(pr).partner_b, 1)
+                dec_yo_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).me_b, 0)
+                dec_partner_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).partner_b, 0)
+
+        elif self.player.id_in_group == 2:
+                dec_yo_hoy = round(decider.in_round(pr).partner_a, 0)
+                dec_yo_manana = round(decider.in_round(pr).partner_b,0)
+                dec_partner_hoy = round(decider.in_round(pr).me_a, 0)
+                dec_partner_manana = round(decider.in_round(pr).me_b,0)
+                #reemplazar partner_a con me_b 
+
+        self.player.tareas_yo_hoy = dec_yo_hoy
+        self.player.tareas_yo_manana = dec_yo_manana
+        self.player.participant.vars['tareas_yo_hoy'] = self.player.tareas_yo_hoy
+        self.player.participant.vars['tareas_yo_manana'] = self.player.tareas_yo_manana
             # single mode
-            else:
-                dec_a = round(nondecider.in_round(pr2).me_a, 1)
-                dec_b = round(nondecider.in_round(pr2).me_b, 1)
+            # else:
+            #     deci_a = round(nondecider.in_round(pr2).me_a, 1)
+            #     deci_b = round(nondecider.in_round(pr2).me_b, 1)
 
         outcome = self.player.in_round(self.player.participant.vars['pr']).outcome
         #payoff = self.player.in_round(Constants.num_rounds).payoff
@@ -199,25 +276,30 @@ class Results(Page):
 
         if self.player.participant.vars['pr'] - 1 > 0:
             counter = 1
-            prevmode = self.player.participant.vars['dynamic_values'][self.player.participant.vars['pr'] - 2]['mode']
-            while mode == prevmode:
+            prevbloque = self.player.participant.vars['dynamic_values'][self.player.participant.vars['pr'] - 2]['bloque']
+            while bloque == prevbloque:
                 counter += 1;
                 if counter == self.player.participant.vars['pr']:
                     break
-                prevmode = self.player.participant.vars['dynamic_values'] \
-                            [self.player.participant.vars['pr'] - (counter + 1)]['mode']
+                prevbloque = self.player.participant.vars['dynamic_values'] \
+                            [self.player.participant.vars['pr'] - (counter + 1)]['bloque']
         else:
             counter = 1
         
-        return {'mode': modeMap[mode], 'mode_num': modeNum[mode], 'dec_a': dec_a, 'dec_b': dec_b, 'role': role,
-                    'counter': counter, 'outcome': outcome, 'payoff': payoff, 'partner_payoff': partner_payoff}
+        return {'mode': mode, 'mode_num': modeNum[mode],  'role': role, 'bloque': bloque,
+                    'counter': counter, 'outcome': outcome, 'payoff': payoff, 'partner_payoff': partner_payoff,
+                    'dec_yo_hoy': dec_yo_hoy, 'dec_partner_hoy': dec_partner_hoy, 'dec_yo_manana': dec_yo_manana, 
+                    'dec_partner_manana': dec_partner_manana}
+
 
 
 page_sequence = [
-    InitialInstructions,
+    Secuencia_bloques,
     TaskInstructions,
-    ControlQuestions,
+    AntesdelTask,
     Task,
+    Finalizar_tareas,
+    Determinar_tareas,
     ResultsWaitPage,
     Results
 ]

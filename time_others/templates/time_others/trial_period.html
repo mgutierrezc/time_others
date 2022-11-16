@@ -1,30 +1,6 @@
 {% extends "global/Base.html" %} 
 {% load staticfiles otree %}
 
-{% block title %}
-<!--    
-    {% if mode == 'probability' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 1</h1>
-    {% elif mode == 'sec_1bl_1ch' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 2</h1>
-    {% elif mode == 'sec_2bl_1ch' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 3</h1>
-    {% elif mode == 'sec_1bl_2ch' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 4</h1>
-    {% elif mode == 'sec_ownrisk' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 5</h1>
-    {% elif mode == 'sec_ownrisk_fixedother' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 6</h1>
-    {% elif mode == 'sec_otherrisk_ownfixed' %}
-        <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 7</h1>
-    {% elif mode == 'det_giv' %}
-         <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) - Tarea 8</h1>
-    {% endif %}
--->
-
-    <h1 style="color:#BFBFBF">Ronda de práctica (no por dinero) </h1>
-
-{% endblock %}
 
 {% block styles %}
     <link href="{% static 'css/vue-range-slider.css' %}" rel="stylesheet" />
@@ -75,6 +51,7 @@
         'sec_otherrisk_ownfixed': 'single_fixedsquare',
         'det_giv': 'single_given',
         'sec_new_graph':'newone',
+        'dictator': 'new_single'
     }
 
     // can I remove this?
@@ -87,15 +64,24 @@
     // Notes: these can probably be offloaded to Python
     var dynamicValues  = {{ dynamic_values | json }}
 
-    //ajustando el tamaño del gráfico (que diego confirme)
+    constantValues['scale']['max'] = 150
+    //ajustando el tamaño del gráfico 
 
     var temp_m = dynamicValues[currentRound - 1]
 
-    if (temp_m.m < 10)
-    {
-        constantValues['scale']['max'] = 30
-    }
+    //if (temp_m.m === 40 || temp_m.m1 === 40 || temp_m.m2 === 40)
+    //{
+    //    constantValues['scale']['max'] = 210
 
+    //}else{
+
+        constantValues['scale']['max'] = 120
+
+    //}else if (temp_m.m >= 30 && temp_m.m < 60 || temp_m.m1 >= 30 && temp_m.m1 < 60 || temp_m.m2 >= 30 && temp_m.m2 < 60)
+    //{
+    //    constantValues['scale']['max'] = 60
+
+    //}
     var getMode = function() {
         var roundData = dynamicValues[currentRound - 1]
         if (roundData && roundData.mode) return modeMap[roundData.mode]
@@ -199,7 +185,6 @@
             prob: getProb(),
             onChangeCallback: function() {
                 somethingChanged = true
-                console.log('changed cb')
             }
         })
 
@@ -211,8 +196,10 @@
     window.onload = function ()
         {
         var roundData = dynamicValues[currentRound - 1]
-        var mode = {{ mode | json}}
+        var mode = {{ mode | json }}
         document.getElementById("arrive_time").value = (new Date()).toISOString();
+        document.getElementById("pyy").innerHTML = roundData.p_y
+        document.getElementById("pxx2").innerHTML = roundData.p_x2
         if (mode === 'probability')
         {
             document.getElementById("ax").value = roundData.a_x
@@ -239,8 +226,10 @@
             document.getElementById("m").value = roundData.m
             document.getElementById("px").value = roundData.p_x
             document.getElementById("py").value = roundData.p_y
+            document.getElementById("pyy").innerHTML = roundData.p_y
         }
-        }
+        }   
+        
 
     function test_outcome()
     {
@@ -249,8 +238,8 @@
 
         var roundData = dynamicValues[currentRound - 1]
         var mode = getMode()
+        console.log(mode)
         var rand = Math.random()
-
         if (mode === 'probability')
         {
             if (rand * 100 < vm.prob.a)
@@ -268,34 +257,47 @@
         }
         else if (mode === 'single_given')
         {
-            document.getElementById('you_payoff').innerHTML=vm.selected[0].x
-            document.getElementById('partner_payoff').innerHTML=vm.selected[0].y
+            document.getElementById('you_payoff').innerHTML=parseInt(vm.selected[0].x)
+            document.getElementById('partner_payoff').innerHTML=parseInt(vm.selected[0].y)
         }
         else
         {
-            if (rand * 100 < roundData['prob_a'])
-            {
-                document.getElementById('outcome').innerHTML='A'
-                document.getElementById('you_payoff').innerHTML=vm.selected[0].x
-                if (mode !== 'single')
-                    document.getElementById('partner_payoff').innerHTML=vm.selected[1].x
+            if ( mode == 'single_fixedcircle' ){
+                document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
+                document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
+                document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
+                document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
+                
             }
-            else
-            {
-                document.getElementById('outcome').innerHTML='B'
-                document.getElementById('you_payoff').innerHTML=vm.selected[0].y
-                if (mode !== 'single')
-                    document.getElementById('partner_payoff').innerHTML=vm.selected[1].y
+            else if (mode == 'single_fixedsquare' ){
+                document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
+                document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
+                document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
+                document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
             }
+            else if (  mode == 'independent' || mode == "newone" ){
+                document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
+                document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
+                document.getElementById('partner_payoff_1').innerHTML=parseInt(vm.selected[1].y)
+                document.getElementById('partner_payoff_2').innerHTML=parseInt(vm.selected[1].x)
+            }
+            else if (mode == 'single' || mode == "new_single"  ){
+                document.getElementById('you_payoff_1').innerHTML=parseInt(vm.selected[0].y)
+                document.getElementById('you_payoff_2').innerHTML=parseInt(vm.selected[0].x)
+            }
+
+
+            
         }
         document.getElementById('results').style.display='block'
         return false
     }
     </script>
 
-    <script src="{% static 'js/graph_sp.js' %}"></script>
+    <script src="{% static 'js/graph_es.js' %}"></script>
 
 {% endblock %}
+
 
 {% block content %}
 
@@ -385,14 +387,13 @@
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="34%" style="text-align: center">Resultados</td>
-                                    <td width="33%" style="text-align: center; color: blue"> <b>Su pago</b></td>
-                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
+                                    <td width="34%" style="text-align: center">Tareas asignadas:</td>
+                                    <td width="33%" style="text-align: center; color: blue"> <b>Tareas para hoy</b></td>
+                                    <td width="33%" style="text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas en una semana </b></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id="outcome" style="text-align: center">N/A</td>
                                     <td id="you_payoff" style="text-align: center; color: blue">N/A</td>
                                     <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'" > N/A </td>
                                 </tr>
@@ -400,130 +401,175 @@
                         </table>
                     </div>
                 </div>
+
                 <div class="col-3" v-if="mode === 'single_given'">
-                    <h5>Esta es su decisión:</h5>
+                    <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
+                    
                     <div class="row" style="margin-top: 50px">
+                        <h6>Tasa: 1:<span id="pyy"></span></h6>
                         <table class="table table-bordered table-sm small">
                             <thead>
                                 <tr>
-                                    <td width="50%" style="color: blue; text-align: center"> <b>Sus fichas</b> </td>
-                                    <td width="50%" v-if="mode !== 'single'"  style="color: orange; text-align: center" > <b>Fichas de su compañero</b> </td>
+                                    <td width="34%" style = "text-align: center;">Tiempo</td>
+                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                    <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td width="50%" v-html="selected[0].x"></td>
-                                    <td width="50%" v-html="selected[0].y"></td>
+                                    <td style = "text-align: center;">Hoy</td>
+                                    <td style = "text-align: center; color: blue">0</td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].x)"></td>
+                                </tr>
+                                <tr>
+                                    <td style = "text-align: center;">En una semana</td>
+                                    <td style = "text-align: center; color: blue">0</td>
+                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].y)"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="row" id="results" style="display: none; margin-top: 40px">
-                        <h5>Resultados de la prueba:</h5>
-                        <table class="table table-bordered table-sm small">
-                            <thead>
-                                <tr>
-                                    <td width="50%" style="text-align: center; color: blue"> <b>Su pago</b> </td>
-                                    <td width="50%" style="text-align: center; color: orange" v-if="mode !== 'single'" > <b>El pago de su compañero</b> </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="you_payoff" style="text-align: center; color: blue"> N/A </td>
-                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'"  > N/A </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver 0 tareas hoy y 0 en la siguiente semana. Y su pareja tendría que resolver <span id="you_payoff" style="color:orange"></span> tareas hoy y <span id="partner_payoff" style="color:orange"></span> en la siguiente semana.</h6>
                     </div>
                 </div>
-                <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >
-                    {% if player.round_number == 1 or player.round_number == 5 or player.round_number == 7 or mode == 'sec_ownrisk_fixedother' %}
-                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y mañana</h5>
-                    {% elif player.round_number == 4 or player.round_number == 6 or mode == 'sec_otherrisk_ownfixed' %}  
-                        <h5>Elija la cantidad de tareas que le asignaría a su compañero entre hoy y mañana</h5>
-                    {% elif player.round_number == 8 %}
-                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su compañero entre hoy y mañana</h5>
+                <div class="col-3" v-if="mode !== 'probability' && mode !== 'single_given'" >   
+                    {% if bloque == 'self' %}
+                        <h5>Elija la cantidad de tareas que se asignaría a usted mismo entre hoy y en una semana</h5>
+                    {% elif bloque == 'other' %}  
+                        <h5>Elija la cantidad de tareas que le asignaría a su pareja entre hoy y en una semana</h5>
+                    {% elif bloque == 'simultaneous' %}
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja entre hoy y en una semana</h5>
+                    {% elif bloque == 'dictator' %}
+                        <h5>Elija la cantidad de tareas que le asignaría a su usted y a su pareja para hoy</h5>
+
                     {% endif %}
 
-                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or player.round_number == 8 %}
+                    {% if mode == 'sec_ownrisk_fixedother' or mode == 'sec_otherrisk_ownfixed' or mode == 'sec_new_graph' or mode == 'sec_1bl_2ch' or mode == 'sec_ownrisk' %}
                         <div class="row" style="margin-top: 50px">
-                        <table class="table table-bordered table-sm mdall">
-                            <thead>
-                                <tr>
-                                    <td width="34%" style = "text-align: center;">Tiempo</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
-                                    <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su compañero</b></td>
+                            <h6>Tasa: 1:<span id="pyy"></span>{% if mode == "sec_new_graph" %} & Tasa: 1:<span id="pxx2"></span> {% endif %}</h6>
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange" v-if="mode !== 'single'"><b>Tareas de su pareja</b></td>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style = "text-align: center;">Hoy</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
-                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
-                                </tr>
-                                <tr>
-                                    <td style = "text-align: center;">Mañana</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
-                                    <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {% else %}
-                    <div class="row" style="margin-top: 50px">
-                        <table class="table table-bordered table-sm mdall">
-                            <thead>
-                                <tr>
-                                    <td width="34%" style = "text-align: center;">Tiempo</td>
-                                    <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].x)" v-if="mode !== 'single'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style = "text-align: center;">En una semana</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[1].y)" v-if="mode !== 'single'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {% if mode == 'sec_ownrisk_fixedother'  or mode == "sec_otherrisk_ownfixed" %}
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                            <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver <span id="you_payoff_2" style="color:blue"></span> tareas hoy y <span id="you_payoff_1" style="color:blue"></span> en la siguiente semana. Y su pareja tendría que resolver <span id="partner_payoff_2" style="color:orange"></span> tareas hoy y <span id="partner_payoff_1" style="color:orange"></span>  en la siguiente semana.</h6>
+                        </div>
+                        {% elif mode == 'sec_ownrisk' %}
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+
+                        <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver <span id="you_payoff_2" style="color:blue"></span> tareas hoy y <span id="you_payoff_1" style="color:blue"></span> en la siguiente semana. Y su pareja tendría que resolver 0 tareas hoy y 0 en la siguiente semana.</h6>
+                        </div>
+                        {% elif mode == "sec_new_graph" %}
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+
+                            <h6>Si esta fuese la decisión que cuenta, usted tendría que resolver <span id="you_payoff_2" style="color:blue"></span> tareas hoy y <span id="you_payoff_1" style="color:blue"></span> en la siguiente semana. Y su pareja tendría que resolver <span id="partner_payoff_2" style="color:orange"></span> tareas hoy y <span id="partner_payoff_1" style="color:orange"></span>  en la siguiente semana.</h6>
+                        </div>
+
+                        {% endif %}
                     
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style = "text-align: center;">Hoy</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                    {% elif mode == "dictator" %}
+                        
+                        <div class="row" style="margin-top: 50px">
+                            <h6>Tasa: 1:<span id="pyy"></span></h6>    
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
 
-                                </tr>
-                                <tr>
-                                    <td style = "text-align: center;">Mañana</td>
-                                    <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange" v-html="parseInt(selected[0].y)" ></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                            <h6>Si esta fuese la decisión que cuenta, tú tendrías que resolver <span id="you_payoff_2" style=" color: blue"></span> tareas hoy y tu pareja <span id="you_payoff_1" style=" color: orange"> </span> tareas hoy.</h6>
+                        </div>
+
+                    {% else %}
+                        <div class="row" style="margin-top: 50px">
+                            <table class="table table-bordered table-sm mdall">
+                                <thead>
+                                    <tr>
+                                        <td width="34%" style = "text-align: center;">Tiempo</td>
+                                        <td width="33%" style = "text-align: center; color: blue"><b>Tareas</b></td>
+                                        <td width="33%" style = "text-align: center; color: orange"><b>Tareas de su pareja</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style = "text-align: center;">Hoy</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].x)"></td>
+                                        <td style = "text-align: center; color: orange">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style = "text-align: center;">En una semana</td>
+                                        <td style = "text-align: center; color: blue" v-html="parseInt(selected[0].y)"></td>
+                                        <td style = "text-align: center; color: orange">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" id="results" style="display: none; margin-top: 40px;">
+                            <h5>Resultados de la prueba:</h5>
+                            <table class="table table-bordered table-sm small">
+                                <thead>
+                                    <tr>
+                                        <td width="33%" style="text-align: center; color: blue"><b>Tareas para hoy</b></td>
+                                        <td width="33%"style="text-align: center; color: blue" v-if="mode !== 'single'"><b>Tareas en una semana</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="you_payoff" style="text-align: center; color: blue"> N/A</td>
+                                        <td id="partner_payoff" style="text-align: center; color: blue" v-if="mode !== 'single'">N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     {% endif %}
-                    <div class="row" id="results" style="display: none; margin-top: 40px;">
-                        <h5>Resultados de la prueba:</h5>
-                        <table class="table table-bordered table-sm small">
-                            <thead>
-                                <tr>
-                                    <td width="34%" style="text-align: center">Resultados</td>
-                                    <td width="33%" style="text-align: center; color: blue"><b>Su pago</b></td>
-                                    <td width="33%"style="text-align: center; color: orange"v-if="mode !== 'single'"><b>El pago de su compañero</b></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="outcome" style="text-align: center">N/A</td>
-                                    <td id="you_payoff" style="text-align: center; color: blue"> N/A</td>
-                                    <td id="partner_payoff" style="text-align: center; color: orange" v-if="mode !== 'single'">N/A</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--
+    
     <div>
     <button id="go" type="button" class="btn-large" onclick="test_outcome()">
         Resultado de la prueba:
     </button>
     </div>
-    -->
+    
     {% next_button %}
 
 {% endblock %}

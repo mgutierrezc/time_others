@@ -1,0 +1,15 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+
+{% block content %}
+<!--
+    Principal maintainer: Eli Pandolfo <epandolf@ucsc.edu>
+    Contributor: Kristian Lopez Vargas <kristianlvargas@gmail.com>
+-->
+<div class="instructions well well-lg">
+    A continuación, se le presentarán las decisiones que sí podrían determinar cuántas tareas realizará usted y su pareja.
+    <br><br>
+    {% next_button %}
+
+{% endblock %}
