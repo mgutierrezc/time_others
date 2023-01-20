@@ -216,9 +216,7 @@
             document.getElementById("m2").value = roundData.m2
             document.getElementById("px2").value = roundData.p_x2
             document.getElementById("py2").value = roundData.p_y2
-            document.getElementById("pxx2").innerHTML = roundData.p_x2
-            document.getElementById("pyy").innerHTML = roundData.p_y
-            console.log(roundData.p_x2)
+
         }
         else
         {
@@ -228,11 +226,8 @@
                 document.getElementById("b").value = roundData.b
             }
             document.getElementById("m").value = roundData.m
-            console.log(m)
             document.getElementById("px").value = roundData.p_x
             document.getElementById("py").value = roundData.p_y
-            document.getElementById("pyy").innerHTML = roundData.p_y
-            console.log(roundData.p_y)
         }
         }
     </script>
@@ -409,6 +404,7 @@
                                 </tbody>
                             </table>
                         </div>
+                
                     {% else %}
                         <div class="row" style="margin-top: 50px">
                             <h6>Tasa: 1:<span id="pyy"></span></h6>
