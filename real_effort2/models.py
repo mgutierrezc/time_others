@@ -35,7 +35,7 @@ def distance_and_ok(transcribed_text, reference_text, max_error_rate):
 
 class Constants(BaseConstants):
     name_in_url = 'real_effort2'
-    num_rounds = 300 #maxima cantidad de tareas parece ser 330? checkear bien eso para poner num_rounds
+    num_rounds = 150 
     #num_groups = 1
     players_per_group = None
     info_code = 'real_effort/Code.html'
